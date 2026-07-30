@@ -1,0 +1,188 @@
+@import "colors.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font","Source Han Sans SC";
+    font-size: 16.6px;
+    opacity: 1;
+}
+
+window#waybar {
+    background: @surface_container_highest;
+}
+/* 鼠标悬浮信息提示 */
+tooltip {
+    background: @secondary_container;
+    border: 0.17em solid @outline;
+    opacity: 1;
+}
+tooltip label {
+    color: @on_surface;
+    font-size: 0.89em;
+}
+
+#workspaces button {
+    padding: 0px 0.56em;
+    background: @surface;
+    color: @tertiary_container;
+}
+#workspaces button:hover {
+    background: @on_tertiary;
+}
+#workspaces button.active{
+    color: @tertiary;
+}
+
+#clock.date {
+    background-color: @tertiary;
+    color: @on_secondary;
+    padding: 0px 0.45em;
+}
+
+#custom-applauncher {
+    font-size: 1.39em;
+    padding: 0px 0.39em;
+    margin: 0px;
+    background-color: @primary;
+    color: @on_primary;
+}
+
+#clock {
+    padding: 0px 0.45em;
+}
+#clock {
+    background-color: @secondary;
+    color: @on_secondary;
+}
+
+#tray {
+    padding: 0px 0.39em;
+    font-size: 1.11em;
+    background-color: @surface_container_high;
+}
+
+#network {
+    background-color: @surface_container;
+    color: @secondary;
+    padding: 0px 0.39em;
+    font-size: 1.1em;
+
+}
+
+#battery {
+    background-color: @surface_container;
+    color: @secondary;
+    padding: 0px 0.39em;    
+}
+#battery.critical:not(.charging) {
+    background-color: @surface_container;
+    color: @error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    padding: 0px 0.39em;
+}
+@keyframes blink {
+    to {
+        background-color: @primary;
+        color: @error;
+    }
+}
+
+#custom-wlogout,
+#custom-reboot,
+#custom-logout {
+    background-color: @surface;
+    color: @error;
+    padding: 0px 0.56em;
+    font-size: 1.39em;
+}
+
+#custom-left_div.PrimarySurfacecontainer,
+#custom-right_div.PrimarySurfacecontainer {
+    background-color: @surface_container;
+    color: @primary;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.39em; 
+}
+#custom-left_div.SurfacecontainerTertiary,
+#custom-right_div.SurfacecontainerTertiary {
+    background-color: @tertiary;
+    color: @surface_container;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.39em;
+}
+#custom-left_div.TertiarySurfacecontainerhigh,
+#custom-right_div.TertiarySurfacecontainerhigh {
+    background-color: @surface_container_high;
+    color: @tertiary;
+    padding: 0px 0px;
+    font-size: 1.39em;
+}
+#custom-left_div.Surfacecontainerhigh,
+#custom-right_div.Surfacecontainerhigh {
+    color: @surface_container_high;
+    padding: 0px;
+    font-size: 1.39em;
+}
+#custom-left_div.SurfacecontainerhighSurfacebright,
+#custom-right_div.SurfacecontainerhighSurfacebright {
+    background-color: @surface_bright;
+    color: @surface_container_high;
+    padding: 0px;
+    font-size: 1.39em;
+}
+#custom-left_div.SurfaceSurfacecontainer,
+#custom-left_div.SurfaceSurfacecontainer {
+    background-color: @surface_container;
+    color: @surface;
+    padding: 0px;
+    font-size: 1.39em;
+}
+#custom-left_div.SurfacecontainerhighSurface,
+#custom-right_div.SurfacecontainerhighSurface {
+    background-color: @surface;
+    color: @surface_container_high;
+    padding: 0px;
+    font-size: 1.39em;
+}
+#custom-left_div.Surfacebright,
+#custom-right_div.Surfacebright {
+    color: @surface_bright;
+    font-size: 1.39em;
+    padding: 0px;
+}
+#custom-left_div.SurfacecontainerSurfacecontainerhigh,
+#custom-right_div.SurfacecontainerSurfacecontainerhigh {
+    background-color: @surface_container_high;
+    color: @surface_container;
+    font-size: 1.39em;
+    padding: 0px;
+}
+#custom-left_div.SurfaceSurfacecontainerhigh,
+#custom-right_div.SurfaceSurfacecontainerhigh {
+    background-color: @surface_container_high;
+    color: @surface;
+    font-size: 1.39em;
+    padding: 0px;
+}
+#custom-left_div.SurfacecontainerSecondary,
+#custom-right_div.SurfacecontainerSecondary {
+    background-color: @secondary;
+    color: @surface_container;
+    font-size: 1.39em;
+    padding: 0px;
+
+}
+#custom-left_div.SecondarySurfacecontainerhigh,
+#custom-right_div.SecondarySurfacecontainerhigh {
+    background-color: @surface_container_high;
+    color: @secondary;
+    font-size: 1.39em;
+    padding: 0px;
+}

@@ -1,0 +1,10 @@
+[config]
+# Color sampling preference: darkness,lightness,saturation,less-saturation,value,closest-to-fallback
+prefer = "saturation"
+# Output format: hex, rgb, rgba, hsl, hsla
+format = "hex"
+# Theme mode: dark, light, auto
+mode = "dark"
+[templates.waybar]
+input_path = "/home/tistath/.config/matugen/templates/colors.css"
+output_path = "/home/tistath/.config/waybar/colors.css"

@@ -1,0 +1,31 @@
+# 剪贴板历史（可能包含密码、令牌）
+.config/copyq/
+
+# 浏览器数据（包含浏览历史、书签、Cookie）
+.config/mozilla/
+.config/google-chrome/
+.config/chromium/
+
+# 钱包和密钥
+.config/Bitcoin/
+.config/Electrum/
+.ssh/
+.gnupg/
+
+# 缓存和临时文件
+__pycache__/
+*.pyc
+.cache/
+*.log
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编译产物
+*.o
+*.out
+*.exe

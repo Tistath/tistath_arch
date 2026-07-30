@@ -1,0 +1,3 @@
+waybar-niri-taskbar-git
+waypaper
+wlogout

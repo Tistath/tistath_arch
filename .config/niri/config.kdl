@@ -1,0 +1,254 @@
+input {
+    keyboard {
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        accel-speed 0.5
+    }
+
+    trackpoint {
+    }
+}
+
+output "eDP-1" {
+    mode "1920x1080@59.977"
+    scale 1
+}
+
+layout {
+    gaps 12
+
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        proportion 1.0
+    }
+
+    default-column-width {
+        proportion 0.5;
+    }
+
+    focus-ring {
+        width 2.5
+        active-gradient from="#adc6ff" to="#d8e2ff" angle=115 in="oklch longer hue"
+    }
+}
+
+spawn-at-startup "waybar"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "mako"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "kitty" "-e" "fish"
+spawn-at-startup "fcitx5"
+spawn-at-startup "copyq"
+spawn-at-startup "~/.config/niri/scripts/swayidle.sh"
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+environment {
+	LC_MESSAGES "zh_CN.UTF-8"
+	XMODIFIERS "@im=fcitx"
+}
+
+cursor {
+        xcursor-theme "Colloid-Dracula-cursors-dark"
+        xcursor-size 37
+        hide-after-inactive-ms 15000
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+    opacity 1.00
+    draw-border-with-background false
+
+    background-effect {
+        blur true
+    }
+}
+
+layer-rule {
+    match namespace="waybar"
+    opacity 0.8
+}
+
+
+binds {
+    Mod+Alt+B           hotkey-overlay-title="Open a Browser: firefox"                          { spawn "firefox"; }
+    Mod+Alt+M           hotkey-overlay-title="Turn On/Off a Input Method: fcitx5"               { spawn-sh "pkill fcitx5 || fcitx5"; }
+    Mod+N               hotkey-overlay-title="Open a File Manager: nautilus"                    { spawn "nautilus"; }
+    Mod+Alt+C           hotkey-overlay-title="Open a Clipboard: copyq"                          { spawn-sh "copyq show"; }
+    Mod+Alt+W           hotkey-overlay-title="Turn On/Off a Hardware Accelerator: watt toolkit" {spawn-sh "pkill Steam || sh '/home/tistath/keke/Steam _v3.1.0_linux_x64/Steam++.sh'"; }
+    Mod+Alt+L           hotkey-overlay-title="Turn On/Off a Screen Lock: swayidle"              { spawn-sh "pkill swayidle || swayidle"; }
+    Mod+T               hotkey-overlay-title="Open a Terminal: kitty"                           { spawn "kitty" "-e" "fish"; }
+    Mod+D               hotkey-overlay-title="Run an Application: fuzzel"                       { spawn "fuzzel"; }
+    Mod+Alt+D           hotkey-overlay-title="Lock the Screen: swaylock"                        { spawn "swaylock"; }
+
+    XF86AudioRaiseVolume        allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume        allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute               allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute            allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay               allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop               allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev               allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext               allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86MonBrightnessUp         allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown       allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Mod+Q repeat=false  { close-window; }
+
+    Mod+Left            { focus-column-left; }
+    Mod+Down            { focus-window-down; }
+    Mod+Up              { focus-window-up; }
+    Mod+Right           { focus-column-right; }
+    Mod+J               { focus-column-left; }
+    Mod+K               { focus-window-down; }
+    Mod+L               { focus-window-up; }
+    Mod+semicolon       { focus-column-right; }
+
+    Mod+Ctrl+Left       { move-column-left; }
+    Mod+Ctrl+Down       { move-window-down; }
+    Mod+Ctrl+Up         { move-window-up; }
+    Mod+Ctrl+Right      { move-column-right; }
+    Mod+Ctrl+J          { move-column-left; }
+    Mod+Ctrl+K          { move-window-down; }
+    Mod+Ctrl+L          { move-window-up; }
+    Mod+Ctrl+semicolon  { move-column-right; }
+
+    Mod+Home            { focus-column-first; }
+    Mod+End             { focus-column-last; }
+    Mod+Ctrl+Home       { move-column-to-first; }
+    Mod+Ctrl+End        { move-column-to-last; }
+
+    Mod+Shift+Left      { focus-monitor-left; }
+    Mod+Shift+Down      { focus-monitor-down; }
+    Mod+Shift+Up        { focus-monitor-up; }
+    Mod+Shift+Right     { focus-monitor-right; }
+    Mod+Shift+J         { focus-monitor-left; }
+    Mod+Shift+K         { focus-monitor-down; }
+    Mod+Shift+L         { focus-monitor-up; }
+    Mod+Shift+semicolon  { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up   { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right{ move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+J    { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+K    { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+L    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+semicolon    { move-column-to-monitor-right; }
+
+    Mod+Page_Down       { focus-workspace-down; }
+    Mod+Page_Up         { focus-workspace-up; }
+    Mod+I               { focus-workspace-down; }
+    Mod+O               { focus-workspace-up; }
+    Mod+Ctrl+Page_Down  { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up    { move-column-to-workspace-up; }
+    Mod+Ctrl+I          { move-column-to-workspace-down; }
+    Mod+Ctrl+O          { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+I         { move-workspace-down; }
+    Mod+Shift+O         { move-workspace-up; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+M { maximize-window-to-edges; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
