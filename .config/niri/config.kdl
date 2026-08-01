@@ -45,11 +45,6 @@ layout {
     default-column-width {
         proportion 0.5;
     }
-
-    focus-ring {
-        width 2.5
-        active-gradient from="#adc6ff" to="#d8e2ff" angle=115 in="oklch longer hue"
-    }
 }
 
 spawn-at-startup "waybar"
@@ -66,6 +61,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 environment {
 	LC_MESSAGES "zh_CN.UTF-8"
 	XMODIFIERS "@im=fcitx"
+        XCURSOR_THEME "Colloid-Dracula-cursors-dark"
+        XCURSOR_SIZE "37"
 }
 
 cursor {
@@ -88,9 +85,9 @@ window-rule {
     clip-to-geometry true
     opacity 1.00
     draw-border-with-background false
-
-    background-effect {
-        blur true
+    focus-ring {
+        width 0.5
+        active-gradient from="#adc6ff" to="#d8e2ff" angle=115 in="oklch longer hue"
     }
 }
 
@@ -99,18 +96,14 @@ layer-rule {
     opacity 0.8
 }
 
-
 binds {
-    Mod+Alt+B           hotkey-overlay-title="Open a Browser: firefox"                          { spawn "firefox"; }
-    Mod+Alt+M           hotkey-overlay-title="Turn On/Off a Input Method: fcitx5"               { spawn-sh "pkill fcitx5 || fcitx5"; }
-    Mod+N               hotkey-overlay-title="Open a File Manager: nautilus"                    { spawn "nautilus"; }
-    Mod+Alt+C           hotkey-overlay-title="Open a Clipboard: copyq"                          { spawn-sh "copyq show"; }
-    Mod+Alt+W           hotkey-overlay-title="Turn On/Off a Hardware Accelerator: watt toolkit" {spawn-sh "pkill Steam || sh '/home/tistath/keke/Steam _v3.1.0_linux_x64/Steam++.sh'"; }
-    Mod+Alt+L           hotkey-overlay-title="Turn On/Off a Screen Lock: swayidle"              { spawn-sh "pkill swayidle || swayidle"; }
-    Mod+T               hotkey-overlay-title="Open a Terminal: kitty"                           { spawn "kitty" "-e" "fish"; }
-    Mod+D               hotkey-overlay-title="Run an Application: fuzzel"                       { spawn "fuzzel"; }
-    Mod+Alt+D           hotkey-overlay-title="Lock the Screen: swaylock"                        { spawn "swaylock"; }
-
+    Mod+B       { spawn    "firefox"; }
+    Mod+N       { spawn    "nautilus"; }
+    Mod+W       { spawn-sh "pkill Steam || sh '/home/tistath/keke/Steam _v3.1.0_linux_x64/Steam++.sh'"; }
+    Mod+Shift+D { spawn-sh "pkill swayidle || swayidle"; }
+    Mod+T       { spawn    "kitty" "-e" "fish"; }
+    Mod+D       { spawn    "swaylock"; }
+    Mod+Shift+Q { spawn    "linuxqq"; }
     XF86AudioRaiseVolume        allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume        allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute               allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -119,8 +112,8 @@ binds {
     XF86AudioStop               allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev               allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext               allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86MonBrightnessUp         allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown       allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp         allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown       allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     Mod+Q repeat=false  { close-window; }
 
@@ -154,15 +147,15 @@ binds {
     Mod+Shift+J         { focus-monitor-left; }
     Mod+Shift+K         { focus-monitor-down; }
     Mod+Shift+L         { focus-monitor-up; }
-    Mod+Shift+semicolon  { focus-monitor-right; }
+    Mod+Shift+semicolon { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up   { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right{ move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+J    { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+K    { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+L    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Left         { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down         { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up           { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right        { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+J            { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+K            { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+L            { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+semicolon    { move-column-to-monitor-right; }
 
     Mod+Page_Down       { focus-workspace-down; }
@@ -202,6 +195,7 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
+
     Mod+Ctrl+1 { move-column-to-workspace 1; }
     Mod+Ctrl+2 { move-column-to-workspace 2; }
     Mod+Ctrl+3 { move-column-to-workspace 3; }
@@ -218,17 +212,15 @@ binds {
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
 
-    Mod+R { switch-preset-column-width; }
+    Mod+R       { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
 
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+F       { maximize-column; }
+    Mod+Shift+F { maximize-window-to-edges; }
+    Mod+Ctrl+F  { fullscreen-window; }
 
-    Mod+M { maximize-window-to-edges; }
-    Mod+Ctrl+F { expand-column-to-available-width; }
-
-    Mod+C { center-column; }
-    Mod+Ctrl+C { center-visible-columns; }
+    Mod+C       { center-column; }
+    Mod+Ctrl+C  { center-visible-columns; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
@@ -239,16 +231,14 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    Mod+W { toggle-column-tabbed-display; }
-
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Print       { screenshot; }
+    Ctrl+Print  { screenshot-screen; }
+    Alt+Print   { screenshot-window; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
+    Mod+Shift+E         { quit; }
+    Ctrl+Alt+Delete     { quit; }
 
     Mod+Shift+P { power-off-monitors; }
 }

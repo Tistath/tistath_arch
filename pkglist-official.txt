@@ -33,6 +33,7 @@ libnotify
 libva-utils
 linux
 linux-firmware
+lldb
 mako
 man-db
 matugen
@@ -40,15 +41,19 @@ nautilus-open-any-terminal
 neovim
 networkmanager
 niri
+pacman-contrib
 pastel
 polkit-gnome
 power-profiles-daemon
 rime-ice-pinyin-git
+ripgrep
 rsync
+snap-pac
 snapper
 swayidle
 swaylock-effects
 tree
+tree-sitter-cli
 ttf-jetbrains-mono-nerd
 vim
 waybar

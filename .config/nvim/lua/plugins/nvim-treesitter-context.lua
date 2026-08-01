@@ -7,8 +7,7 @@ return {
       max_lines = 3,
       trim_scope = "outer",
     })
-    -- 设置粘滞滚动窗口背景透明
-    vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#1e2030", fg = "Gray" })
-    vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#1e2030", fg = "Gray" })
+   -- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#1e2030", fg = "Gray" })
+    --vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#1e2030", fg = "Gray" })
   end,
 }

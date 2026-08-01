@@ -16,10 +16,10 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<Up>"] = cmp.mapping(function(fallback) fallback() end, { "i", "s" }),
-        ["<Down>"] = cmp.mapping(function(fallback) fallback() end, { "i", "s" }),
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<Up>"]        = cmp.mapping(function(fallback) fallback() end, { "i", "s" }),
+        ["<Down>"]      = cmp.mapping(function(fallback) fallback() end, { "i", "s" }),
+        ["<C-k>"]       = cmp.mapping.select_next_item(),
+        ["<C-l>"]     = cmp.mapping.select_prev_item(),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },

@@ -7,6 +7,12 @@ return {
       options = {
         theme = "auto",
       },
+      sections = {
+        lualine_x = {'encoding', 'filetype'},
+      },
+      inactive_sections = {
+        lualine_x = {'branch'},
+      },
     })
   end,
 }

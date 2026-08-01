@@ -6,8 +6,8 @@ return {
     require("nvim-treesitter").setup({
       ensure_installed = { "cpp", "python", "lua", "css", },
       highlight = { enable = true },
+      fold = { enable = true },
     })
-   --语法高亮 
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { 'cpp', 'python' },
       callback = function()
