@@ -35,8 +35,8 @@ vim.keymap.set("o", ";",                "l",                                    
 
 vim.keymap.set("i", "jk",               "<Esc>",                                { noremap = true, silent = true })
 
-vim.keymap.set("n", "<Leader>ms",       ":messages<CR>",                        { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>tm",       ":belowright split | terminal<CR>",     { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>ms",       ":messages<CR>",                        { noremap = true, silent = true, desc = "消息记录", })
+vim.keymap.set("n", "<Leader>tm",       ":belowright split | terminal<CR>",     { noremap = true, silent = true, desc = "终端小窗", })
 vim.keymap.set("t", "<Esc>",            "<C-\\><C-N>",                          { noremap = true, silent = true })
 -- 光标设置
 vim.opt.guicursor       = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait500-blinkoff200-blinkon300"
@@ -47,9 +47,7 @@ require("config.lazy")
 vim.api.nvim_create_autocmd("FileType",{
   pattern = "cpp",
   callback = function()
-    -- 让 : 不触发缩进
     vim.bo.cinkeys = "0{,0},0),:,0#,!^F,o,O,e"
-    -- 让 :: 被正确识别
     vim.bo.cinwords = "if,else,while,do,for,switch"
   end,
 })

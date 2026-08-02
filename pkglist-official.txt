@@ -33,7 +33,6 @@ libnotify
 libva-utils
 linux
 linux-firmware
-lldb
 mako
 man-db
 matugen

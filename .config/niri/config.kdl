@@ -83,10 +83,9 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-    opacity 1.00
     draw-border-with-background false
     focus-ring {
-        width 0.5
+        width 1.5
         active-gradient from="#adc6ff" to="#d8e2ff" angle=115 in="oklch longer hue"
     }
 }
