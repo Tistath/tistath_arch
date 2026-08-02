@@ -36,7 +36,6 @@ linux-firmware
 mako
 man-db
 matugen
-nautilus-open-any-terminal
 neovim
 networkmanager
 niri
@@ -58,6 +57,5 @@ vim
 waybar
 wget
 wl-clipboard
-xdg-desktop-portal-gnome
 xwayland-satellite
 yay

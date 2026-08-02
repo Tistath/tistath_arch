@@ -15,5 +15,6 @@ return {
         border = "rounded",
       },
     })
+    vim.api.nvim_set_hl(0, "WhichKeyBorder",    { bg = "NONE" })
   end,
 }

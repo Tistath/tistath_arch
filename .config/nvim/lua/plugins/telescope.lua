@@ -21,10 +21,7 @@ return {
     vim.keymap.set("n", "<Leader>fg", builtin.live_grep,                { desc = "实时 grep" })
     vim.keymap.set("n", "<Leader>fb", builtin.buffers,                  { desc = "查找缓冲区" })
     vim.keymap.set("n", "<Leader>fn", builtin.lsp_document_symbols,     { desc = "查找 LSP 符号"})
-    vim.api.nvim_set_hl(0, "TelescopeNormal",           { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopeBorder",           { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopePromptNormal",     { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopeResultsNormal",    { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopePreviewNormal",    { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "TelescopeTitle", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
   end,
 }

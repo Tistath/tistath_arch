@@ -23,7 +23,7 @@
   "clock": {
     "tooltip": false,
     "interval": 59,
-    "format": "󰥔 {:%H:%M}",
+    "format": "󰥔 {:%H:%M}"
   },
   //系统托盘（后台）
   "tray": {

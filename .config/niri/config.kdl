@@ -85,8 +85,8 @@ window-rule {
     clip-to-geometry true
     draw-border-with-background false
     focus-ring {
-        width 1.5
-        active-gradient from="#adc6ff" to="#d8e2ff" angle=115 in="oklch longer hue"
+        width 1.50
+        active-gradient from="#adc6ff" to="#d8e2ff" angle=115 in="srgb-linear"
     }
 }
 

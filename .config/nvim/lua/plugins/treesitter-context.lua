@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
-  lazy = false,
+  event = "BufReadPost",
   config = function()
     local context = require("treesitter-context")
     context.setup({

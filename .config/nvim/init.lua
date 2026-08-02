@@ -43,6 +43,9 @@ vim.opt.guicursor       = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkw
 vim.opt.cursorline      = true
 -- 加载 lazy.nvim
 require("config.lazy")
+
+vim.api.nvim_set_hl(0, "NormalFloat",       { bg = "NONE" })
+
 -- 修复 :: 的缩进和高亮问题
 vim.api.nvim_create_autocmd("FileType",{
   pattern = "cpp",
