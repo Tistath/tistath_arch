@@ -8,30 +8,14 @@
     "fixed-center": true,
     "reload_style_on_change": true,
     "modules-left": [
-        "niri/workspaces",
-        "custom/right_div#SurfaceSurfacecontainerhigh",
-        "custom/right_div#Surfacecontainerhigh"
+        "tray"
     ],
-    "modules-center": [
-        "custom/left_div#Surfacecontainerhigh",
-        "custom/left_div#TertiarySurfacecontainerhigh",
+    "modules-center":[
         "clock#date",
-        "custom/left_div#SurfacecontainerTertiary",
-        "custom/left_div#PrimarySurfacecontainer",
-        "custom/applauncher",
-        "custom/right_div#PrimarySurfacecontainer",
-        "custom/right_div#SurfacecontainerSecondary",
-        "clock",
-        "custom/right_div#SecondarySurfacecontainerhigh",
-        "custom/right_div#Surfacecontainerhigh"
+        "clock"
     ],
     "modules-right": [
-        "custom/left_div#Surfacecontainerhigh",
-        "tray",
-        "custom/left_div#SurfacecontainerSurfacecontainerhigh",
         "network",
-        "battery",
-        "custom/left_div#SurfaceSurfacecontainer",
-        "group/powermenu"
+        "battery"
     ]
 }

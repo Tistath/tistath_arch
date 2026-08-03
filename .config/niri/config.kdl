@@ -47,16 +47,16 @@ layout {
     }
 }
 
+spawn-at-startup "swaybg" "-i" "/home/tistath/Pictures/Pictures/37_desktop.jpg" "-m" "fill"
 spawn-at-startup "waybar"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "mako"
-spawn-at-startup "awww-daemon"
-spawn-at-startup "kitty" "-e" "fish"
+spawn-at-startup "kitty"
 spawn-at-startup "fcitx5"
 spawn-at-startup "copyq"
-spawn-at-startup "~/.config/niri/scripts/swayidle.sh"
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup "mako"
+spawn-at-startup "/home/tistath/.config/niri/scripts/swayidle.sh"
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 environment {
 	LC_MESSAGES "zh_CN.UTF-8"
@@ -95,14 +95,20 @@ layer-rule {
     opacity 0.8
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 binds {
     Mod+B       { spawn    "firefox"; }
-    Mod+N       { spawn    "nautilus"; }
-    Mod+W       { spawn-sh "pkill Steam || sh '/home/tistath/keke/Steam _v3.1.0_linux_x64/Steam++.sh'"; }
+    Mod+W       { spawn-sh "sh '/home/tistath/keke/Steam _v3.1.0_linux_x64/Steam++.sh'"; }
     Mod+Shift+D { spawn-sh "pkill swayidle || swayidle"; }
-    Mod+T       { spawn    "kitty" "-e" "fish"; }
+    Mod+T       { spawn    "kitty"; }
     Mod+D       { spawn    "swaylock"; }
     Mod+Shift+Q { spawn    "linuxqq"; }
+
     XF86AudioRaiseVolume        allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume        allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute               allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -186,6 +192,7 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
+    Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
     Mod+4 { focus-workspace 4; }
@@ -240,4 +247,6 @@ binds {
     Ctrl+Alt+Delete     { quit; }
 
     Mod+Shift+P { power-off-monitors; }
+
+    Mod+Tab { toggle-column-tabbed-display; }
 }

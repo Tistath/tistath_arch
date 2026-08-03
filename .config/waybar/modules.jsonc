@@ -1,23 +1,9 @@
 { 
-  //工作区数目&当前工作区
-  "niri/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "active": "󰜋",
-      "default": ""
-    }
-  },
   //日期
   "clock#date": {
     "tooltip": false,
     "interval": 60,
     "format": "{:%y-%m-%d %a}"
-  },
-  //logo&软件菜单
-    "custom/applauncher": {
-    "tooltip-format": "软件菜单",
-    "format": "",
-    "on-click": "fuzzel"
   },
   //时间
   "clock": {
@@ -56,11 +42,9 @@
       "ethernet": "󰈀"
     },
     //鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} ({ipaddr})\n左键：网络管理器\n右键：网络连接",
-    "tooltip-format-ethernet": "\n{ifname} ({ipaddr})\n左键：网络管理器\n右键：网络连接",
-    "tooltip-format-disconnected": "网络未连接\n{ifname} ({ipaddr})\n左键：网络管理器\n右键：网络连接",
-    "on-click": "kitty --class network-tui -e ~/.config/waybar/scripts/select-network-tui.sh",
-    "on-click-right": "nm-connection-editor"
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} ({ipaddr})",
+    "tooltip-format-ethernet": "\n{ifname} ({ipaddr})",
+    "tooltip-format-disconnected": "网络未连接\n{ifname} ({ipaddr})"
   },
   //电池信息
   "battery": {
@@ -95,29 +79,5 @@
       "custom/reboot",
       "custom/logout"
     ]
-  },
-  //关机
-  "custom/wlogout": {
-    "tooltip-format": "关机",
-    "format": "󰐥",
-    "on-click": "choice=$(echo -e '否\\n是' | fuzzel --dmenu --prompt '确定要关机吗？ ' --lines 2); [ \"$choice\" = '是' ] && notify-send '关机中...' && systemctl poweroff",
-    "on-scroll-up": "true",
-    "on-scroll-down": "true"
-  },
-  //重启
-  "custom/reboot": {
-    "tooltip-format": "重启",
-    "format": "",
-    "on-click": "choice=$(echo -e '否\\n是' | fuzzel --dmenu --prompt '确定要重启吗？ ' --lines 2); [ \"$choice\" = '是' ] && notify-send '重启中...' && systemctl reboot",
-    "on-scroll-up": "true",
-    "on-scroll-down": "true"
-  },
-  //注销
-  "custom/logout": {
-    "tooltip-format": "注销",
-    "format": "󰈆",
-    "on-click": "niri msg action quit",
-    "on-scroll-up": "true",
-    "on-scroll-down": "true"
   }
-}
+ }
