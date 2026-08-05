@@ -1,0 +1,196 @@
+iwctl   //进入网络组件
+
+station wlan0 connect "wifi名"  //连wifi
+
+输入密码
+
+exit    //退出网络组件
+
+ip a    //检查网络连接，如果有地址输出则为成功
+
+timedatectl set-ntp true        //同步时间
+
+lsblk -pf       //查看设备名
+
+cfdisk /dev/nvme0n1     //硬盘分区
+
+用上下选择区，用左右选择delete删除所有区
+
+选择new，大小1g，选择type，类型EFI system       //创建启动分区
+
+选择new，大小为剩余大小，选择write，yes //创建根分区
+
+选择quit        //退出
+
+lsblk -pf       //验证
+
+mkfs.fat -F 32 /dev/nvme0n1p1   //格式化启动分区
+
+mkfs.btrfs -f /dev/nvme0n1p2    //格式化(并清除)根分区
+
+mount -t btrfs -o compress=zstd /dev/nvme0n1p2 /mnt     //挂载根分区
+
+btrfs subvolume create /mnt/@   //创建子卷
+
+btrfs subvolume create /mnt/@home
+
+btrfs subvolume create /mnt/@swap
+
+umount /mnt     //取消挂载
+
+mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
+
+mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
+
+mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
+
+mount --mkdir /dev/nvme0n1p1 /mnt/boot  //挂载
+
+df -h   //检查
+
+pacman -Sy archlinux-keyring    //安装密钥
+
+vim /etc/pacman.d/mirrorlist
+
+添加arch Linux中国镜像源
+
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
+
+pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs       //复制密钥并安装基本包
+
+pacstrap /mnt networkmanager neovim amd-ucode   //安装必要软件包
+
+btrfs filesystem mkswapfile --size 8g --uuid clear /mnt/swap/swapfile大小按指南分配创建交换文件
+
+swapon /mnt/swap/swapfile       //启动交换文件
+
+genfstab -U /mnt > /mnt/etc/fstab       //设置自动挂载
+
+cat /mnt/etc/fstab      //验证
+
+arch-chroot /mnt        //进入系统
+
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime //设置时区
+
+hwclock --systohc       //同步硬件时钟
+
+nvim /etc/locale.gen取消en_US.UTF-8 UTF-8和zh-CN.UTF-8 UTF-8的注释      //设置本地化
+
+locale-gen      //生成本地化
+
+nvim /etc/locale.conf添加LANG=en_US.UTF-8
+
+passwd  //设置root密码
+
+systemctl daemon-reload //安装systemd-boot
+
+bootctl install --esp-path=/boot
+
+cat > /boot/loader/entries/arch.conf << EOF
+
+title   Arch Linux
+
+linux   /vmlinuz-linux
+
+initrd  /amd-ucode.img
+
+initrd  /initramfs-linux.img
+
+options root=UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) rootflags=subvol=@ rw loglevel=3 quiet
+
+EOF
+
+cat > /boot/loader/loader.conf << EOF
+
+default arch
+
+timeout 3
+
+console-mode max
+
+editor no
+
+EOF
+
+systemd-machine-id-setup
+
+bootctl update
+
+pacman -S efibootmgr
+
+exit
+
+reboot
+
+systemctl enable --now NetworkManager
+
+nmcli dev wifi connect "wifi名" password "密码"
+
+ip a
+
+sudo pacman -S fish
+
+useradd -m -G wheel,users,storage,power,network -s /usr/bin/fish tistath
+
+passwd tistath
+
+echo "tistath ALL=(ALL) ALL" > /etc/sudoers.d/tistath
+
+exit
+
+reboot
+
+sudo pacman -S xdg-desktop-portal-gtk xwayland-satellite niri kitty adobe-source-han-sans-otc-fonts ttf-jetbrains-mono-nerd
+
+firefox(俩都选2)
+
+fc-cache -fv
+
+niri-session生成默认配置
+
+编辑配置为kitty
+
+pac libnotify mako
+
+编辑/etc/pacman.conf，添加linuxcn源，Sy安装archlinuxcn-keyring
+
+安装fcitx5-im fcitx5-rime rime-ice-pinyin-git
+
+nvim ~/.local/share/fcitx5/rime/default.custom.yaml
+写入
+patch:
+  __include: rime_ice_suggestion:/
+  ascii_composer:
+    switch_key:
+      Shift_L: commit_code
+      Shift_R: commit_code
+  menu:
+    page_size: 9
+  style:
+    horizontal: true
+  'engine/filters':
+    - simplifier
+
+安装加速器
+
+sudo nvim /etc/udev/hwdb.d/99-caps-ctrl.hwdb
+
+写入evdev:atkbd:dmi:bvn*:bvr*:bd*:svn*:pn*:pvr*
+
+  KEYBOARD_KEY_3a=leftctrl
+
+sudo systemd-hwdb update
+
+sudo udevadm trigger
+
+安装包
+
+改浏览器语言
+
+更改浏览器下载目录
+
+在www.gnome-look.org/p/2219159下载鼠标
+
+解压到~/.local/share/icons/
