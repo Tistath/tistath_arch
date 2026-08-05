@@ -1,0 +1,22 @@
+include catppuccin-mocha
+
+map j scroll left
+map k scroll down
+map l scroll up
+map ; scroll right
+
+map <C-k> navigate next
+map <C-l> navigate previous
+
+map g goto
+
+set scroll-step 120
+
+set guioptions ''
+
+set font 'JetBrainsMono Nerd Font'
+
+set recolor true
+
+set window-title-basename true
+set statusbar-basename true

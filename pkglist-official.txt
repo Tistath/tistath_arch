@@ -19,7 +19,6 @@ firefox
 fish
 git
 gnome-keyring
-grub
 gst-libav
 gst-plugins-base
 gst-plugins-good
@@ -41,9 +40,11 @@ ripgrep
 rsync
 snap-pac
 snapper
+steam
 swaybg
 swayidle
 swaylock-effects
+tesseract-data-chi_sim
 tlp
 tree
 tree-sitter-cli
@@ -53,3 +54,5 @@ wget
 wl-clipboard
 xwayland-satellite
 yay
+zathura
+zathura-pdf-mupdf

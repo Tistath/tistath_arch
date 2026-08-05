@@ -21,6 +21,8 @@ output "eDP-1" {
     scale 1
 }
 
+prefer-no-csd
+
 layout {
     gaps 12
 
@@ -47,9 +49,9 @@ layout {
     }
 }
 
-spawn-at-startup "swaybg" "-i" "/home/tistath/Pictures/Pictures/37_desktop.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/tistath/Pictures/Pictures/vertin_desktop.jpeg" "-m" "fill"
 spawn-at-startup "waybar"
-spawn-at-startup "kitty"
+spawn-at-startup "kitty" "-e" "fish" "-c" "fastfetch --config examples/6; exec fish"
 spawn-at-startup "fcitx5"
 spawn-at-startup "copyq"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
@@ -103,8 +105,8 @@ gestures {
 
 binds {
     Mod+B       { spawn    "firefox"; }
-    Mod+W       { spawn-sh "sh '/home/tistath/keke/Steam _v3.1.0_linux_x64/Steam++.sh'"; }
-    Mod+Shift+D { spawn-sh "pkill swayidle || swayidle"; }
+    Mod+W       { spawn-sh "sh ~/steampp/Steam++.sh"; }
+    Mod+Shift+D { spawn-sh "pkill swayidle || /home/tistath/.config/niri/scripts/swayidle.sh"; }
     Mod+T       { spawn    "kitty"; }
     Mod+D       { spawn    "swaylock"; }
     Mod+Shift+Q { spawn    "linuxqq"; }

@@ -1,7 +1,6 @@
 shell /usr/bin/fish
-
-
-# BEGIN_KITTY_THEME
-# Catppuccin-Mocha
 include current-theme.conf
-# END_KITTY_THEME
+include font.conf
+include cursor.conf
+include window.conf
+include map.conf

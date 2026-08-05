@@ -39,12 +39,11 @@ tooltip label {
     color: white;
 }
 
-#network {
+#wireplumber {
     background-color: transparent;
     color: white;
     padding: 0px 0.39em;
     font-size: 1.1em;
-
 }
 
 #battery {
@@ -61,11 +60,19 @@ tooltip label {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     padding: 0px 0.39em;
+    font-size: 1.1em;
 }
 @keyframes blink {
     to {
         background-color: transparent;
         color: #ffb4ab;
     }
+}
+
+#network {
+    background-color: transparent;
+    color: white;
+    padding: 0px 0.39em;
+    font-size: 1.1em;
 }
 

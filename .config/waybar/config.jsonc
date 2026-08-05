@@ -15,7 +15,8 @@
         "clock"
     ],
     "modules-right": [
-        "network",
-        "battery"
+        "wireplumber",
+        "battery",
+        "network"
     ]
 }
