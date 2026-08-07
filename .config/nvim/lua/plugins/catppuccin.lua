@@ -8,8 +8,8 @@ return {
       background = {
         dark = "mocha",
       },
-      transparent_background = true,
-      no_italic = true,
+      transparent_background = true,--透明背景
+      no_italic = true,--无斜体
       integrations = {
         barbar = true,
         noice = true,

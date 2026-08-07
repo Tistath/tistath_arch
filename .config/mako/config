@@ -1,7 +1,10 @@
+#字体
 font=JetBrainsMono Nerd Font 12
+#圆角
 border-radius=8
+#停留时间
 default-timeout=5000
-# Color
+#颜色主题
 background-color=#1e1e2e
 text-color=#cdd6f4
 border-color=#89b4fa

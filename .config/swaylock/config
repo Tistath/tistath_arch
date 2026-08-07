@@ -4,6 +4,7 @@ font=JetBrainsMono Nerd Font
 indicator-radius=120
 indicator-thickness=8
 effect-blur=10x5
+indicator
 
 color=1e1e2e
 bs-hl-color=f5e0dc

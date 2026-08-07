@@ -5,8 +5,6 @@ return {
   config = function()
     local barbar = require("barbar")
     barbar.setup({
-      animation = true,
-      insert_at_start = true,
     })
     vim.keymap.set("n", "<Leader>b;", ":BufferNext<CR>",              { noremap = true, silent = true, desc = "下一标签页", })
     vim.keymap.set("n", "<Leader>bj", ":BufferPrevious<CR>",          { noremap = true, silent = true, desc = "上一标签页", })

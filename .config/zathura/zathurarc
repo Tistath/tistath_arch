@@ -1,22 +1,18 @@
 include catppuccin-mocha
-
+#移动键位
 map j scroll left
 map k scroll down
 map l scroll up
 map ; scroll right
-
+#翻页
 map <C-k> navigate next
 map <C-l> navigate previous
-
+#跳转页
 map g goto
-
+#滚动速度
 set scroll-step 120
-
-set guioptions ''
-
+#字体
 set font 'JetBrainsMono Nerd Font'
-
-set recolor true
-
+#仅显示文件名
 set window-title-basename true
 set statusbar-basename true

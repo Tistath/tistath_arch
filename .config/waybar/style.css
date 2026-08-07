@@ -1,3 +1,5 @@
+@import "mocha.css";
+
 * {
     font-family: "JetBrainsMono Nerd Font","Source Han Sans SC";
     font-size: 16.6px;
@@ -5,74 +7,48 @@
 }
 
 window#waybar {
-    background: #33353a;
+    background: @mantle;
 }
-/* 鼠标悬浮信息提示 */
-tooltip {
-    background: #3f4759;
-    border: 0.17em solid #8e9099;
-    opacity: 1;
-}
-tooltip label {
-    color: #e2e2e9;
-    font-size: 0.89em;
+
+#tray,
+#clock#date,
+#clock,
+#wireplumber,
+#battery,
+#network {
+    background-color: @surface0;
+    padding: 0.2rem 0.6rem;
+    margin: 0px 4px;  
+    border-radius: 0.47rem;
 }
 
 #clock.date {
-    background-color: transparent;
-    color: white;
-    padding: 0px 0.45em;
+    color: @mauve;
 }
 
 #clock {
-    padding: 0px 0.45em;
-}
-#clock {
-    background-color: transparent;
-    color: white;
+  color: @blue;
 }
 
 #tray {
-    padding: 0px 0.39em;
     font-size: 1.11em;
-    background-color: transparent;
-    color: white;
+    color: @text;
 }
 
 #wireplumber {
-    background-color: transparent;
-    color: white;
-    padding: 0px 0.39em;
+    color: @teal;
     font-size: 1.1em;
 }
 
 #battery {
-    background-color: transparent;
-    color: white;
-    padding: 0px 0.39em;    
+    color: @sky;
 }
 #battery.critical:not(.charging) {
-    background-color: transparent;
-    color: #ffb4ab;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    padding: 0px 0.39em;
-    font-size: 1.1em;
-}
-@keyframes blink {
-    to {
-        background-color: transparent;
-        color: #ffb4ab;
-    }
+    color: @red;
 }
 
 #network {
-    background-color: transparent;
-    color: white;
-    padding: 0px 0.39em;
+    color: @sapphire;
     font-size: 1.1em;
 }
 

@@ -23,7 +23,7 @@
       "critical": 20
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " 󰂄{capacity}% ",
+    "format-charging": " 󰂄 {capacity}% ",
     "format-icons": [
       "󰂎",
       "󰁺",
@@ -41,30 +41,30 @@
   // 音量信息
   "wireplumber": {
     "format": "{icon} {volume}%",
-    "format-muted": " 󰝟 静音 ",
+    "format-muted": "󰝟 {volume}%",
     "format-icons": [
         "󰕿",
         "󰖀",
         "󰕾"
     ],
     "tooltip-format": "音量：{volume}%\n状态：{formatted_muted}",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
   },
   //网络信息
   "group/network": {
-    "orientation": "inherit",
+    "orientation": "inherit",//继承父类排列方式
     "drawer": {
-      "transition-left-to-right": false
+      "transition-left-to-right": false//竖向排列
     },
     "modules": [
       "network"
     ]
   },
   "network": {
-    "format-disconnected": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "{icon}",
+    "format-disconnected": "{icon} {ifname}",
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "{icon} {ifname}",
     "format-icons": {
       "disconnected": "󰤮",
       "wifi": [

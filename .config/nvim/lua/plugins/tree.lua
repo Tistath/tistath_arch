@@ -3,6 +3,8 @@ return {
   lazy = false,
   config = function()
     local tree = require("nvim-tree")
-    tree.setup({})
+    tree.setup({
+
+    })
   end,
 }
