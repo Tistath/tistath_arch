@@ -23,32 +23,32 @@ window#waybar {
 }
 
 #clock.date {
-    color: @mauve;
+    color: white;
 }
 
 #clock {
-  color: @blue;
+  color: white;
 }
 
 #tray {
     font-size: 1.11em;
-    color: @text;
+    color: white;
 }
 
 #wireplumber {
-    color: @teal;
+    color: white;
     font-size: 1.1em;
 }
 
 #battery {
-    color: @sky;
+    color: white;
 }
 #battery.critical:not(.charging) {
     color: @red;
 }
 
 #network {
-    color: @sapphire;
+    color: white;
     font-size: 1.1em;
 }
 

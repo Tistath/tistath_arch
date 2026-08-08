@@ -22,6 +22,63 @@ output "eDP-1" {                //显示接口
     scale 1                     //图标缩放
 }
 
+animations {
+    workspace-switch {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    window-open {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    window-close {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    horizontal-view-movement {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    window-movement {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    window-resize {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    config-notification-open-close {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    exit-confirmation-open-close {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    screenshot-ui-open {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    overview-open-close {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+
+    recent-windows-close {
+        duration-ms 180
+        curve "ease-out-cubic"
+    }
+}
+
 prefer-no-csd                   //接管客户端装饰（以隐藏标题栏）
 
 layout {
