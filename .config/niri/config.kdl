@@ -160,151 +160,151 @@ gestures {              //手势规则
     }
 }
 
-binds {                                                                                                                                                         //快捷键
-    Mod+B                                               {       spawn           "firefox";                                                              }       //火狐浏览器
-    Mod+W                                               {       spawn           "watt-toolkit";                                                         }       //加速器
-    Mod+Shift+D                                         {       spawn-sh        "pkill swayidle || /home/tistath/.config/niri/scripts/swayidle.sh";     }       //开关定时锁屏
-    Mod+T                                               {       spawn           "kitty";                                                                }       //终端
-    Mod+D                                               {       spawn           "swaylock";                                                             }       //锁屏
-    Mod+Shift+Q                                         {       spawn           "linuxqq";                                                              }       //QQ
-    Mod+S                                               {       spawn           "steam";                                                                }       //steam
-                                                                                                                                                                //功能键（Fn）
-    XF86AudioRaiseVolume        allow-when-locked=true  {       spawn-sh        "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0";                    }       //增大音量
-    XF86AudioLowerVolume        allow-when-locked=true  {       spawn-sh        "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";                           }       //减小音量
-    XF86AudioMute               allow-when-locked=true  {       spawn-sh        "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";                           }       //开关静音
-    XF86AudioMicMute            allow-when-locked=true  {       spawn-sh        "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";                         }       //开关麦克风静音
-    XF86AudioPlay               allow-when-locked=true  {       spawn-sh        "playerctl play-pause";                                                 }       //播放/暂停
-    XF86AudioStop               allow-when-locked=true  {       spawn-sh        "playerctl stop";                                                       }       //停止
-    XF86AudioPrev               allow-when-locked=true  {       spawn-sh        "playerctl previous";                                                   }       //上一首
-    XF86AudioNext               allow-when-locked=true  {       spawn-sh        "playerctl next";                                                       }       //下一首
-    XF86MonBrightnessUp         allow-when-locked=true  {       spawn           "brightnessctl" "--class=backlight" "set" "+10%";                       }       //增大亮度
-    XF86MonBrightnessDown       allow-when-locked=true  {       spawn           "brightnessctl" "--class=backlight" "set" "10%-";                       }       //减小亮度
+binds {                                                                                                             //快捷键
+    Mod+T                                         { spawn    "kitty";                                             } //终端
+    Mod+B                                         { spawn    "firefox";                                           } //火狐浏览器
+    Mod+W                                         { spawn    "wechat-universal";                                  } //微信
+    Mod+Shift+W                                   { spawn    "linuxqq";                                           } //QQ
+    Mod+S                                         { spawn    "steam";                                             } //steam
+    Mod+Shift+S                                   { spawn    "watt-toolkit";                                      } //加速器
+    Mod+D                                         { spawn    "swaylock";                                          } //锁屏
+    Mod+Shift+D                                   { spawn-sh "pkill swayidle || scripts/swayidle.sh";             } //开关定时锁屏
+                                                                                                                    //功能键（Fn）
+    XF86AudioRaiseVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; } //增大音量
+    XF86AudioLowerVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";        } //减小音量
+    XF86AudioMute          allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";        } //开关静音
+    XF86AudioMicMute       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";      } //开关麦克风静音
+    XF86AudioPlay          allow-when-locked=true { spawn-sh "playerctl play-pause";                              } //播放/暂停
+    XF86AudioStop          allow-when-locked=true { spawn-sh "playerctl stop";                                    } //停止
+    XF86AudioPrev          allow-when-locked=true { spawn-sh "playerctl previous";                                } //上一首
+    XF86AudioNext          allow-when-locked=true { spawn-sh "playerctl next";                                    } //下一首
+    XF86MonBrightnessUp    allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "+10%";    } //增大亮度
+    XF86MonBrightnessDown  allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "10%-";    } //减小亮度
 
-    Mod+Q                       repeat=false            {                       close-window;                                                           }       //关闭窗口
-                                                                                                                                                                //切换聚焦/移动窗口
-    Mod+Left                                            {                       focus-column-left;                                                      }
-    Mod+Right                                           {                       focus-column-right;                                                     }
-    Mod+Up                                              {                       focus-window-up;                                                        }
-    Mod+Down                                            {                       focus-window-down;                                                      }
-    Mod+J                                               {                       focus-column-left;                                                      } 
-    Mod+semicolon                                       {                       focus-column-right;                                                     } 
-    Mod+L                                               {                       focus-window-up;                                                        } 
-    Mod+K                                               {                       focus-window-down;                                                      } 
-    Mod+WheelScrollLeft                                 {                       focus-column-left;                                                      }
-    Mod+WheelScrollRight                                {                       focus-column-right;                                                     }
-    Mod+Shift+WheelScrollUp                             {                       focus-column-left;                                                      }
-    Mod+Shift+WheelScrollDown                           {                       focus-column-right;                                                     }
+    Mod+Q                            repeat=false {          close-window;                                        } //关闭窗口
+                                                                                                                    //切换聚焦/移动窗口
+    Mod+Left                                      {          focus-column-left;                                   }
+    Mod+Right                                     {          focus-column-right;                                  }
+    Mod+Up                                        {          focus-window-up;                                     }
+    Mod+Down                                      {          focus-window-down;                                   }
+    Mod+J                                         {          focus-column-left;                                   }
+    Mod+semicolon                                 {          focus-column-right;                                  }
+    Mod+L                                         {          focus-window-up;                                     }
+    Mod+K                                         {          focus-window-down;                                   }
+    Mod+WheelScrollLeft                           {          focus-column-left;                                   }
+    Mod+WheelScrollRight                          {          focus-column-right;                                  }
+    Mod+Shift+WheelScrollUp                       {          focus-column-left;                                   }
+    Mod+Shift+WheelScrollDown                     {          focus-column-right;                                  }
 
-    Mod+Ctrl+Left                                       {                       move-column-left;                                                       }
-    Mod+Ctrl+Right                                      {                       move-column-right;                                                      }
-    Mod+Ctrl+Up                                         {                       move-window-up;                                                         }
-    Mod+Ctrl+Down                                       {                       move-window-down;                                                       }
-    Mod+Ctrl+J                                          {                       move-column-left;                                                       }
-    Mod+Ctrl+semicolon                                  {                       move-column-right;                                                      }
-    Mod+Ctrl+L                                          {                       move-window-up;                                                         }
-    Mod+Ctrl+K                                          {                       move-window-down;                                                       }
-    Mod+Ctrl+WheelScrollLeft                            {                       move-column-left;                                                       }
-    Mod+Ctrl+WheelScrollRight                           {                       move-column-right;                                                      }
-    Mod+Ctrl+Shift+WheelScrollUp                        {                       move-column-left;                                                       }
-    Mod+Ctrl+Shift+WheelScrollDown                      {                       move-column-right;                                                      }
-                                                                                                                                                                //切换聚焦/移动首尾窗口
-    Mod+Home                                            {                       focus-column-first;                                                     } 
-    Mod+End                                             {                       focus-column-last;                                                      } 
-    Mod+Ctrl+Home                                       {                       move-column-to-first;                                                   }
-    Mod+Ctrl+End                                        {                       move-column-to-last;                                                    }
-                                                                                                                                                                //切换聚焦屏幕
-    Mod+Shift+Left                                      {                       focus-monitor-left;                                                     } 
-    Mod+Shift+Right                                     {                       focus-monitor-right;                                                    } 
-    Mod+Shift+Up                                        {                       focus-monitor-up;                                                       } 
-    Mod+Shift+Down                                      {                       focus-monitor-down;                                                     } 
-    Mod+Shift+J                                         {                       focus-monitor-left;                                                     } 
-    Mod+Shift+semicolon                                 {                       focus-monitor-right;                                                    } 
-    Mod+Shift+L                                         {                       focus-monitor-up;                                                       } 
-    Mod+Shift+K                                         {                       focus-monitor-down;                                                     } 
-                                                                                                                                                                //移动到屏幕
-    Mod+Shift+Ctrl+Left                                 {                       move-column-to-monitor-left;                                            }
-    Mod+Shift+Ctrl+Right                                {                       move-column-to-monitor-right;                                           }
-    Mod+Shift+Ctrl+Up                                   {                       move-column-to-monitor-up;                                              }
-    Mod+Shift+Ctrl+Down                                 {                       move-column-to-monitor-down;                                            }
-    Mod+Shift+Ctrl+J                                    {                       move-column-to-monitor-left;                                            }
-    Mod+Shift+Ctrl+semicolon                            {                       move-column-to-monitor-right;                                           }
-    Mod+Shift+Ctrl+L                                    {                       move-column-to-monitor-up;                                              }
-    Mod+Shift+Ctrl+K                                    {                       move-column-to-monitor-down;                                            }
-                                                                                                                                                                //切换聚焦/移动工作区
-    Mod+Page_Up                                         {                       focus-workspace-up;                                                     }
-    Mod+Page_Down                                       {                       focus-workspace-down;                                                   }
-    Mod+O                                               {                       focus-workspace-up;                                                     }
-    Mod+I                                               {                       focus-workspace-down;                                                   }
-    Mod+WheelScrollUp           cooldown-ms=150         {                       focus-workspace-up;                                                     }       //冷却
-    Mod+WheelScrollDown         cooldown-ms=150         {                       focus-workspace-down;                                                   }
-    Mod+Shift+Page_Up                                   {                       move-workspace-up;                                                      }
-    Mod+Shift+Page_Down                                 {                       move-workspace-down;                                                    }
-    Mod+Shift+O                                         {                       move-workspace-up;                                                      }
-    Mod+Shift+I                                         {                       move-workspace-down;                                                    }
-                                                                                                                                                                //移动到工作区
-    Mod+Ctrl+Page_Up                                    {                       move-column-to-workspace-up;                                            }
-    Mod+Ctrl+Page_Down                                  {                       move-column-to-workspace-down;                                          }
-    Mod+Ctrl+O                                          {                       move-column-to-workspace-up;                                            }
-    Mod+Ctrl+I                                          {                       move-column-to-workspace-down;                                          }
-    Mod+Ctrl+WheelScrollUp      cooldown-ms=150         {                       move-column-to-workspace-up;                                            }
-    Mod+Ctrl+WheelScrollDown    cooldown-ms=150         {                       move-column-to-workspace-down;                                          }
-                                                                                                                                                                //切换聚焦工作区
-    Mod+1                                               {                       focus-workspace 1;                                                      }
-    Mod+2                                               {                       focus-workspace 2;                                                      }
-    Mod+3                                               {                       focus-workspace 3;                                                      }
-    Mod+4                                               {                       focus-workspace 4;                                                      }
-    Mod+5                                               {                       focus-workspace 5;                                                      }
-    Mod+6                                               {                       focus-workspace 6;                                                      }
-    Mod+7                                               {                       focus-workspace 7;                                                      }
-    Mod+8                                               {                       focus-workspace 8;                                                      }
-    Mod+9                                               {                       focus-workspace 9;                                                      }
-    Mod+0                                               {                       focus-workspace 10;                                                     }
-                                                                                                                                                                //移动到工作区
-    Mod+Ctrl+1                                          {                       move-column-to-workspace 1;                                             }
-    Mod+Ctrl+2                                          {                       move-column-to-workspace 2;                                             }
-    Mod+Ctrl+3                                          {                       move-column-to-workspace 3;                                             }
-    Mod+Ctrl+4                                          {                       move-column-to-workspace 4;                                             }
-    Mod+Ctrl+5                                          {                       move-column-to-workspace 5;                                             }
-    Mod+Ctrl+6                                          {                       move-column-to-workspace 6;                                             }
-    Mod+Ctrl+7                                          {                       move-column-to-workspace 7;                                             }
-    Mod+Ctrl+8                                          {                       move-column-to-workspace 8;                                             }
-    Mod+Ctrl+9                                          {                       move-column-to-workspace 9;                                             }
-    Mod+Ctrl+0                                          {                       move-column-to-workspace 10;                                            }
-                                                                                                                                                                //合并入列
-    Mod+BracketLeft                                     {                       consume-or-expel-window-left;                                           }
-    Mod+BracketRight                                    {                       consume-or-expel-window-right;                                          }
+    Mod+Ctrl+Left                                 {          move-column-left;                                    }
+    Mod+Ctrl+Right                                {          move-column-right;                                   }
+    Mod+Ctrl+Up                                   {          move-window-up;                                      }
+    Mod+Ctrl+Down                                 {          move-window-down;                                    }
+    Mod+Ctrl+J                                    {          move-column-left;                                    }
+    Mod+Ctrl+semicolon                            {          move-column-right;                                   }
+    Mod+Ctrl+L                                    {          move-window-up;                                      }
+    Mod+Ctrl+K                                    {          move-window-down;                                    }
+    Mod+Ctrl+WheelScrollLeft                      {          move-column-left;                                    }
+    Mod+Ctrl+WheelScrollRight                     {          move-column-right;                                   }
+    Mod+Ctrl+Shift+WheelScrollUp                  {          move-column-left;                                    }
+    Mod+Ctrl+Shift+WheelScrollDown                {          move-column-right;                                   }
+                                                                                                                    //切换聚焦/移动首尾窗口
+    Mod+Home                                      {          focus-column-first;                                  }
+    Mod+End                                       {          focus-column-last;                                   }
+    Mod+Ctrl+Home                                 {          move-column-to-first;                                }
+    Mod+Ctrl+End                                  {          move-column-to-last;                                 }
+                                                                                                                    //切换聚焦屏幕
+    Mod+Shift+Left                                {          focus-monitor-left;                                  }
+    Mod+Shift+Right                               {          focus-monitor-right;                                 }
+    Mod+Shift+Up                                  {          focus-monitor-up;                                    }
+    Mod+Shift+Down                                {          focus-monitor-down;                                  }
+    Mod+Shift+J                                   {          focus-monitor-left;                                  }
+    Mod+Shift+semicolon                           {          focus-monitor-right;                                 }
+    Mod+Shift+L                                   {          focus-monitor-up;                                    }
+    Mod+Shift+K                                   {          focus-monitor-down;                                  }
+                                                                                                                    //移动到屏幕
+    Mod+Shift+Ctrl+Left                           {          move-column-to-monitor-left;                         }
+    Mod+Shift+Ctrl+Right                          {          move-column-to-monitor-right;                        }
+    Mod+Shift+Ctrl+Up                             {          move-column-to-monitor-up;                           }
+    Mod+Shift+Ctrl+Down                           {          move-column-to-monitor-down;                         }
+    Mod+Shift+Ctrl+J                              {          move-column-to-monitor-left;                         }
+    Mod+Shift+Ctrl+semicolon                      {          move-column-to-monitor-right;                        }
+    Mod+Shift+Ctrl+L                              {          move-column-to-monitor-up;                           }
+    Mod+Shift+Ctrl+K                              {          move-column-to-monitor-down;                         }
+                                                                                                                    //切换聚焦/移动工作区
+    Mod+Page_Up                                   {          focus-workspace-up;                                  }
+    Mod+Page_Down                                 {          focus-workspace-down;                                }
+    Mod+O                                         {          focus-workspace-up;                                  }
+    Mod+I                                         {          focus-workspace-down;                                }
+    Mod+WheelScrollUp             cooldown-ms=150 {          focus-workspace-up;                                  } //冷却
+    Mod+WheelScrollDown           cooldown-ms=150 {          focus-workspace-down;                                }
+    Mod+Shift+Page_Up                             {          move-workspace-up;                                   }
+    Mod+Shift+Page_Down                           {          move-workspace-down;                                 }
+    Mod+Shift+O                                   {          move-workspace-up;                                   }
+    Mod+Shift+I                                   {          move-workspace-down;                                 }
+                                                                                                                    //移动到工作区
+    Mod+Ctrl+Page_Up                              {          move-column-to-workspace-up;                         }
+    Mod+Ctrl+Page_Down                            {          move-column-to-workspace-down;                       }
+    Mod+Ctrl+O                                    {          move-column-to-workspace-up;                         }
+    Mod+Ctrl+I                                    {          move-column-to-workspace-down;                       }
+    Mod+Ctrl+WheelScrollUp        cooldown-ms=150 {          move-column-to-workspace-up;                         }
+    Mod+Ctrl+WheelScrollDown      cooldown-ms=150 {          move-column-to-workspace-down;                       }
+                                                                                                                    //切换聚焦工作区
+    Mod+1                                         {          focus-workspace 1;                                   }
+    Mod+2                                         {          focus-workspace 2;                                   }
+    Mod+3                                         {          focus-workspace 3;                                   }
+    Mod+4                                         {          focus-workspace 4;                                   }
+    Mod+5                                         {          focus-workspace 5;                                   }
+    Mod+6                                         {          focus-workspace 6;                                   }
+    Mod+7                                         {          focus-workspace 7;                                   }
+    Mod+8                                         {          focus-workspace 8;                                   }
+    Mod+9                                         {          focus-workspace 9;                                   }
+    Mod+0                                         {          focus-workspace 10;                                  }
+                                                                                                                    //移动到工作区
+    Mod+Ctrl+1                                    {          move-column-to-workspace 1;                          }
+    Mod+Ctrl+2                                    {          move-column-to-workspace 2;                          }
+    Mod+Ctrl+3                                    {          move-column-to-workspace 3;                          }
+    Mod+Ctrl+4                                    {          move-column-to-workspace 4;                          }
+    Mod+Ctrl+5                                    {          move-column-to-workspace 5;                          }
+    Mod+Ctrl+6                                    {          move-column-to-workspace 6;                          }
+    Mod+Ctrl+7                                    {          move-column-to-workspace 7;                          }
+    Mod+Ctrl+8                                    {          move-column-to-workspace 8;                          }
+    Mod+Ctrl+9                                    {          move-column-to-workspace 9;                          }
+    Mod+Ctrl+0                                    {          move-column-to-workspace 10;                         }
+                                                                                                                    //合并入列
+    Mod+BracketLeft                               {          consume-or-expel-window-left;                        }
+    Mod+BracketRight                              {          consume-or-expel-window-right;                       }
 
-    Mod+Comma                                           {                       consume-window-into-column;                                             }       //吸入相邻窗口
-    Mod+Period                                          {                       expel-window-from-column;                                               }       //弹出当前窗口
-                                                                                                                                                                //调整窗口至预设大小
-    Mod+R                                               {                       switch-preset-column-width;                                             }
-    Mod+Shift+R                                         {                       switch-preset-window-height;                                            }
-                                                                                                                                                                //最大化窗口
-    Mod+F                                               {                       maximize-column;                                                        }
-    Mod+Shift+F                                         {                       maximize-window-to-edges;                                               }
-    Mod+Ctrl+F                                          {                       fullscreen-window;                                                      }
-                                                                                                                                                                //居中当前/所有窗口
-    Mod+C                                               {                       center-column;                                                          }
-    Mod+Shift+C                                         {                       center-visible-columns;                                                 }
-                                                                                                                                                                //调整窗口大小
-    Mod+Minus                                           {                       set-column-width "-10%";                                                }
-    Mod+Equal                                           {                       set-column-width "+10%";                                                }
-    Mod+Shift+Minus                                     {                       set-window-height "-10%";                                               }
-    Mod+Shift+Equal                                     {                       set-window-height "+10%";                                               }
+    Mod+Comma                                     {          consume-window-into-column;                          } //吸入相邻窗口
+    Mod+Period                                    {          expel-window-from-column;                            } //弹出当前窗口
+                                                                                                                    //调整窗口至预设大小
+    Mod+R                                         {          switch-preset-column-width;                          }
+    Mod+Shift+R                                   {          switch-preset-window-height;                         }
+                                                                                                                    //最大化窗口
+    Mod+F                                         {          maximize-column;                                     }
+    Mod+Shift+F                                   {          maximize-window-to-edges;                            }
+    Mod+Ctrl+F                                    {          fullscreen-window;                                   }
+                                                                                                                    //居中当前/所有窗口
+    Mod+C                                         {          center-column;                                       }
+    Mod+Shift+C                                   {          center-visible-columns;                              }
+                                                                                                                    //调整窗口大小
+    Mod+Minus                                     {          set-column-width "-10%";                             }
+    Mod+Equal                                     {          set-column-width "+10%";                             }
+    Mod+Shift+Minus                               {          set-window-height "-10%";                            }
+    Mod+Shift+Equal                               {          set-window-height "+10%";                            }
 
-    Mod+V                                               {                       toggle-window-floating;                                                 }       //切换浮动/平铺
-    Mod+Shift+V                                         {                       switch-focus-between-floating-and-tiling;                               }       //在浮动/平铺间切换聚焦
-                                                                                                                                                                //截屏
-    Print                                               {                       screenshot;                                                             }
-    Ctrl+Print                                          {                       screenshot-screen;                                                      }
-    Alt+Print                                           {                       screenshot-window;                                                      }
-                                                                                                                                                                //禁用niri快捷键
-    Mod+Escape                  allow-inhibiting=false  {                       toggle-keyboard-shortcuts-inhibit;                                      }
-                                                                                                                                                                //退出niri
-    Mod+Shift+E                                         {                       quit;                                                                   }
-    Ctrl+Alt+Delete                                     {                       quit;                                                                   }
-                                                                                                                                                                //熄屏
-    Mod+Shift+P                                         {                       power-off-monitors;                                                     }
-                                                                                                                                                                //切换标签页/堆叠
-    Mod+Tab                                             {                       toggle-column-tabbed-display;                                           }
+    Mod+V                                         {          toggle-window-floating;                              } //切换浮动/平铺
+    Mod+Shift+V                                   {          switch-focus-between-floating-and-tiling;            } //在浮动/平铺间切换聚焦
+                                                                                                                    //截屏
+    Print                                         {          screenshot;                                          }
+    Ctrl+Print                                    {          screenshot-screen;                                   }
+    Shift+Print                                   {          screenshot-window;                                   }
+                                                                                                                    //禁用niri快捷键
+    Mod+Escape             allow-inhibiting=false {          toggle-keyboard-shortcuts-inhibit;                   }
+                                                                                                                    //退出niri
+    Mod+Ctrl+Q                                    {          quit;                                                }
+                                                                                                                    //熄屏
+    Mod+Shift+P                                   {          power-off-monitors;                                  }
+                                                                                                                    //切换标签页/堆叠
+    Mod+Tab                                       {          toggle-column-tabbed-display;                        }
 }

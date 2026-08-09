@@ -1,196 +1,500 @@
-iwctl   //进入网络组件
+准备LiveCD
 
-station wlan0 connect "wifi名"  //连wifi
+        准备镜像
 
-输入密码
+                下载镜像 https://archlinux.org.cn/download
 
-exit    //退出网络组件
+                校验
+                进入镜像目录，运行pacman-key -v archlinux-version-x86_64.iso.sig
 
-ip a    //检查网络连接，如果有地址输出则为成功
+        制作U盘
 
-timedatectl set-ntp true        //同步时间
+                运行lsblk确认U盘名，并确保其未被挂载
 
-lsblk -pf       //查看设备名
+                写入
+                sudo cat archlinux-version-x86_64.iso > /dev/sdb
 
-cfdisk /dev/nvme0n1     //硬盘分区
+                确保写完
+                sync
+        
+                弹出
+                eject /dev/sdb
 
-用上下选择区，用左右选择delete删除所有区
+进入Live环境
 
-选择new，大小1g，选择type，类型EFI system       //创建启动分区
+        禁用安全启动
+        在BIOS界面的boot或security下，将secure boot设为disable，如果有secure boot mode，选standard或关掉
 
-选择new，大小为剩余大小，选择write，yes //创建根分区
+        确认为UEFI(若输出64则成功)
+        cat /sys/firmware/efi/fw_platform_size
 
-选择quit        //退出
+连接网络
 
-lsblk -pf       //验证
+        进入网络组件
+        iwctl
 
-mkfs.fat -F 32 /dev/nvme0n1p1   //格式化启动分区
+        连wifi
+        station wlan0 connect "wifi名"
 
-mkfs.btrfs -f /dev/nvme0n1p2    //格式化(并清除)根分区
+        输入密码
+        
+        退出网络组件
+        exit
 
-mount -t btrfs -o compress=zstd /dev/nvme0n1p2 /mnt     //挂载根分区
+        检查网络连接，如果有地址输出则为成功
+        ip a
 
-btrfs subvolume create /mnt/@   //创建子卷
+同步时间
+timedatectl set-ntp true
 
-btrfs subvolume create /mnt/@home
+硬盘分区
 
-btrfs subvolume create /mnt/@swap
+        创建分区
 
-umount /mnt     //取消挂载
+                查看硬盘名
+                lsblk -pf
 
-mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
+                进入分区页面
+                cfdisk /dev/nvme0n1
 
-mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
+                用上下选择区，用左右选择delete删除所有区
 
-mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
+                创建启动分区
+                选择new，大小1g，选择type，类型EFI system
 
-mount --mkdir /dev/nvme0n1p1 /mnt/boot  //挂载
+                创建根分区
+                选择new，大小为剩余大小，选择write，yes
 
-df -h   //检查
+                退出页面
+                选择quit
 
-pacman -Sy archlinux-keyring    //安装密钥
+                验证
+                lsblk -pf
 
-vim /etc/pacman.d/mirrorlist
+        格式化分区
 
-添加arch Linux中国镜像源
+                格式化启动分区
+                mkfs.fat -F 32 /dev/nvme0n1p1
 
-Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
+                格式化清除根分区
+                mkfs.btrfs -f /dev/nvme0n1p2
 
-pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs       //复制密钥并安装基本包
+布置子卷
 
-pacstrap /mnt networkmanager neovim amd-ucode   //安装必要软件包
+        创建子卷
 
-btrfs filesystem mkswapfile --size 8g --uuid clear /mnt/swap/swapfile大小按指南分配创建交换文件
+                临时挂载根分区
+                mount -t btrfs -o compress=zstd /dev/nvme0n1p2 /mnt
 
-swapon /mnt/swap/swapfile       //启动交换文件
+                创建根目录
+                btrfs subvolume create /mnt/@
 
-genfstab -U /mnt > /mnt/etc/fstab       //设置自动挂载
+                创建家目录
+                btrfs subvolume create /mnt/@home
 
-cat /mnt/etc/fstab      //验证
+                创建交换文件目录
+                btrfs subvolume create /mnt/@swap
 
-arch-chroot /mnt        //进入系统
+                取消挂载
+                umount /mnt
 
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime //设置时区
+        挂载子卷
 
-hwclock --systohc       //同步硬件时钟
+                挂载根子卷
+                mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
 
-nvim /etc/locale.gen取消en_US.UTF-8 UTF-8和zh-CN.UTF-8 UTF-8的注释      //设置本地化
+                挂载家子卷
+                mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
 
-locale-gen      //生成本地化
+                挂载交换子卷
+                mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
 
-nvim /etc/locale.conf添加LANG=en_US.UTF-8
+挂载启动分区
+mount --mkdir /dev/nvme0n1p1 /mnt/boot
 
-passwd  //设置root密码
-
-systemctl daemon-reload //安装systemd-boot
-
-bootctl install --esp-path=/boot
-
-cat > /boot/loader/entries/arch.conf << EOF
-
-title   Arch Linux
-
-linux   /vmlinuz-linux
-
-initrd  /amd-ucode.img
-
-initrd  /initramfs-linux.img
-
-options root=UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) rootflags=subvol=@ rw loglevel=3 quiet
-
-EOF
-
-cat > /boot/loader/loader.conf << EOF
-
-default arch
-
-timeout 3
-
-console-mode max
-
-editor no
-
-EOF
-
-systemd-machine-id-setup
-
-bootctl update
-
-pacman -S efibootmgr
-
-exit
-
-reboot
-
-systemctl enable --now NetworkManager
-
-nmcli dev wifi connect "wifi名" password "密码"
-
-ip a
-
-sudo pacman -S fish
-
-useradd -m -G wheel,users,storage,power,network -s /usr/bin/fish tistath
-
-passwd tistath
-
-echo "tistath ALL=(ALL) ALL" > /etc/sudoers.d/tistath
-
-exit
-
-reboot
-
-sudo pacman -S xdg-desktop-portal-gtk xwayland-satellite niri kitty adobe-source-han-sans-otc-fonts ttf-jetbrains-mono-nerd
-
-firefox(俩都选2)
-
-fc-cache -fv
-
-niri-session生成默认配置
-
-编辑配置为kitty
-
-pac libnotify mako
-
-编辑/etc/pacman.conf，添加linuxcn源，Sy安装archlinuxcn-keyring
-
-安装fcitx5-im fcitx5-rime rime-ice-pinyin-git
-
-nvim ~/.local/share/fcitx5/rime/default.custom.yaml
-写入
-patch:
-  __include: rime_ice_suggestion:/
-  ascii_composer:
-    switch_key:
-      Shift_L: commit_code
-      Shift_R: commit_code
-  menu:
-    page_size: 9
-  style:
-    horizontal: true
-  'engine/filters':
-    - simplifier
-
-安装加速器
-
-sudo nvim /etc/udev/hwdb.d/99-caps-ctrl.hwdb
-
-写入evdev:atkbd:dmi:bvn*:bvr*:bd*:svn*:pn*:pvr*
-
-  KEYBOARD_KEY_3a=leftctrl
-
-sudo systemd-hwdb update
-
-sudo udevadm trigger
+检查
+df -h
 
 安装包
 
-改浏览器语言
+        安装密钥
+        pacman -Sy archlinux-keyring
 
-更改浏览器下载目录
+        添加中国镜像源加速安装
 
-在www.gnome-look.org/p/2219159下载鼠标
+                编辑
+                vim /etc/pacman.d/mirrorlist
 
-解压到~/.local/share/icons/
+                添加
+                Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+                Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+                Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
+
+        初始化密钥并安装基本包
+        pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
+
+        安装必要包
+        pacstrap /mnt networkmanager neovim amd-ucode
+
+布置交换文件
+
+        创建交换文件（8g按内存更改）
+        btrfs filesystem mkswapfile --size 8g --uuid clear /mnt/swap/swapfile
+
+        设置权限
+        chmod 0600 /mnt/swap/swapfile
+
+        启动交换文件
+        swapon /mnt/swap/swapfile
+
+自动挂载
+
+        设置
+        genfstab -U /mnt > /mnt/etc/fstab
+
+        验证
+        cat /mnt/etc/fstab
+
+进入系统
+arch-chroot /mnt
+
+设置时区
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+同步硬件时钟
+hwclock --systohc
+
+本地化
+
+        设置
+        nvim /etc/locale.gen取消en_US.UTF-8 UTF-8和zh-CN.UTF-8 UTF-8的注释
+
+        生成
+        locale-gen
+
+默认区域
+
+        编辑
+        nvim /etc/locale.conf
+
+        添加
+        LANG=en_US.UTF-8
+
+设置主机名
+echo "tistath" > /etc/hostname
+
+布置hosts
+        
+        编辑
+        nvim /etc/hosts
+
+        写入
+        127.0.0.1   localhost
+        ::1         localhost
+        127.0.1.1   archlinux.localdomain archlinux
+
+设置root密码
+passwd
+
+布置systemd-boot
+        
+        重载
+        systemctl daemon-reload
+
+        安装
+        bootctl install --esp-path=/boot
+
+        设置权限
+        sudo chmod 600 /boot/loader/random-seed
+
+        创建启动项
+
+                编辑
+                nvim /boot/loader/entries/arch.conf
+                
+                添加
+                title   Arch Linux
+                linux   /vmlinuz-linux
+                initrd  /amd-ucode.img
+                initrd  /initramfs-linux.img
+                options root=UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) rootflags=subvol=@ rw loglevel=7
+
+        配置启动管理器
+
+                编辑        
+                nvim /boot/loader/loader.conf
+                
+                添加
+                default arch
+                timeout 3
+                console-mode max
+                editor no
+        
+        加载生效
+
+                初始化
+                systemd-machine-id-setup
+                
+                更新
+                bootctl update
+
+管理UEFI固件
+pacman -S efibootmgr
+
+重启
+reboot
+
+连网
+
+        启动网络管理
+        systemctl enable --now NetworkManager
+
+        连接wifi
+        nmcli dev wifi connect "wifi名" password "密码"
+
+        验证
+        ip a
+
+安装shell
+sudo pacman -S fish
+
+布置普通用户
+        
+        添加
+        useradd -m -G wheel,users -s /usr/bin/fish tistath
+
+        设置密码
+        passwd tistath
+
+        加入sudo组 
+        echo "tistath ALL=(ALL) ALL" > /etc/sudoers.d/tistath
+
+        设置权限
+        chmod 440 /etc/sudoers.d/tistath
+
+exit
+
+reboot
+
+安装桌面管理、字体、浏览器、终端
+sudo pacman -S xdg-desktop-portal-gtk xwayland-satellite niri kitty adobe-source-han-sans-otc-fonts ttf-jetbrains-mono-nerd firefox(firefox的问询里俩都选2)
+
+加载字体
+fc-cache -fv
+
+niri设置
+
+        生成默认配置
+        niri-session
+        
+        编辑配置文件
+
+安装消息管理 libnotify mako
+
+布置中文输入法
+        
+        导入cn仓库
+
+                编辑
+                nvim /etc/pacman.conf
+
+                添加
+                [archlinuxcn]
+                Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+                Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+                Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch
+                Server = https://repo.huaweicloud.com/archlinuxcn/$arch
+        yay换源
+
+                清华
+                yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+
+                如果挂了，换回
+                yay --aururl "https://aur.archlinux.org" --save
+
+        安装密钥
+        -Sy archlinuxcn-keyring
+
+        安装 fcitx5-im fcitx5-rime rime-ice-pinyin-git
+
+        配置
+                
+                编辑
+                nvim ~/.local/share/fcitx5/rime/default.custom.yaml
+
+                写入
+                patch:
+                  __include: rime_ice_suggestion:/
+                  ascii_composer:
+                    switch_key:
+                      Shift_L: commit_code
+                      Shift_R: commit_code
+                  menu:
+                    page_size: 10
+                  style:
+                    horizontal: true
+                  'engine/filters':
+                    - simplifier
+                在输入法设置中加入Rime
+
+布置加速器
+
+        yay 安装watt-toolkit
+
+        使其能运行
+
+                信任证书并赋予权限
+                        mkdir -p ~/.pki/nssdb
+                        certutil -N -d ~/.pki/nssdb
+                        sudo trust anchor --store SteamTools.Certificate.cer
+                        sudo chmod a+w /etc/hosts
+
+                使其能加速github
+                在火狐设置的安全中导入证书
+                
+                使其能加速steam
+                在steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在chrome://settings的安全中加入后缀名从cer改成pem的证书
+
+将大写锁定映射为ctrl
+
+        编辑
+        sudo nvim /etc/udev/hwdb.d/99-caps-ctrl.hwdb
+
+        写入(注意空格)
+        evdev:atkbd:dmi:bvn*:bvr*:bd*:svn*:pn*:pvr*
+          KEYBOARD_KEY_3a=leftctrl
+
+        生效
+        sudo systemd-hwdb update
+        sudo udevadm trigger
+
+安装其他包
+
+
+
+浏览器配置
+
+        改浏览器语言
+        更改浏览器下载目录
+
+全部更换catppuccin主题
+
+更换鼠标指针
+
+        在www.gnome-look.org/p/2219159下载鼠标
+        解压到~/.local/share/icons/
+
+布置nvim
+
+        nvim中执行TSInstall cpp
+
+布置wechat
+
+        创建共享目录供沙盒版微信文件交换
+        mkdir -p ~/wechat-shared
+
+        确认脚本名
+        ls /usr/bin/wechat*
+
+        编辑
+        sudo nvim /usr/bin/wechat
+
+        找到
+        exec bwrap …… /opt/wechat/wechat "$@"
+
+        在exec bwrap和/opt/wechat/wechat "$@"之间添加
+        --bind /home/tistath/wechat-shared /home/tistath/wechat-shared 
+
+包
+
+        内核固件
+        linux                           //内核本体
+        linux-firmware                  //必需固件集合
+        amd-ucode                       //微码，管理CPU
+        tlp                             //电源管理
+        brightnessctl                   //亮度调节
+
+        基础系统
+        base                            //最小系统环境
+        base-devel                      //编译环境
+        btrfs-progs                     //BTRFS文件系统管理工具
+        efibootmgr                      //UEFI启动项管理
+        man-db                          //命令手册
+        pacman-contrib                  //pacman清理工具
+        networkmanager                  //网络管理
+        git                             //版本管理
+
+        系统维护
+        snapper                         //快照工具
+        snap-pac                        //自动创建快照
+
+        桌面环境
+        niri                            //窗口管理器
+        xwayland-satellite              //兼容X11应用
+        waybar                          //状态栏
+        swaybg                          //壁纸
+        swayidle                        //锁屏
+        swaylock-effects                //屏保
+        mako                            //消息通知
+        libnotify                       //桌面通知库，mako依赖
+        mate-polkit                     //图形应用提权
+        wl-clipboard                    //底层剪切板
+        copyq                           //图形化高级剪切板
+
+        命令行工具
+        kitty                           //终端
+        fish                            //shell
+        fastfetch                       //系统信息展示
+        tree                            //文件结构显示
+        rsync                           //高效复制
+        pastel                          //颜色显示工具
+        chafa                           //图片查看工具
+
+        AUR
+        archlinuxcn-keyring             //仓库密钥
+        yay                             //AUR助手
+
+        开发工具
+        neovim                          //文本编辑器
+        tree-sitter-cli                 //语法树解析，treesitter依赖
+        ripgrep                         //高速文本搜索，telescope依赖
+        clang                           //C/C++前后端
+
+        多媒体
+        gst-libav                       //音视频编解码插件
+        gst-plugins-base
+        gst-plugins-good
+        libva-utils                     //硬件加速管理
+
+        浏览器
+        firefox                         //火狐浏览器
+        gnome-keyring                   //密码管理
+        torbrowser-launcher             //洋葱浏览器
+
+        加速器
+        watt-toolkit-bin                //加速github，steam等
+
+        文档查看
+        zathura                         //PDF查看工具
+        zathura-pdf-mupdf               //PDF渲染后端
+        tesseract-data-eng              //PDF英文语言包
+        tesseract-data-chi_sim          //PDF中文语言包
+
+        字体
+        adobe-source-han-sans-otc-fonts //思源黑体，简繁日韩字体
+        ttf-jetbrains-mono-nerd         //Jetbrains mono nerd font,英文字体及图标 
+
+        输入法
+        fcitx5                          //输入法
+        fcitx5-rime                     //中州韵，桥接中文输入法
+        fcitx5-configtool               //输入法配置工具
+        fcitx5-gtk                      //使输入法在GTK中可用
+        fcitx5-qt                       //使输入法在QT中可用
+        rime-ice-pinyin-git             //雾凇拼音
+
+        游戏
+        steam                           //游戏平台
+
+        社交
+        linuxqq                         //QQ
+        wechat-universal-bwrap          //隐私版微信

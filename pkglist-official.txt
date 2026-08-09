@@ -4,11 +4,11 @@ archlinuxcn-keyring
 base
 base-devel
 brightnessctl
+btop
 btrfs-progs
 chafa
 clang
 copyq
-dotnet-sdk
 efibootmgr
 fastfetch
 fcitx5
@@ -16,6 +16,7 @@ fcitx5-configtool
 fcitx5-gtk
 fcitx5-qt
 fcitx5-rime
+fd
 firefox
 fish
 git
