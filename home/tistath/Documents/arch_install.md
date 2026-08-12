@@ -361,6 +361,13 @@ sudo chmod a+w /etc/hosts
 
 ## 7. 应用配置
 
+### Git配置
+```bash
+git config --global user.name "Tistath"
+git config --global user.email "eta_gamma_omega@qq.com"
+git config --global init.defaultBranch main
+```
+
 ### 7.1 大写锁定映射为Ctrl
 
 - 编辑/etc/udev/hwdb.d/99-caps-ctrl.hwdb，添加
@@ -385,18 +392,14 @@ sudo udevadm trigger
 
 - 更换主题
 
-    - [copyq-catppuccin](https://github.com/catppuccin/copyq)
+    - btop：<F2>打开设置，Color themes改为nord，Theme background改为false
 
-    - [fcitx5-catppuccin](https://github.com/catppuccin/fcitx5)
+    - copyq：右键选择首选项，在外观中载入主题
 
-    - [firefox-catppuccin](https://github.com/catppuccin/firefox)
+    - fcitx5：编辑~/.config/fcitx5/conf/classicui.conf，将Themes行改为Theme=catppuccin-mocha-blue
 
-    - btop-nord
+    - firefox：安装[主题插件](https://addons.mozilla.org/en-GB/firefox/addon/firefox-color/)，应用[主题](https://color.firefox.com/?theme=XQAAAAJDBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehho7r-AtSBPnvx4uvv7vRnzG2zBiFpesm1SAl1KsPscTY8iQYgDnBUvUwxRg5oKKrqaQ_z3v5Hws-8hk4Kc3t_NXn8IoY4ZYVdc86z2QRba2CmsdOmEA-8eHxrfsyZHFWrEEdKZyHYvxjqukUFLs50Fy6pCfDvrjyNBjAtl1dnf9Nj5Jm0ul9fPQvmPAMvweio7eiPSwgqK0N4okhCeWhmc0VioXa6KngF81ywVKwm6ZuPBvP1fLlkT3IQ2e3Psy08_qy2cz2cV67Je242GGYfnOaLZl36LyWV0_AUCtjW19KlUsTGIMGopDMEWZDYstyLga9H5O6w7Q58QVg7y2k7-oNLsIMr3nPFiMjZeJGYJZ9dd4PzYa90eT6KAqaGs50nZXt6xwOFEcYsIJjRbn__m_9iA)
 
-    - [cursor-Colloid cursors](www.gnome-look.org/p/2219159)并解压到~/.local/share/icons/
-    ```bash
-    tar -xf ~/.local/share/icons/Colloid-Dracula-cursors-dark.tar.xz -C ~/.local/share/icons/
-    ```
 ### 7.4 Neovim配置
 
 - 安装treesitter解析器
@@ -425,6 +428,33 @@ ls /usr/bin/wechat*
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
 
+## 备份配置
+
+```bash
+rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
+rsync -av --delete /usr/share/fastfetch/presets/examples/6.jsonc ~/tistath_arch/usr/share/fastfetch/presets/examples/6.jsonc
+rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
+rsync -av --delete ~/.config/fish/ ~/tistath_arch/home/tistath/.config/fish/
+rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
+rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
+rsync -av --delete ~/.config/mako/ ~/tistath_arch/home/tistath/.config/mako/
+rsync -av --delete ~/.config/niri/ ~/tistath_arch/home/tistath/.config/niri/
+rsync -av --delete ~/.config/nvim/ ~/tistath_arch/home/tistath/.config/nvim/
+rsync -av --delete ~/.config/swaylock/ ~/tistath_arch/home/tistath/.config/swaylock/
+rsync -av --delete ~/.config/waybar/ ~/tistath_arch/home/tistath/.config/waybar/
+rsync -av --delete ~/.config/zathura/ ~/tistath_arch/home/tistath/.config/zathura/
+rsync -av --delete ~/.local/share/icons/ ~/tistath_arch/home/tistath/.local/share/icons/
+rsync -av --delete ~/Documents/arch_install.md ~/tistath_arch/home/tistath/Documents/arch_install.md
+
+pacman -Qqen > ~/tistath_arch/pkglist-official.txt
+pacman -Qqem > ~/tistath_arch/pkglist-aur.txt
+
+cd ~/tistath_arch
+
+git add .
+git commit -m ""
+git push -u origin main
+```
 ## 包
 
 | 内核固件 | 说明 |
