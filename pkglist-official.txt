@@ -37,6 +37,7 @@ networkmanager
 niri
 pacman-contrib
 pastel
+python-pylatexenc
 rime-ice-pinyin-git
 ripgrep
 rsync

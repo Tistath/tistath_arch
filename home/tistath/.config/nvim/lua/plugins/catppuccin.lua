@@ -21,6 +21,7 @@ return {
         nvimtree                = true,
         treesitter_context      = true,
         rainbow_delimiters      = true,
+        render_markdown         = true,
         telescope               = true,
         lsp_trouble             = true,
         which_key               = true,
