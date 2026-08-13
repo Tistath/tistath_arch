@@ -3,8 +3,9 @@ amd-ucode
 archlinuxcn-keyring
 base
 base-devel
+bluez
+bluez-utils
 brightnessctl
-btop
 btrfs-progs
 chafa
 clang
@@ -24,6 +25,7 @@ gnome-keyring
 gst-libav
 gst-plugins-base
 gst-plugins-good
+htop
 kitty
 libnotify
 libva-utils

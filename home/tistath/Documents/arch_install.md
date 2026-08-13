@@ -392,7 +392,26 @@ sudo udevadm trigger
 
 - 更换主题
 
-    - btop：<F2>打开设置，Color themes改为nord，Theme background改为false
+    - htop：
+
+        - <F2>打开设置
+
+            - Categories:
+
+            | Column 1 | Column 2 |
+            | :-- | :-- |
+            | Memory | CPUs (1/1) |
+            | Swap |   |
+            | GPU usage |   |
+            | Network IO |   |
+            | Load average |   |
+            | Task counter |   |
+            | PSI full IO |   |
+            | Battery |   |
+
+            - Colors:
+
+            Monochromatic
 
     - copyq：右键选择首选项，在外观中载入主题
 
@@ -424,6 +443,53 @@ ls /usr/bin/wechat*
 --bind /home/tistath/wechat-shared /home/tistath/wechat-shared
 ```
 
+### 7.6 电源服务
+```bash
+sudo systemctl enable tlp --now
+```
+
+### 7.7 蓝牙服务
+```bash
+sudo systemctl enable --now bluetooth
+```
+
+### 7.8 定时清理磁盘垃圾
+```bash
+cat /sys/block/nvme0n1/queue/rotational #如果输出为0说明磁盘为SSD，则执行下述操作
+sudo systemctl enable --now fstrim.timer
+```
+
+### 7.9 定时快照
+
+- 服务文件：编辑/etc/systemd/system/snapper-timers.service，写入
+```text
+[Unit]
+Description=Snapper timeline snapshot
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/snapper -c root create --command=timeline
+```
+
+- 定时器：编辑/etc/systemd/system/snapper-timers.timer，写入
+```text
+[Unit]
+Description=Snapper timeline timer
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+- 启用
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now snapper-timers.timer
+```
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
@@ -474,6 +540,8 @@ git push -u origin main
 | man-db | 命令手册 |
 | pacman-contrib | pacman清理工具 |
 | networkmanager | 网络管理 |
+| bluez | 蓝牙后端协议支持 |
+| bluez-utils | 蓝牙服务命令行工具 |
 | git | 版本管理 |
 
 | 系统维护 | 说明 |
@@ -504,6 +572,7 @@ git push -u origin main
 | rsync | 高效复制 |
 | pastel | 颜色显示工具 |
 | chafa | 图片查看工具 |
+| htop | 系统监测工具 |
 
 | AUR | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
@@ -515,6 +584,7 @@ git push -u origin main
 | neovim | 文本编辑器 |
 | tree-sitter-cli | 语法树解析，treesitter依赖 |
 | ripgrep | 高速文本搜索，telescope依赖 |
+| fd | 快速目录搜索，telescope依赖 |
 | clang | C/C++前后端 |
 
 | 多媒体 | 说明 |
@@ -540,6 +610,7 @@ git push -u origin main
 | zathura-pdf-mupdf | PDF渲染后端 |
 | tesseract-data-eng | PDF英文语言包 |
 | tesseract-data-chi_sim | PDF中文语言包 |
+| python-pylatexenc | markdown的LaTeX依赖 |
 
 | 字体 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |

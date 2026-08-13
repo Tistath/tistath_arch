@@ -1,5 +1,6 @@
 return {
-  'MeanderingProgrammer/render-markdown.nvim',
+  "MeanderingProgrammer/render-markdown.nvim",
+  event = "BufReadPost",
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
   config = function()
     local markdown = require("render-markdown")

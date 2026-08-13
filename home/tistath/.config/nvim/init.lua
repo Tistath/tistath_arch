@@ -41,7 +41,9 @@ vim.keymap.set("n", "<Leader>ms", ":messages<CR>",                    { noremap 
 vim.keymap.set("n", "<Leader>tm", ":belowright split | terminal<CR>", { noremap = true, silent = true, desc = "终端小窗", })
 vim.keymap.set("t", "<Esc>",      "<C-\\><C-N>",                      { noremap = true, silent = true,                    })
 
-vim.opt.guicursor = "i:block-blinkwait0-blinkon1-blinkoff1"
+vim.opt.guicursor =  "n-v-c-ve:block,"
+                  .. "i-ci:block-blinkwait0-blinkon1-blinkoff1,"
+                  .. "r-cr-o:hor1"
 
 -- 加载 lazy.nvim
 require("config.lazy")
