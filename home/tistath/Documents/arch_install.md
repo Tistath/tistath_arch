@@ -459,37 +459,21 @@ cat /sys/block/nvme0n1/queue/rotational #如果输出为0说明磁盘为SSD，�
 sudo systemctl enable --now fstrim.timer
 ```
 
-### 7.9 定时快照
+### 7.9 壁纸
 
-- 服务文件：编辑/etc/systemd/system/snapper-timers.service，写入
-```text
-[Unit]
-Description=Snapper timeline snapshot
-After=local-fs.target
+- 文字：在[艺术字体网站](https://patorjk.com/software/taag/)，使用Tmplr字体
 
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/snapper -c root create --command=timeline
-```
+- 图片生成：在[在线图片编辑网站](https://www.photopea.com/)，使用[catppuccin](https://github.com/catppuccin/catppuccin)的mocha-Base背景，mocha-Surface1文字，JetBrains Mono字体
 
-- 定时器：编辑/etc/systemd/system/snapper-timers.timer，写入
-```text
-[Unit]
-Description=Snapper timeline timer
+### 7.10 防火墙服务
 
-[Timer]
-OnCalendar=hourly
-Persistent=true
-
-[Install]
-WantedBy=timers.target
-```
-
-- 启用
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable --now snapper-timers.timer
+sudo ufw default deny incoming   # 拒绝所有入站
+sudo ufw default allow outgoing  # 允许所有出站
+sudo ufw enable                  # 激活防火墙规则
+sudo systemctl enable --now ufw  # 开机自启
 ```
+
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
@@ -542,6 +526,7 @@ git push -u origin main
 | networkmanager | 网络管理 |
 | bluez | 蓝牙后端协议支持 |
 | bluez-utils | 蓝牙服务命令行工具 |
+| ufw | 防火墙 |
 | git | 版本管理 |
 
 | 系统维护 | 说明 |
@@ -573,6 +558,7 @@ git push -u origin main
 | pastel | 颜色显示工具 |
 | chafa | 图片查看工具 |
 | htop | 系统监测工具 |
+| wget | 网络文件下载工具|
 
 | AUR | 说明 |
 | :-------------------------------------- | :-------------------------------------- |

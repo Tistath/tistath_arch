@@ -107,7 +107,7 @@ layout {
     }
 }
                                                                                                         //自启动项
-spawn-at-startup        "swaybg" "-i" "/home/tistath/Pictures/Pictures/vertin_desktop.jpeg" "-m" "fill" //壁纸
+spawn-at-startup        "swaybg" "-i" "/home/tistath/Pictures/Pictures/tistath_desktop.png" "-m" "fill" //壁纸
 spawn-at-startup        "waybar"                                                                        //状态栏
 spawn-at-startup        "kitty" "-e" "fish" "-c" "fastfetch --config examples/6; exec fish"             //终端及fastfetch
 spawn-at-startup        "fcitx5"                                                                        //输入法
@@ -140,7 +140,7 @@ window-rule {                           //窗口规则
 
     focus-ring {                //聚焦窗口的边框                  
         width 1.50              //宽度
-        active-color "#b4befe"  //颜色
+        active-color "#b4befe"  //颜色（mocha-Lavender）
     }
 }
 

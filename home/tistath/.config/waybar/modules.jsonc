@@ -18,12 +18,12 @@
   },
   //电池信息
   "battery": {
-    "interval": 60,
+    "interval": 10,
     "states": {
       "critical": 20
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " 󰂄 {capacity}% ",
+    "format-charging": "󰂄 {capacity}%",
     "format-icons": [
       "󰂎",
       "󰁺",

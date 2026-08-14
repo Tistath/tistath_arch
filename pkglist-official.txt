@@ -3,8 +3,8 @@ amd-ucode
 archlinuxcn-keyring
 base
 base-devel
+bluetui
 bluez
-bluez-utils
 brightnessctl
 btrfs-progs
 chafa
@@ -55,6 +55,7 @@ torbrowser-launcher
 tree
 tree-sitter-cli
 ttf-jetbrains-mono-nerd
+ufw
 waybar
 wget
 wl-clipboard

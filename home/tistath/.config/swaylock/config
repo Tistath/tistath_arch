@@ -1,9 +1,9 @@
-screenshots
+image=/home/tistath/Pictures/Pictures/tistath_desktop.png
 clock
 font=JetBrainsMono Nerd Font
 indicator-radius=120
 indicator-thickness=8
-effect-blur=10x5
+effect-blur=5x1
 indicator
 
 color=1e1e2e
