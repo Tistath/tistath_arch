@@ -18,7 +18,7 @@ fcitx5-gtk
 fcitx5-qt
 fcitx5-rime
 fd
-firefox
+ffmpeg4.4
 fish
 git
 gnome-keyring
@@ -63,3 +63,4 @@ xwayland-satellite
 yay
 zathura
 zathura-pdf-mupdf
+zen-browser

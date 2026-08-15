@@ -286,9 +286,11 @@ fc-cache -fv
 niri-session
 ```
 
+- 运行`niri msg outputs`以查看显示接口与最佳屏幕参数，更改niri配置中`output`块的参数
+
 - 编辑~/.config/niri/config.kdl
 
-- 为闲置脚本添加执行权限
+- 为锁屏脚本添加执行权限
 ```bash
 chmod +x ~/.config/niri/scripts/swayidle.sh
 ```
@@ -355,8 +357,7 @@ sudo trust anchor --store SteamTools.Certificate.cer
 sudo chmod a+w /etc/hosts
 ```
 
-- 加速github：在Firefox的[设置-安全](about:preferences#connectionSecurity)中导入[证书](~/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer)
-
+- 加速github：见[Zen浏览器配置](#72-zen浏览器配置)
 - 加速steam：在steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在chrome://settings的安全中加入后缀名从cer改成pem的证书
 
 ## 7. 应用配置
@@ -370,63 +371,124 @@ git config --global init.defaultBranch main
 
 ### 7.1 大写锁定映射为Ctrl
 
-- 编辑/etc/udev/hwdb.d/99-caps-ctrl.hwdb，添加
+- 编辑/etc/udev/hwdb.d/99-caps-ctrl.hwdb，添加：
 ```hwdb
 evdev:atkbd:dmi:bvn*:bvr*:bd*:svn*:pn*:pvr*
   KEYBOARD_KEY_3a=leftctrl
 ```
 
-- 生效
+- 生效：
 ```bash
 sudo systemd-hwdb update
 sudo udevadm trigger
 ```
 
-### 7.2 浏览器配置
+### 7.2 Zen浏览器配置
 
-- 在Firefox中调整[语言偏好](about:preferences#accessibility)
+- 在Settings中：
 
-- 修改下载目录至所需位置
+    - [Look and Feel](about:preferences#zenLooks)：
 
-### 7.3 主题与鼠标指针
+        - `Sidebar and tabs layout`：
 
-- 更换主题
+            - `Browser Layout`选择`Sidebar and Top Toolbar`
 
-    - htop：
+            - `Move the new tab button to the top`改为`false`
 
-        - <F2>打开设置
+    - [Search](about:preferences#search)：
+        
+        - `about:preferences#search`选择`Bing`
 
-            - Categories:
+    - [Privacy and security](about:preferences#privacy)：
 
-            | Column 1 | Column 2 |
-            | :-- | :-- |
-            | Memory | CPUs (1/1) |
-            | Swap |   |
-            | GPU usage |   |
-            | Network IO |   |
-            | Load average |   |
-            | Task counter |   |
-            | PSI full IO |   |
-            | Battery |   |
+        - `Connection and software security`：
 
-            - Colors:
+            - [Advanced settings](about:preferences#connectionSecurity)：
 
-            Monochromatic
+                - `Certificates`：
 
-    - copyq：右键选择首选项，在外观中载入主题
+                    - `Manage certificates`：
 
-    - fcitx5：编辑~/.config/fcitx5/conf/classicui.conf，将Themes行改为Theme=catppuccin-mocha-blue
+                        - `Authorities`：
 
-    - firefox：安装[主题插件](https://addons.mozilla.org/en-GB/firefox/addon/firefox-color/)，应用[主题](https://color.firefox.com/?theme=XQAAAAJDBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehho7r-AtSBPnvx4uvv7vRnzG2zBiFpesm1SAl1KsPscTY8iQYgDnBUvUwxRg5oKKrqaQ_z3v5Hws-8hk4Kc3t_NXn8IoY4ZYVdc86z2QRba2CmsdOmEA-8eHxrfsyZHFWrEEdKZyHYvxjqukUFLs50Fy6pCfDvrjyNBjAtl1dnf9Nj5Jm0ul9fPQvmPAMvweio7eiPSwgqK0N4okhCeWhmc0VioXa6KngF81ywVKwm6ZuPBvP1fLlkT3IQ2e3Psy08_qy2cz2cV67Je242GGYfnOaLZl36LyWV0_AUCtjW19KlUsTGIMGopDMEWZDYstyLga9H5O6w7Q58QVg7y2k7-oNLsIMr3nPFiMjZeJGYJZ9dd4PzYa90eT6KAqaGs50nZXt6xwOFEcYsIJjRbn__m_9iA)
+                            - `Import`：`~/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer`
 
-### 7.4 Neovim配置
+    - [Appearance](about:preferences#appearance)：
+
+        - `Website appearance`设为`Dark`
+
+    - [Downloads](about:preferences#downloads)：
+
+        - `Save files to`改为`~/Downloads`
+
+    - [Accessibility](about:preferences#accessibility)：
+
+        - `Fonts`：
+
+            - `Font family`改为`JetBrainsMono Nerd Font`
+
+    - [Languages](about:preferences#languages)：
+
+        - `Website language`：
+
+            - 添加`Chinese [zh]`、`Chinese (China) [zh-cn]`
+
+    - Themes：安装[主题插件](https://addons.mozilla.org/en-GB/firefox/addon/firefox-color/)，进入[主题](https://color.firefox.com/?theme=XQAAAAJDBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehho7r-AtSBPnvx4uvv7vRnzG2zBiFpesm1SAl1KsPscTY8iQYgDnBUvUwxRg5oKKrqaQ_z3v5Hws-8hk4Kc3t_NXn8IoY4ZYVdc86z2QRba2CmsdOmEA-8eHxrfsyZHFWrEEdKZyHYvxjqukUFLs50Fy6pCfDvrjyNBjAtl1dnf9Nj5Jm0ul9fPQvmPAMvweio7eiPSwgqK0N4okhCeWhmc0VioXa6KngF81ywVKwm6ZuPBvP1fLlkT3IQ2e3Psy08_qy2cz2cV67Je242GGYfnOaLZl36LyWV0_AUCtjW19KlUsTGIMGopDMEWZDYstyLga9H5O6w7Q58QVg7y2k7-oNLsIMr3nPFiMjZeJGYJZ9dd4PzYa90eT6KAqaGs50nZXt6xwOFEcYsIJjRbn__m_9iA)后，选择Save后点击
+
+    - [Config](about:config)：
+
+        - 将`zen.urlbar.replace-newtab`设为`false`
+
+    - [Bing](https://cn.bing.com/)：
+
+        - 右上角`账户图标`：
+
+            - `外观`设为`深色`
+
+    - `书签栏`：
+
+        - 点击`右上角三点`：
+
+            - `Bookmarks`：
+
+                - `Show bookmarks toolbar`
+
+### 7.3 htop配置
+
+- <F2>打开设置
+
+    - Categories:
+
+    | Column 1 | Column 2 |
+    | :-- | :-- |
+    | Memory | CPUs (1/1) |
+    | Swap |   |
+    | GPU usage |   |
+    | Network IO |   |
+    | Load average |   |
+    | Task counter |   |
+    | PSI full IO |   |
+    | Battery |   |
+
+    - Colors:
+
+    Monochromatic
+### 7.4 copyq配置
+
+- 右键选择首选项，在外观中载入主题
+
+### 7.5 Fcitx5配置
+
+- 编辑~/.config/fcitx5/conf/classicui.conf，将Themes行改为Theme=catppuccin-mocha-blue
+
+### 7.6 Neovim配置
 
 - 安装treesitter解析器
 ```Vimscript
 :TSInstall cpp html latex yaml
 ```
 
-### 7.5 沙盒版微信配置
+### 7.7 沙盒版微信配置
 
 - 创建共享目录用于文件传输
 ```bash
@@ -443,29 +505,29 @@ ls /usr/bin/wechat*
 --bind /home/tistath/wechat-shared /home/tistath/wechat-shared
 ```
 
-### 7.6 电源服务
+### 7.8 电源服务
 ```bash
 sudo systemctl enable tlp --now
 ```
 
-### 7.7 蓝牙服务
+### 7.9 蓝牙服务
 ```bash
 sudo systemctl enable --now bluetooth
 ```
 
-### 7.8 定时清理磁盘垃圾
+### 7.10 定时清理磁盘垃圾
 ```bash
 cat /sys/block/nvme0n1/queue/rotational #如果输出为0说明磁盘为SSD，则执行下述操作
 sudo systemctl enable --now fstrim.timer
 ```
 
-### 7.9 壁纸
+### 7.11 壁纸
 
 - 文字：在[艺术字体网站](https://patorjk.com/software/taag/)，使用Tmplr字体
 
 - 图片生成：在[在线图片编辑网站](https://www.photopea.com/)，使用[catppuccin](https://github.com/catppuccin/catppuccin)的mocha-Base背景，mocha-Surface1文字，JetBrains Mono字体
 
-### 7.10 防火墙服务
+### 7.12 防火墙服务
 
 ```bash
 sudo ufw default deny incoming   # 拒绝所有入站

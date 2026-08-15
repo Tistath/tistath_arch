@@ -145,7 +145,7 @@ window-rule {                           //窗口规则
 }
 
 window-rule {                                                   //火狐浏览器窗口规则
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"     //图片窗口规则
+    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$"     //图片窗口规则
     open-floating true                                          //设为浮动窗口
 }
 
@@ -162,7 +162,7 @@ gestures {              //手势规则
 
 binds {                                                                                                             //快捷键（遵循Ctrl的效果比Shift大）
     Mod+T     allow-inhibiting=false repeat=false { spawn    "kitty";                                             } //终端
-    Mod+B                                         { spawn    "firefox";                                           } //火狐浏览器
+    Mod+B                                         { spawn    "zen";                                           } //火狐浏览器
     Mod+W                                         { spawn    "wechat-universal";                                  } //微信
     Mod+Shift+W                                   { spawn    "linuxqq";                                           } //QQ
     Mod+S                                         { spawn    "steam";                                             } //steam
