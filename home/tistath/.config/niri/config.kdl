@@ -162,7 +162,7 @@ gestures {              //手势规则
 
 binds {                                                                                                             //快捷键（遵循Ctrl的效果比Shift大）
     Mod+T     allow-inhibiting=false repeat=false { spawn    "kitty";                                             } //终端
-    Mod+B                                         { spawn    "zen";                                           } //火狐浏览器
+    Mod+B                                         { spawn    "zen-browser";                                           } //火狐浏览器
     Mod+W                                         { spawn    "wechat-universal";                                  } //微信
     Mod+Shift+W                                   { spawn    "linuxqq";                                           } //QQ
     Mod+S                                         { spawn    "steam";                                             } //steam

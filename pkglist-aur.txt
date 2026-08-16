@@ -1,3 +1,4 @@
 linuxqq
 watt-toolkit-bin
 wechat-universal-bwrap
+zen-browser-bin

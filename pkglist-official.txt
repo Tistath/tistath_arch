@@ -18,7 +18,6 @@ fcitx5-gtk
 fcitx5-qt
 fcitx5-rime
 fd
-ffmpeg4.4
 fish
 git
 gnome-keyring
@@ -39,6 +38,7 @@ networkmanager
 niri
 pacman-contrib
 pastel
+pipewire-pulse
 python-pylatexenc
 rime-ice-pinyin-git
 ripgrep
@@ -63,4 +63,3 @@ xwayland-satellite
 yay
 zathura
 zathura-pdf-mupdf
-zen-browser

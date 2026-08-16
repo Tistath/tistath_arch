@@ -385,55 +385,85 @@ sudo udevadm trigger
 
 ### 7.2 Zen浏览器配置
 
-- 在Settings中：
-
-    - [Look and Feel](about:preferences#zenLooks)：
-
-        - `Sidebar and tabs layout`：
-
-            - `Browser Layout`选择`Sidebar and Top Toolbar`
-
-            - `Move the new tab button to the top`改为`false`
-
-    - [Search](about:preferences#search)：
-        
-        - `about:preferences#search`选择`Bing`
-
-    - [Privacy and security](about:preferences#privacy)：
-
-        - `Connection and software security`：
-
-            - [Advanced settings](about:preferences#connectionSecurity)：
-
-                - `Certificates`：
-
-                    - `Manage certificates`：
-
-                        - `Authorities`：
-
-                            - `Import`：`~/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer`
-
-    - [Appearance](about:preferences#appearance)：
-
-        - `Website appearance`设为`Dark`
-
-    - [Downloads](about:preferences#downloads)：
-
-        - `Save files to`改为`~/Downloads`
-
-    - [Accessibility](about:preferences#accessibility)：
-
-        - `Fonts`：
-
-            - `Font family`改为`JetBrainsMono Nerd Font`
+- 点击左上角三点，在`Settings`中：
 
     - [Languages](about:preferences#languages)：
 
-        - `Website language`：
+        - `Browser Language`设为`简体中文`
+
+    - [界面外观](about:preferences#zenLooks)：
+
+        - `侧边栏和标签页布局`：
+
+            - `浏览器布局`选择`侧边+顶部工具栏`
+
+            - `将新建标签页按钮移动到顶部`改为`false`
+
+    - [账户与同步](about:preferences#sync)：
+
+        - 登录Mozilla账户
+
+    - [主页与启动](about:preferences#home)：
+
+        - `Firefox主页`：
+
+            - `搜索`设为`false`
+
+            - `快捷方式`设为`false`
+
+            - `Zen徽标`设为`false`
+
+    - [搜索](about:preferences#search)：
+        
+        - `默认搜索引擎`选择`Bing`
+
+    - [隐私与安全](about:preferences#privacy)：
+
+        - `连接与软件安全`：
+
+            - [高级设置](about:preferences#connectionSecurity)：
+
+                - `证书`：
+
+                    - `管理证书 `：
+
+                        - `证书颁发机构`：
+
+                            - `导入`：`~/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer`
+
+    - [外观](about:preferences#appearance)：
+
+        - `网站外观`设为`深色`
+
+    - [下载](about:preferences#downloads)：
+
+        - `保存文件至`改为`/home/tistath/Downloads`
+
+        - `文件与应用程序`
+
+            - `操作`改为`每次都问我`
+
+            - `Zen处理其他文件的方式`改为`询问要打开还是保存文件`
+
+    - [标签页与浏览](about:preferences#tabsBrowsing)：
+
+        - `媒体`：
+
+            - `播放采用 DRM 的内容`设为true（使得B站可以播放HDML5，如果无法播放音频就再装一个旧的兼容版ffmpeg4.4）
+
+    - [无障碍](about:preferences#accessibility)：
+
+        - `字体`：
+
+            - `字体系列`改为`JetBrainsMono Nerd Font`
+
+    - [语言](about:preferences#languages)：
+
+        - `网站语言`：
 
             - 添加`Chinese [zh]`、`Chinese (China) [zh-cn]`
 
-    - Themes：安装[主题插件](https://addons.mozilla.org/en-GB/firefox/addon/firefox-color/)，进入[主题](https://color.firefox.com/?theme=XQAAAAJDBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehho7r-AtSBPnvx4uvv7vRnzG2zBiFpesm1SAl1KsPscTY8iQYgDnBUvUwxRg5oKKrqaQ_z3v5Hws-8hk4Kc3t_NXn8IoY4ZYVdc86z2QRba2CmsdOmEA-8eHxrfsyZHFWrEEdKZyHYvxjqukUFLs50Fy6pCfDvrjyNBjAtl1dnf9Nj5Jm0ul9fPQvmPAMvweio7eiPSwgqK0N4okhCeWhmc0VioXa6KngF81ywVKwm6ZuPBvP1fLlkT3IQ2e3Psy08_qy2cz2cV67Je242GGYfnOaLZl36LyWV0_AUCtjW19KlUsTGIMGopDMEWZDYstyLga9H5O6w7Q58QVg7y2k7-oNLsIMr3nPFiMjZeJGYJZ9dd4PzYa90eT6KAqaGs50nZXt6xwOFEcYsIJjRbn__m_9iA)后，选择Save后点击
+    - Themes：右键左侧或上方，选择编辑主题，选择第一页最后一个，明度拉到最低
 
     - [Config](about:config)：
 
@@ -449,9 +479,19 @@ sudo udevadm trigger
 
         - 点击`右上角三点`：
 
-            - `Bookmarks`：
+            - `书签`：
 
-                - `Show bookmarks toolbar`
+                - `显示书签工具栏`
+
+    - `工具栏`：
+
+        - 右键上方工具栏空白处，选择`定制工具栏`
+
+        - 将`导入书签`拖到下方候选
+
+    - `主页`：
+
+        - 设置`壁纸`
 
 ### 7.3 htop配置
 
@@ -641,10 +681,12 @@ git push -u origin main
 | gst-plugins-base | 音视频编解码插件 |
 | gst-plugins-good | 音视频编解码插件 |
 | libva-utils | 硬件加速管理 |
+| pipewire-pulse | 音视频处理后端 |
 
 | 浏览器 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
-| firefox | 火狐浏览器 |
+| zen-browser | Zen浏览器 |
+| zen-browser-i18n-zh-cn | Zen浏览器中文包 |
 | gnome-keyring | 密码管理 |
 | torbrowser-launcher | 洋葱浏览器 |
 
