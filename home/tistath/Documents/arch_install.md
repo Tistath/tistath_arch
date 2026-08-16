@@ -475,6 +475,10 @@ sudo udevadm trigger
 
             - `外观`设为`深色`
 
+    - [Bilibili](https://www.bilibili.com/)：
+
+        - 头像处悬停，设置主题为`深色`
+
     - `书签栏`：
 
         - 点击`右上角三点`：

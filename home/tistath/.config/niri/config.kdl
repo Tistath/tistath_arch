@@ -1,6 +1,8 @@
 input {
-    keyboard {          //键盘
-        numlock         //默认启用小键盘
+    keyboard {           //键盘
+        repeat-delay 190 //长按的延迟
+        repeat-rate  20  //每秒重复的次数
+        numlock          //默认启用小键盘
     }
 
     touchpad {          //触摸板
@@ -13,12 +15,11 @@ input {
     }
 
     trackpoint {        //指点杆
-
     }
 }
 
 output "eDP-1" {                //显示接口
-    mode "1920x1080@59.977"     //屏幕参数
+    mode "1920x1080@60"         //屏幕参数
     scale 1                     //图标缩放
 }
 

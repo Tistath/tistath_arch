@@ -9,6 +9,7 @@ brightnessctl
 btrfs-progs
 chafa
 clang
+clash-verge-rev
 copyq
 efibootmgr
 fastfetch
