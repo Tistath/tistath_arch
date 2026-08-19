@@ -30,7 +30,7 @@ return {
       notify = {
         enabled = true,
         view = "notify",
-        timeout = 5000,
+        timeout = 3000,
       },
       popupmenu = {
         enabled = true,

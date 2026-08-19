@@ -1,11 +1,5 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-	"color": {
-	    "1": "#bac2de",// mocha-Sky
-	    "2": "#b4befe" // mocha-Sapphire
-	}
-    },
     "display": {
         "separator": " "
     },
@@ -13,170 +7,170 @@
         {
             "type": "host",
             "key": "╭─󰌢",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "cpu",
             "key": "├─󰻠",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "gpu",
             "key": "├─󰍛",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "disk",
             "key": "├─",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "memory",
             "key": "├─󰑭",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "swap",
             "key": "├─󰓡",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "display",
             "key": "├─󰍹",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
         {
             "type": "brightness",
             "key": "├─󰃞",
-            "keyColor": "#89dceb"
+            "keyColor": "green"
         },
-        //{
-        //    "type": "battery",
-        //    "key": "├─",
-        //    "keyColor": "#89dceb"
-        //},
-        //{
-        //    "type": "poweradapter",
-        //    "key": "├─",
-        //    "keyColor": "#89dceb"
-        //},
-        //{
-        //    "type": "gamepad",
-        //    "key": "├─",
-        //    "keyColor": "#89dceb"
-        //},
-        //{
-        //    "type": "bluetooth",
-        //    "key": "├─",
-        //    "keyColor": "#89dceb"
-        //},
-        //{
-        //    "type": "sound",
-        //    "key": "├─",
-        //    "keyColor": "#89dceb"
-        //},
+        {
+            "type": "battery",
+            "key": "├─",
+            "keyColor": "green"
+        },
+        {
+            "type": "poweradapter",
+            "key": "├─",
+            "keyColor": "green"
+        },
+        {
+            "type": "gamepad",
+            "key": "├─",
+            "keyColor": "green"
+        },
+        {
+            "type": "bluetooth",
+            "key": "├─",
+            "keyColor": "green"
+        },
+        {
+            "type": "sound",
+            "key": "╰─",
+            "keyColor": "green"
+        },
         "break",
 
         {
             "type": "shell",
-            "key": "├─",
-            "keyColor": "#74c7ec"
+            "key": "╭─",
+            "keyColor": "yellow"
         },
         {
             "type": "terminal",
             "key": "├─",
-            "keyColor": "#74c7ec"
+            "keyColor": "yellow"
         },
         {
             "type": "terminalfont",
             "key": "├─",
-            "keyColor": "#74c7ec"
+            "keyColor": "yellow"
         },
         {
             "type": "lm",
             "key": "├─󰧨",
-            "keyColor": "#74c7ec"
+            "keyColor": "yellow"
         },
         {
             "type": "de",
             "key": "├─",
-            "keyColor": "#74c7ec"
+            "keyColor": "yellow"
         },
         {
             "type": "wm",
             "key": "├─",
-            "keyColor": "#74c7ec"
+            "keyColor": "yellow"
         },
-        //{
-        //    "type": "theme",
-        //    "key": "├─󰉼",
-        //    "keyColor": "#74c7ec"
-        //},
-        //{
-        //    "type": "icons",
-        //    "key": "├─󰀻",
-        //    "keyColor": "#74c7ec"
-        //},
-        //{
-        //    "type": "wallpaper",
-        //    "key": "├─󰸉",
-        //    "keyColor": "#74c7ec"
-        //},
+        {
+            "type": "theme",
+            "key": "├─󰉼",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "icons",
+            "key": "├─󰀻",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "wallpaper",
+            "key": "╰─󰸉",
+            "keyColor": "yellow"
+        },
         "break",
 
         {
             "type": "title",
-            "key": "├─",
+            "key": "╭─",
             "format": "{user-name}@{host-name}",
-            "keyColor": "#89b4fa"
+            "keyColor": "blue"
         },
-        //{
-        //    "type": "os",
-        //    "key": "├─", // Just get your distro's logo off nerdfonts.com
-        //    "keyColor": "#89b4fa"
-        //},
+        {
+            "type": "os",
+            "key": "├─{icon}", // Just get your distro's logo off nerdfonts.com
+            "keyColor": "blue"
+        },
         {
             "type": "kernel",
             "key": "├─",
-            "keyColor": "#89b4fa"
+            "keyColor": "blue"
         },
         {
             "type": "packages",
             "key": "├─󰏖",
-            "keyColor": "#89b4fa"
+            "keyColor": "blue"
         },
-        //{
-        //    "type": "uptime",
-        //    "key": "├─󰅐",
-        //    "keyColor": "#89b4fa"
-        //},
-        //{
-        //    "type": "media",
-        //    "key": "├─󰝚",
-        //    "keyColor": "#89b4fa"
-        //},
-        //{
-        //    "type": "localip",
-        //    "key": "├─󰩟",
-        //    "compact": true,
-        //    "keyColor": "#89b4fa"
-        //},
-        //{
-        //    "type": "publicip",
-        //    "key": "├─󰩠",
-        //    "keyColor": "#89b4fa",
-        //    "timeout": 1000
-        //},
-        //{
-        //    "type": "wifi",
-        //    "key": "├─",
-        //    "format": "{ssid}",
-        //    "keyColor": "#89b4fa"
-        //},
+        {
+            "type": "uptime",
+            "key": "├─󰅐",
+            "keyColor": "blue"
+        },
+        {
+            "type": "media",
+            "key": "├─󰝚",
+            "keyColor": "blue"
+        },
+        {
+            "type": "localip",
+            "key": "├─󰩟",
+            "compact": true,
+            "keyColor": "blue"
+        },
+        {
+            "type": "publicip",
+            "key": "├─󰩠",
+            "keyColor": "blue",
+            "timeout": 1000
+        },
+        {
+            "type": "wifi",
+            "key": "├─",
+            "format": "{ssid}",
+            "keyColor": "blue"
+        },
         {
             "type": "locale",
             "key": "╰─",
-            "keyColor": "#89b4fa"
+            "keyColor": "blue"
         }
     ]
 }

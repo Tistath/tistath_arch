@@ -580,6 +580,10 @@ sudo ufw enable                  # 激活防火墙规则
 sudo systemctl enable --now ufw  # 开机自启
 ```
 
+### 7.13 Yazi配置
+
+将`~/.config/yazi/yazi.toml`中的`max_width`和`max_height`改为`显示器宽度 * 4 / 9`和`显示器高度`
+
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
@@ -598,6 +602,7 @@ rsync -av --delete ~/.config/niri/ ~/tistath_arch/home/tistath/.config/niri/
 rsync -av --delete ~/.config/nvim/ ~/tistath_arch/home/tistath/.config/nvim/
 rsync -av --delete ~/.config/swaylock/ ~/tistath_arch/home/tistath/.config/swaylock/
 rsync -av --delete ~/.config/waybar/ ~/tistath_arch/home/tistath/.config/waybar/
+rsync -av --delete ~/.config/yazi/ ~/tistath_arch/home/tistath/.config/yazi/
 rsync -av --delete ~/.config/zathura/ ~/tistath_arch/home/tistath/.config/zathura/
 rsync -av --delete ~/.local/share/icons/ ~/tistath_arch/home/tistath/.local/share/icons/
 rsync -av --delete ~/Documents/arch_install.md ~/tistath_arch/home/tistath/Documents/arch_install.md

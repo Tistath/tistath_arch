@@ -1,0 +1,31 @@
+[mgr]
+ratio          = [2, 3, 4] # 三栏占比
+sort_by        = "natural" # 自然排序，不会出现1.md>10.md>2.md
+sort_sensitive = true      # 排序时区分大小写
+sort_reverse   = false     # 正向排序
+sort_dir_first = true      # 目录优先
+sort_translit  = true      # 转写非英文字符
+linemode       = "size"    # 显示文件大小
+show_hidden    = true      # 显示隐藏文件
+show_symlink   = true      # 显示符号链接所指
+scrolloff      = 5         # 到头时光标上下的文件个数
+
+[preview]
+wrap       = "no" # 代码预览不换行
+tab_size   = 8    # 缩进大小
+max_width  = 853  # 图片宽度
+max_height = 1080 # 图片高度
+
+[opener]
+edit = [
+    { run = 'kitty nvim "$@"', desc = "nvim", orphan = true },
+]
+open = [
+    { run = 'kitty zathura "$@"', desc = "zathura", orphan = true },
+]
+
+[input]
+cursor_blink = true # 光标闪烁
+
+[which]
+sort_by = "key" # 按按键顺序排序快捷键提示

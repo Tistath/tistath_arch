@@ -1,3 +1,4 @@
+7zip
 adobe-source-han-sans-otc-fonts
 amd-ucode
 archlinuxcn-keyring
@@ -20,12 +21,15 @@ fcitx5-qt
 fcitx5-rime
 fd
 fish
+fzf
 git
 gnome-keyring
 gst-libav
 gst-plugins-base
 gst-plugins-good
 htop
+imagemagick
+jq
 kitty
 libnotify
 libva-utils
@@ -40,7 +44,9 @@ niri
 pacman-contrib
 pastel
 pipewire-pulse
+poppler
 python-pylatexenc
+resvg
 rime-ice-pinyin-git
 ripgrep
 rsync
@@ -62,5 +68,7 @@ wget
 wl-clipboard
 xwayland-satellite
 yay
+yazi
 zathura
 zathura-pdf-mupdf
+zoxide

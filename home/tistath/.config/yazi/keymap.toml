@@ -1,0 +1,7 @@
+[mgr]
+prepend_keymap = [
+    { on = "k", run = "arrow 1",  desc = "下移" },
+    { on = "l", run = "arrow -1", desc = "上移" },
+    { on = ";", run = "enter",    desc = "进入目录" },
+    { on = "j", run = "leave",    desc = "返回上级" },
+]
