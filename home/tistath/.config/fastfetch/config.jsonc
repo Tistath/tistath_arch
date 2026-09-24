@@ -1,0 +1,131 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "color": {
+      "1": "#b4befe", // catppuccin-mocha-Lavender
+      "2": "#b4befe"
+    }
+  },
+  "display": {
+    "separator": ""
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "{user-name}@{host-name}"
+    },
+    {
+      "type": "custom",
+      "format": "."
+    },
+
+    {
+      "type": "custom",
+      "key": "├── {##89b4fa}Hardware", // catppuccin-mocha-Sky
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "host",
+      "key": "│   ├── host: ", // catppuccin-mocha-text
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "cpu",
+      "key": "│   ├── cpu: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "gpu",
+      "key": "│   ├── gpu: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "disk",
+      "key": "│   ├── disk: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "memory",
+      "key": "│   ├── memory: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "swap",
+      "key": "│   ├── swap: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "display",
+      "key": "│   ├── display: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "brightness",
+      "key": "│   └── brightness: ",
+      "keyColor": "#cdd6f4"
+    },
+
+    {
+      "type": "custom",
+      "key": "├── {##89b4fa}Environment",
+      "format": " ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "shell",
+      "key": "│   ├── shell: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "terminal",
+      "key": "│   ├── terminal: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "terminalfont",
+      "key": "│   ├── terminalfont: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "lm",
+      "key": "│   ├── lm: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "de",
+      "key": "│   ├── de: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "wm",
+      "key": "│   └── wm: ",
+      "keyColor": "#cdd6f4"
+    },
+
+    {
+      "type": "custom",
+      "key": "└── {##89b4fa}System",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "kernel",
+      "key": "    ├── kernel: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "packages",
+      "key": "    ├── packages: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "locale",
+      "key": "    └── locale: ",
+      "keyColor": "#cdd6f4"
+    },
+    {
+      "type": "custom",
+      "key": "\r ~晒晒月亮哇:p",
+      "keyColor": "#89b4fa"
+    }
+  ]
+}

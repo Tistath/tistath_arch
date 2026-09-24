@@ -20,19 +20,14 @@ fcitx5-gtk
 fcitx5-qt
 fcitx5-rime
 fd
-fish
 fzf
 git
 gnome-keyring
-gst-libav
-gst-plugins-base
-gst-plugins-good
 htop
 imagemagick
 jq
 kitty
 libnotify
-libva-utils
 linux
 linux-firmware
 mako
@@ -43,6 +38,7 @@ networkmanager
 niri
 pacman-contrib
 pastel
+pipewire-alsa
 pipewire-pulse
 poppler
 python-pylatexenc
@@ -71,4 +67,4 @@ yay
 yazi
 zathura
 zathura-pdf-mupdf
-zoxide
+zsh

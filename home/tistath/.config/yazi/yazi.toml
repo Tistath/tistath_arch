@@ -20,6 +20,9 @@ max_height = 1080 # 图片高度
 edit = [
     { run = 'kitty nvim "$@"', desc = "nvim", orphan = true },
 ]
+visual = [
+    { run = 'kitty nvim "$@"', desc = "nvim", orphan = true },
+]
 open = [
     { run = 'kitty zathura "$@"', desc = "zathura", orphan = true },
 ]

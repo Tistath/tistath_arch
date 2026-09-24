@@ -1,4 +1,5 @@
 linuxqq
+qqmusic-bin
 watt-toolkit-bin
 wechat-universal-bwrap
 zen-browser-bin

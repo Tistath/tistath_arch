@@ -256,9 +256,9 @@ nmcli dev wifi connect "wifi名" password "密码"
 ip a   # 验证
 ```
 
-### 5.2 安装Fish Shell
+### 5.2 安装Zsh Shell
 ```bash
-pacman -S fish
+pacman -S zsh
 ```
 
 ### 5.3 创建普通用户并配置
@@ -300,32 +300,30 @@ chmod +x ~/.config/niri/scripts/swayidle.sh
 sudo pacman -S libnotify mako
 ```
 
-## 6. 中文输入法与加速器
+## 6. AUR
 
-### 6.1 添加archlinuxcn源并安装yay
+- 添加archlinuxcn源并安装yay
 
-- 编辑/etc/pacman.conf，添加
-```conf
-[archlinuxcn]
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch
-Server = https://repo.huaweicloud.com/archlinuxcn/$arch
-```
+    - 编辑/etc/pacman.conf，添加
+    ```conf
+    [archlinuxcn]
+    Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+    Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+    Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch
+    Server = https://repo.huaweicloud.com/archlinuxcn/$arch
+    ```
 
-- 安装yay并配置AUR镜像
-```bash
-sudo pacman -Sy archlinuxcn-keyring
-sudo pacman -S yay
-yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save # 清华源
-# 若失效，恢复官方源yay --aururl "https://aur.archlinux.org" --save
-```
+    - 安装yay并配置AUR镜像
+    ```bash
+    sudo pacman -Sy archlinuxcn-keyring
+    sudo pacman -S yay
+    yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save # 清华源
+    # 若失效，恢复官方源yay --aururl "https://aur.archlinux.org" --save
+    ```
 
-### 6.2 安装并配置fcitx5输入法
-```bash
-sudo pacman -S fcitx5-im fcitx5-rime rime-ice-pinyin-git
-```
+## 7. 应用配置
 
+### 7.1 fcitx5输入法配置
 - 编辑Rime配置~/.local/share/fcitx5/rime/default.custom.yaml
 ```yaml
 patch:
@@ -344,10 +342,7 @@ patch:
 
 - 在输入法配置中添加Rime
 
-### 6.3 安装Watt-Toolkit加速器
-```bash
-yay -S watt-toolkit-bin
-```
+### 7.2 Watt-Toolkit配置
 
 - 初始化证书数据库并信任证书
 ```bash
@@ -358,18 +353,25 @@ sudo chmod a+w /etc/hosts
 ```
 
 - 加速github：见[Zen浏览器配置](#72-zen浏览器配置)
+
 - 加速steam：在steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在chrome://settings的安全中加入后缀名从cer改成pem的证书
 
-## 7. 应用配置
+- 左下角设置中：
 
-### Git配置
+    - 界面设置：
+
+        - `启动时默认打开页面`设为`网络加速`
+
+        - `主题`设为`深色`
+
+### 7.3 Git配置
 ```bash
 git config --global user.name "Tistath"
 git config --global user.email "eta_gamma_omega@qq.com"
 git config --global init.defaultBranch main
 ```
 
-### 7.1 大写锁定映射为Ctrl
+### 7.4 大写锁定映射为Ctrl
 
 - 编辑/etc/udev/hwdb.d/99-caps-ctrl.hwdb，添加：
 ```hwdb
@@ -383,7 +385,7 @@ sudo systemd-hwdb update
 sudo udevadm trigger
 ```
 
-### 7.2 Zen浏览器配置
+### 7.5 Zen浏览器配置
 
 - 点击左上角三点，在`Settings`中：
 
@@ -497,7 +499,7 @@ sudo udevadm trigger
 
         - 设置`壁纸`
 
-### 7.3 htop配置
+### 7.6 htop配置
 
 - <F2>打开设置
 
@@ -517,22 +519,23 @@ sudo udevadm trigger
     - Colors:
 
     Monochromatic
-### 7.4 copyq配置
+
+### 7.7 [copyq](https://github.com/catppuccin/copyq)配置
 
 - 右键选择首选项，在外观中载入主题
 
-### 7.5 Fcitx5配置
+### 7.8 [Fcitx5](https://github.com/catppuccin/fcitx5)配置
 
 - 编辑~/.config/fcitx5/conf/classicui.conf，将Themes行改为Theme=catppuccin-mocha-blue
 
-### 7.6 Neovim配置
+### 7.9 Neovim配置
 
 - 安装treesitter解析器
 ```Vimscript
 :TSInstall cpp html latex yaml
 ```
 
-### 7.7 沙盒版微信配置
+### 7.10 沙盒版微信配置
 
 - 创建共享目录用于文件传输
 ```bash
@@ -549,40 +552,62 @@ ls /usr/bin/wechat*
 --bind /home/tistath/wechat-shared /home/tistath/wechat-shared
 ```
 
-### 7.8 电源服务
+### 7.11 电源服务
 ```bash
 sudo systemctl enable tlp --now
 ```
 
-### 7.9 蓝牙服务
+### 7.12 蓝牙服务
 ```bash
 sudo systemctl enable --now bluetooth
 ```
 
-### 7.10 定时清理磁盘垃圾
+### 7.13 定时清理磁盘垃圾
 ```bash
 cat /sys/block/nvme0n1/queue/rotational #如果输出为0说明磁盘为SSD，则执行下述操作
 sudo systemctl enable --now fstrim.timer
 ```
 
-### 7.11 壁纸
+### 7.14 壁纸
 
 - 文字：在[艺术字体网站](https://patorjk.com/software/taag/)，使用Tmplr字体
 
 - 图片生成：在[在线图片编辑网站](https://www.photopea.com/)，使用[catppuccin](https://github.com/catppuccin/catppuccin)的mocha-Base背景，mocha-Surface1文字，JetBrains Mono字体
 
-### 7.12 防火墙服务
+### 7.15 防火墙服务
 
 ```bash
-sudo ufw default deny incoming   # 拒绝所有入站
-sudo ufw default allow outgoing  # 允许所有出站
-sudo ufw enable                  # 激活防火墙规则
-sudo systemctl enable --now ufw  # 开机自启
+sudo ufw default deny incoming  # 拒绝所有入站
+sudo ufw default allow outgoing # 允许所有出站
+sudo ufw enable                 # 激活防火墙规则
+sudo systemctl enable --now ufw # 开机自启
 ```
 
-### 7.13 Yazi配置
+### 7.16 Yazi配置
 
 将`~/.config/yazi/yazi.toml`中的`max_width`和`max_height`改为`显示器宽度 * 4 / 9`和`显示器高度`
+
+### 7.17 Zsh配置
+
+- 安装Oh My Zsh
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+- 安装插件
+```bash
+# 安装语法高亮
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# 安装自动建议
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# 安装历史子串搜索
+git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+
+# 安装自动更新插件
+git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
+```
 
 ## 配置文件
 
@@ -592,9 +617,10 @@ sudo systemctl enable --now ufw  # 开机自启
 
 ```bash
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
-rsync -av --delete /usr/share/fastfetch/presets/examples/6.jsonc ~/tistath_arch/usr/share/fastfetch/presets/examples/6.jsonc
+rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
-rsync -av --delete ~/.config/fish/ ~/tistath_arch/home/tistath/.config/fish/
+rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
+rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
 rsync -av --delete ~/.config/mako/ ~/tistath_arch/home/tistath/.config/mako/
@@ -606,10 +632,16 @@ rsync -av --delete ~/.config/yazi/ ~/tistath_arch/home/tistath/.config/yazi/
 rsync -av --delete ~/.config/zathura/ ~/tistath_arch/home/tistath/.config/zathura/
 rsync -av --delete ~/.local/share/icons/ ~/tistath_arch/home/tistath/.local/share/icons/
 rsync -av --delete ~/Documents/arch_install.md ~/tistath_arch/home/tistath/Documents/arch_install.md
+rsync -av --delete /etc/environment ~/tistath_arch/etc/environment
 
 pacman -Qqen > ~/tistath_arch/pkglist-official.txt
 pacman -Qqem > ~/tistath_arch/pkglist-aur.txt
 
+cd ~/tistath_arch
+
+git add .
+git commit -m ""
+git push -u origin main
 cd ~/tistath_arch
 
 git add .
