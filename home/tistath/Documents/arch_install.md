@@ -609,6 +609,41 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CU
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 ```
 
+### 7.18 GitHub配置
+
+- 生成SSH密钥
+```bash
+ssh-keygen -t ed25519 -C "eta_gamma_omega@qq.com"
+回车保存至默认路径
+输入密码
+```
+
+- 复制公钥
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+- 添加至[GitHub](https://github.com/settings/keys)
+```
+点击`New SSH key`
+粘贴公钥
+保存
+```
+
+- 编辑`~/.ssh/config`，写入
+```text
+Host github.com
+    HostName ssh.github.com
+    User git
+    Port 443
+```
+
+- 修改仓库远程地址
+```bash
+cd ~/tistath_arch
+git remote set-url origin git@github.com:Tistath/tistath_arch.git
+```
+
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
@@ -620,6 +655,7 @@ rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/c
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
 rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
+rsync -av --delete ~/.config/zsh/functions.zsh ~/tistath_arch/home/tistath/.config/zsh/functions.zsh
 rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
@@ -637,11 +673,6 @@ rsync -av --delete /etc/environment ~/tistath_arch/etc/environment
 pacman -Qqen > ~/tistath_arch/pkglist-official.txt
 pacman -Qqem > ~/tistath_arch/pkglist-aur.txt
 
-cd ~/tistath_arch
-
-git add .
-git commit -m ""
-git push -u origin main
 cd ~/tistath_arch
 
 git add .

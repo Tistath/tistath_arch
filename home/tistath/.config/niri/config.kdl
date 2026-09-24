@@ -174,8 +174,8 @@ gestures {        //手势规则
 }
 
 binds {                                                                                                             //快捷键（遵循Ctrl的效果比Shift大）
-    Mod+T     allow-inhibiting=false repeat=false { spawn    "kitty";                                             } //终端
-    Mod+Y                                         { spawn    "kitty" "-e" "zsh" "-c" "yazi-cd; exec zsh";       } //yazi文件管理器
+    Mod+T     allow-inhibiting=false repeat=false { spawn    "kitty";                                           } //终端
+    Mod+Y                                         { spawn    "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/functions.zsh; yazi-cd; exec zsh"; } //yazi文件管理器
     Mod+B                                         { spawn    "zen-browser";                                       } //火狐浏览器
     Mod+W                                         { spawn    "wechat-universal";                                  } //微信
     Mod+Shift+W                                   { spawn    "linuxqq";                                           } //QQ
