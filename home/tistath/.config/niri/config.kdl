@@ -174,7 +174,9 @@ binds {
 
 // 快捷键（遵循Ctrl的效果比Shift大）
 
-    Mod+T allow-inhibiting=false repeat=false { spawn "kitty"; } // 终端
+    Mod+Space allow-inhibiting=false repeat=false { spawn "kitty"; } // 终端
+
+    Mod+T { spawn "kitty" "-e" "zsh" "-c" "htop; exec zsh"; }
 
     Mod+Y { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/functions.zsh; yazi-cd; exec zsh"; } // yazi文件管理器
 

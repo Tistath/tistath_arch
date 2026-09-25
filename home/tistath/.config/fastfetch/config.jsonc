@@ -1,10 +1,15 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+//  "logo": {
+//    "color": {
+//      "1": "#b4befe", // catppuccin-mocha-Lavender
+//      "2": "#b4befe"
+//    }
+//  },
   "logo": {
-    "color": {
-      "1": "#b4befe", // catppuccin-mocha-Lavender
-      "2": "#b4befe"
-    }
+    "type": "kitty-direct",
+    "source": "~/.config/fastfetch/unreal_life_1792.png",
+    "width": 47
   },
   "display": {
     "separator": ""

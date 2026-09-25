@@ -817,3 +817,9 @@ git push -u origin main
 | 音乐 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
 | qqmusic-bin | QQ音乐 |
+
+- 清理孤儿包
+```zsh
+sudo pacman -Rns $(pacman -Qdtq)
+yay -Sc
+```
