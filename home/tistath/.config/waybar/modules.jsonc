@@ -1,22 +1,22 @@
 { 
-  //日期
+  // 日期
   "clock#date": {
     "tooltip": false,
     "interval": 60,
     "format": "{:%y-%m-%d %a}"
   },
-  //时间
+  // 时间
   "clock": {
     "tooltip": false,
     "interval": 59,
     "format": "󰥔 {:%H:%M}"
   },
-  //系统托盘（后台）
+  // 系统托盘（后台）
   "tray": {
     "icon-size": 22,
     "spacing": 7
   },
-  //电池信息
+  // 电池信息
   "battery": {
     "interval": 10,
     "states": {
@@ -38,7 +38,7 @@
     ],
     "tooltip-format": "剩余电量：{capacity}%\n充放电：{power}\n可用时间：{timeTo}\n电池健康度：{health}%"
   },
-  // 音量信息
+  //  音量信息
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 {volume}%",
@@ -51,11 +51,11 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
   },
-  //网络信息
+  // 网络信息
   "group/network": {
-    "orientation": "inherit",//继承父类排列方式
+    "orientation": "inherit",// 继承父类排列方式
     "drawer": {
-      "transition-left-to-right": false//竖向排列
+      "transition-left-to-right": false// 竖向排列
     },
     "modules": [
       "network"
@@ -76,7 +76,7 @@
       ],
       "ethernet": "󰈀"
     },
-    //鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
+    // 鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} ({ipaddr})",
     "tooltip-format-ethernet": "\n{ifname} ({ipaddr})",
     "tooltip-format-disconnected": "网络未连接\n{ifname} ({ipaddr})"

@@ -660,9 +660,10 @@ git remote set-url origin git@github.com:Tistath/tistath_arch.git
 
 ## 备份配置
 
-```bash
+```zsh
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
-rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch
+rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
+rsync -av --delete ~/.config/htop/ ~/tistath_arch/home/tistath/.config/htop/
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
 rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
 rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/

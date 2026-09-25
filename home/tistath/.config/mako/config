@@ -1,12 +1,12 @@
-#字体
+# 字体
 font=JetBrainsMono Nerd Font 12
-#圆角
+# 圆角
 border-radius=8
-#停留时间
+# 停留时间
 default-timeout=5000
-#保留历史
+# 保留历史
 history=1
-#颜色主题
+# 颜色主题
 background-color=#1e1e2e
 text-color=#cdd6f4
 border-color=#89b4fa

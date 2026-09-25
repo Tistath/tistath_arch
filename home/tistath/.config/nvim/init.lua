@@ -3,20 +3,20 @@ vim.g.mapleader         = " "
 vim.g.maplocalleader    = " "
 
 -- 基础设置
-vim.opt.tabstop         = 8             --缩进显示为8
-vim.opt.softtabstop     = 8             --tab输出8
-vim.opt.shiftwidth      = 8             -->>,<<输出8
-vim.opt.expandtab       = true          --存储为8空格 
-vim.opt.smarttab        = true          --行首shiftwidth，其他tabstop
-vim.opt.smartindent     = true          --回车继承上一行缩进
-vim.opt.clipboard       = "unnamedplus" --使用系统剪切板
-vim.opt.number          = true          --显示行号
-vim.opt.cursorline      = true          --高亮当前行
-vim.opt.termguicolors   = true          --启用真彩色
-vim.opt.hlsearch        = true          --高亮搜索结果
-vim.opt.incsearch       = true          --实时搜索
-vim.opt.ignorecase      = true          --忽略大小写
-vim.opt.smartcase       = true          --输入含大写时不忽略
+vim.opt.tabstop         = 8             -- 缩进显示为8
+vim.opt.softtabstop     = 8             -- tab输出8
+vim.opt.shiftwidth      = 8             -- >>,<<输出8
+vim.opt.expandtab       = true          -- 存储为8空格 
+vim.opt.smarttab        = true          -- 行首shiftwidth，其他tabstop
+vim.opt.smartindent     = true          -- 回车继承上一行缩进
+vim.opt.clipboard       = "unnamedplus" -- 使用系统剪切板
+vim.opt.number          = true          -- 显示行号
+vim.opt.cursorline      = true          -- 高亮当前行
+vim.opt.termguicolors   = true          -- 启用真彩色
+vim.opt.hlsearch        = true          -- 高亮搜索结果
+vim.opt.incsearch       = true          -- 实时搜索
+vim.opt.ignorecase      = true          -- 忽略大小写
+vim.opt.smartcase       = true          -- 输入含大写时不忽略
 
 -- 键位映射
 vim.keymap.set("n", "j",          "h",                                { noremap = true, silent = true,                    })
@@ -49,7 +49,7 @@ vim.opt.guicursor =  "n-v-c-ve:block,"
 -- 加载 lazy.nvim
 require("config.lazy")
 
---关闭浮窗背景
+-- 关闭浮窗背景
 vim.api.nvim_set_hl(0, "NormalFloat",       { bg = "NONE" })
 
 -- 修复 :: 的缩进和高亮问题
