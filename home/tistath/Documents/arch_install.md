@@ -348,13 +348,15 @@ patch:
 ```bash
 mkdir -p ~/.pki/nssdb
 certutil -N -d ~/.pki/nssdb
+cd ~/.local/share/Steam++/Plugins/Accelerator/
 sudo trust anchor --store SteamTools.Certificate.cer
+sudo trust anchor --store SteamTools.Certificate.pem
 sudo chmod a+w /etc/hosts
 ```
 
 - 加速github：见[Zen浏览器配置](#72-zen浏览器配置)
 
-- 加速steam：在steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在chrome://settings的安全中加入后缀名从cer改成pem的证书
+>[!NOTE]若Steam未被加速：在Steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在chrome://settings的安全中加入后缀名从cer改成pem的证书
 
 - 左下角设置中：
 
@@ -609,17 +611,25 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CU
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 ```
 
-### 7.18 GitHub配置
+### 7.18 Git配置
+
+- 基本设置
+```zsh
+git config --global user.name "Tistath"
+git config --global user.email "eta_gamma_omega@qq.com"
+git config --global init.defaultBranch main
+
+```
 
 - 生成SSH密钥
-```bash
+```zsh
 ssh-keygen -t ed25519 -C "eta_gamma_omega@qq.com"
 回车保存至默认路径
 输入密码
 ```
 
 - 复制公钥
-```bash
+```zsh
 cat ~/.ssh/id_ed25519.pub
 ```
 
@@ -639,7 +649,7 @@ Host github.com
 ```
 
 - 修改仓库远程地址
-```bash
+```zsh
 cd ~/tistath_arch
 git remote set-url origin git@github.com:Tistath/tistath_arch.git
 ```
@@ -655,7 +665,7 @@ rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/c
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
 rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
-rsync -av --delete ~/.config/zsh/functions.zsh ~/tistath_arch/home/tistath/.config/zsh/functions.zsh
+rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
 rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
@@ -725,7 +735,8 @@ git push -u origin main
 | 命令行工具 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
 | kitty | 终端 |
-| fish | shell |
+| zsh | shell |
+| fzf | Zsh的模糊历史搜索后端 |
 | fastfetch | 系统信息展示 |
 | tree | 文件结构显示 |
 | rsync | 高效复制 |
@@ -733,6 +744,12 @@ git push -u origin main
 | chafa | 图片查看工具 |
 | htop | 系统监测工具 |
 | wget | 网络文件下载工具|
+| yazi | 文件查看工具 |
+| 7zip | yazi的压缩包预览后端 |
+| imagemagick | yazi的图片、字体等预览后端 |
+| poppler | yazi的pdf预览后端 |
+| resvg | yazi的SVG（矢量图）预览后端 |
+| ripgrep | yazi的内容搜索后端 |
 
 | AUR | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
@@ -758,13 +775,13 @@ git push -u origin main
 | 浏览器 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
 | zen-browser | Zen浏览器 |
-| zen-browser-i18n-zh-cn | Zen浏览器中文包 |
 | gnome-keyring | 密码管理 |
 | torbrowser-launcher | 洋葱浏览器 |
 
 | 加速器 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
 | watt-toolkit-bin | 加速github，steam等 |
+| clash-verge-rev | 梯子 |
 
 | 文档查看 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
@@ -796,3 +813,7 @@ git push -u origin main
 | :-------------------------------------- | :-------------------------------------- |
 | linuxqq | QQ |
 | wechat-universal-bwrap | 隐私版微信 |
+
+| 音乐 | 说明 |
+| :-------------------------------------- | :-------------------------------------- |
+| qqmusic-bin | QQ音乐 |
