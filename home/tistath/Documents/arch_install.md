@@ -662,13 +662,13 @@ git remote set-url origin git@github.com:Tistath/tistath_arch.git
 
 ```bash
 
+
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
 rsync -av --delete ~/.config/htop/ ~/tistath_arch/home/tistath/.config/htop/
 rsync -av --delete ~/.config/fcitx5/ ~/tistath_arch/home/tistath/.config/fcitx5/
 rsync -av --delete ~/.local/share/fcitx5/rime/default.custom.yaml ~/tistath_arch/home/tistath/.local/share/fcitx5/rime/default.custom.yaml
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
-rsync -av --delete ~/.config/environment.d/ ~/tistath_arch/home/tistath/.config/environment.d/
 rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
 rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
 rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
@@ -693,6 +693,7 @@ cd ~/tistath_arch
 git add .
 git commit -m ""
 git push -u origin main
+
 ```
 ## 包
 
