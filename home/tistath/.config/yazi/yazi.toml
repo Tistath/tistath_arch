@@ -17,14 +17,26 @@ max_width  = 853  # 图片宽度
 max_height = 1080 # 图片高度
 
 [opener]
-edit = [
-    { run = 'kitty nvim %s', desc = "nvim", orphan = true },
+imv = [
+    { run = 'imv %s',        desc = "imv",     orphan = true },
 ]
-visual = [
-    { run = 'kitty nvim %s', desc = "nvim", orphan = true },
+zathura = [
+    { run = 'zathura %s',    desc = "zathura", orphan = true },
 ]
-open = [
-    { run = 'kitty zathura %s', desc = "zathura", orphan = true },
+ffplay = [
+    { run = 'ffplay %s',     desc = "ffplay",  orphan = true },
+]
+nvim = [
+    { run = 'kitty nvim %s', desc = "nvim",    orphan = true },
+]
+
+[open]
+rules = [
+    { mime = "image/*",         use = "imv"     }, # 图片
+    { mime = "application/pdf", use = "zathura" }, # PDF
+    { mime = "video/*",         use = "ffplay"  }, # 视频
+    { mime = "audio/*",         use = "ffplay"  }, # 音频
+    { mime = "*",               use = "nvim"    }, # fallback
 ]
 
 [input]

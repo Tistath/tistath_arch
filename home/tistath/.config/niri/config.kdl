@@ -120,16 +120,21 @@ spawn-at-startup "/home/tistath/.config/niri/scripts/swayidle.sh"               
 screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png" // 截屏路径
 
 environment {                                                          // 环境变量
-	LC_MESSAGES                     "zh_CN.UTF-8"                  // 编码
-	XMODIFIERS                      "@im=fcitx"                    // 输入法
-        XDG_CURRENT_DESKTOP             "niri"                         // 桌面
-        XDG_SESSION_TYPE                "wayland"                      // 图形会话
-        MOZ_ENABLE_WAYLAND              "1"                            // Mozilla应用使用Wayland
-        XCURSOR_SIZE                    "37"                           // 鼠标大小
-        XCURSOR_THEME                   "Colloid-Dracula-cursors-dark" // 鼠标主题
-        EDITOR                          "nvim"                         // 编辑器
-        VISUAL                          "nvim"                         // 可视化编辑器
-        BROWSER                         "zen-browser"                  // 浏览器
+    LC_MESSAGES         "zh_CN.UTF-8"                  // 编码
+    XMODIFIERS          "@im=fcitx"                    // X11输入法
+    GTK_IM_MODULE       "fcitx"                        // GTK输入法
+    QT_IM_MODULE        "fcitx"                        // Qt输入法
+    INPUT_METHOD        "fcitx"                        // 部分程序的输入法
+    SDL_IM_MODULE       "fcitx"                        // SDL（游戏）的输入法
+    GLFW_IM_MODULE      "ibus"                         // GLFW的输入法协议
+    XDG_CURRENT_DESKTOP "niri"                         // 桌面
+    XDG_SESSION_TYPE    "wayland"                      // 图形会话
+    MOZ_ENABLE_WAYLAND  "1"                            // Mozilla应用使用Wayland
+    XCURSOR_SIZE        "37"                           // 鼠标大小
+    XCURSOR_THEME       "Colloid-Dracula-cursors-dark" // 鼠标主题
+    EDITOR              "nvim"                         // 编辑器
+    VISUAL              "nvim"                         // 可视化编辑器
+    BROWSER             "zen-browser"                  // 浏览器
 }
 
 cursor {                                             // 鼠标指针                                               

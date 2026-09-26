@@ -25,6 +25,7 @@ git
 gnome-keyring
 htop
 imagemagick
+imv
 jq
 kitty
 libnotify

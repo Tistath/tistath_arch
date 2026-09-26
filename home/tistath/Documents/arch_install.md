@@ -614,7 +614,7 @@ git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~
 ### 7.18 Git配置
 
 - 基本设置
-```zsh
+```bash
 git config --global user.name "Tistath"
 git config --global user.email "eta_gamma_omega@qq.com"
 git config --global init.defaultBranch main
@@ -622,14 +622,14 @@ git config --global init.defaultBranch main
 ```
 
 - 生成SSH密钥
-```zsh
+```bash
 ssh-keygen -t ed25519 -C "eta_gamma_omega@qq.com"
 回车保存至默认路径
 输入密码
 ```
 
 - 复制公钥
-```zsh
+```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
@@ -649,7 +649,7 @@ Host github.com
 ```
 
 - 修改仓库远程地址
-```zsh
+```bash
 cd ~/tistath_arch
 git remote set-url origin git@github.com:Tistath/tistath_arch.git
 ```
@@ -660,7 +660,7 @@ git remote set-url origin git@github.com:Tistath/tistath_arch.git
 
 ## 备份配置
 
-```zsh
+```bash
 
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
@@ -789,13 +789,14 @@ git push -u origin main
 | watt-toolkit-bin | 加速github，steam等 |
 | clash-verge-rev | 梯子 |
 
-| 文档查看 | 说明 |
+| 查看 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
 | zathura | PDF查看工具 |
 | zathura-pdf-mupdf | PDF渲染后端 |
 | tesseract-data-eng | PDF英文语言包 |
 | tesseract-data-chi_sim | PDF中文语言包 |
 | python-pylatexenc | markdown的LaTeX依赖 |
+| imv | 图片查看器 |
 
 | 字体 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
@@ -826,7 +827,7 @@ git push -u origin main
 | qqmusic-bin | QQ音乐 |
 
 - 清理孤儿包
-```zsh
+```bash
 sudo pacman -Rns $(pacman -Qdtq)
 yay -Sc
 ```
