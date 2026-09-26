@@ -1,6 +1,6 @@
 return {
   "theHamsta/nvim-dap-virtual-text",
-  lazy = true,
+  event = "BufReadPost",
   dependencies = { "mfussenegger/nvim-dap" },
   config = function()
     require("nvim-dap-virtual-text").setup({

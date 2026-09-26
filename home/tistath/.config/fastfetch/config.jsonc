@@ -1,16 +1,34 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+// Arch Logo
 //  "logo": {
 //    "color": {
 //      "1": "#b4befe", // catppuccin-mocha-Lavender
 //      "2": "#b4befe"
 //    }
 //  },
+// 图片
   "logo": {
     "type": "kitty-direct",
     "source": "~/.config/fastfetch/unreal_life_1792.png",
     "width": 47
   },
+// 字符画
+//  "logo": {
+//    "type": "file",
+//    "source": "~/.config/fastfetch/unreal_life.txt",
+//    "color": {
+//      "1": "#0B195B",
+//      "2": "#3E51A8",
+//      "3": "#233998",
+//      "4": "#E2E4FC",
+//      "5": "#471E89",
+//      "6": "#EC91B0",
+//      "7": "#E5AFCB",
+//      "8": "#8349A5",
+//      "9": "#D421A0"
+//    }
+//  },
   "display": {
     "separator": ""
   },
@@ -94,11 +112,6 @@
     {
       "type": "lm",
       "key": "│   ├── lm: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "de",
-      "key": "│   ├── de: ",
       "keyColor": "#cdd6f4"
     },
     {

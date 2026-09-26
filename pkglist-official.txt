@@ -54,7 +54,6 @@ swayidle
 swaylock-effects
 tesseract-data-chi_sim
 tlp
-torbrowser-launcher
 tree
 tree-sitter-cli
 ttf-jetbrains-mono-nerd

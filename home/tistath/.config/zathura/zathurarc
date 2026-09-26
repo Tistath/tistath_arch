@@ -1,9 +1,4 @@
 include catppuccin-mocha
-# 移动键位
-map j scroll left
-map k scroll down
-map l scroll up
-map ; scroll right
 # 翻页
 map <C-k> navigate next
 map <C-l> navigate previous

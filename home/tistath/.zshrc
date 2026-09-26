@@ -44,10 +44,16 @@ unsetopt beep
 # 历史子串搜索结果去重
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
-source ~/.config/zsh/functions.zsh
+source ~/.config/zsh/git_prompt_branch.zsh
+source ~/.config/zsh/yazi-cd.zsh
 
 # 左侧提示符
 PROMPT=$'\n %~'$'\n %F{blue}╰─>%f'
 
 # 右侧提示符
 RPROMPT='$(git_prompt_branch)'
+
+alias tistath-zen='cat ~/Documents/tistath_zen.txt'
+
+# vim模式
+bindkey -v

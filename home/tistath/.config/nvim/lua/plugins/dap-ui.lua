@@ -1,6 +1,6 @@
 return {
   "rcarriga/nvim-dap-ui",
-  lazy = true,
+  event = "BufReadPost",
   dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
   config = function()
     local dap = require("dap")
@@ -71,5 +71,7 @@ return {
     dap.listeners.before.event_exited["dapui_config"] = function()
       dapui.close()
     end
+
+    vim.keymap.set("n", "<Leader>du", dapui.toggle, { desc = "切换 DAP UI" })
   end,
 }
