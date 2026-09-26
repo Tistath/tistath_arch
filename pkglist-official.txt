@@ -36,6 +36,7 @@ mate-polkit
 neovim
 networkmanager
 niri
+noto-fonts-emoji
 pacman-contrib
 pastel
 pipewire-alsa
@@ -60,6 +61,7 @@ ttf-jetbrains-mono-nerd
 ufw
 waybar
 wget
+wireless-regdb
 wl-clipboard
 xwayland-satellite
 yay

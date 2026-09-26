@@ -23,8 +23,8 @@ return {
     }
 
     vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0 })
-    vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0 })
-    vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0 })
+    vim.api.nvim_set_hl(0, "DapLogPoint",   { ctermbg = 0 })
+    vim.api.nvim_set_hl(0, "DapStopped",    { ctermbg = 0 })
 
     local dap_breakpoint = {
       error = {

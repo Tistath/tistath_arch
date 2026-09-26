@@ -661,10 +661,14 @@ git remote set-url origin git@github.com:Tistath/tistath_arch.git
 ## 备份配置
 
 ```zsh
+
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
 rsync -av --delete ~/.config/htop/ ~/tistath_arch/home/tistath/.config/htop/
+rsync -av --delete ~/.config/fcitx5/ ~/tistath_arch/home/tistath/.config/fcitx5/
+rsync -av --delete ~/.local/share/fcitx5/rime/default.custom.yaml ~/tistath_arch/home/tistath/.local/share/fcitx5/rime/default.custom.yaml
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
+rsync -av --delete ~/.config/environment.d/ ~/tistath_arch/home/tistath/.config/environment.d/
 rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
 rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
 rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
@@ -713,6 +717,7 @@ git push -u origin main
 | bluez-utils | 蓝牙服务命令行工具 |
 | ufw | 防火墙 |
 | git | 版本管理 |
+| wireless-regdb | 无线监管数据库 |
 
 | 系统维护 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
@@ -794,8 +799,9 @@ git push -u origin main
 
 | 字体 | 说明 |
 | :-------------------------------------- | :-------------------------------------- |
-| adobe-source-han-sans-otc-fonts | 思源黑体，简繁日韩字体 |
-| ttf-jetbrains-mono-nerd | Jetbrains mono nerd font,英文字体及图标 |
+| ttf-jetbrains-mono-nerd | JetBrainsMono Nerd Font，英文字体及图标 |
+| adobe-source-han-sans-otc-fonts | Source Han Sans SC，思源黑体，简繁日韩字体 |
+| noto-fonts-emoji | Noto Color Emoji，Emoji字体 |
 
 | 输入法| 说明 |
 | :-------------------------------------- | :-------------------------------------- |

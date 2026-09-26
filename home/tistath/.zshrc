@@ -53,6 +53,7 @@ PROMPT=$'\n %~'$'\n %F{blue}╰─>%f'
 # 右侧提示符
 RPROMPT='$(git_prompt_branch)'
 
+# 三省吾身
 alias tistath-zen='cat ~/Documents/tistath_zen.txt'
 
 # vim模式
