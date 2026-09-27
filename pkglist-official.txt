@@ -12,10 +12,10 @@ chafa
 clang
 clash-verge-rev
 copyq
+dunst
 efibootmgr
 fastfetch
 fcitx5
-fcitx5-configtool
 fcitx5-gtk
 fcitx5-qt
 fcitx5-rime
@@ -31,7 +31,6 @@ kitty
 libnotify
 linux
 linux-firmware
-mako
 man-db
 mate-polkit
 neovim

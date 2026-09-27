@@ -114,7 +114,7 @@ spawn-at-startup "kitty" "-e" "zsh" "-c" "fastfetch; exec zsh"                  
 spawn-at-startup "fcitx5"                                                                        // 输入法
 spawn-at-startup "copyq"                                                                         // 剪切板
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"                       // 权限询问
-spawn-at-startup "mako"                                                                          // 消息
+spawn-at-startup "dunst"                                                                          // 消息
 spawn-at-startup "/home/tistath/.config/niri/scripts/swayidle.sh"                                // 锁屏
 
 screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png" // 截屏路径
@@ -122,7 +122,6 @@ screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-
 environment {                                                          // 环境变量
     LC_MESSAGES         "zh_CN.UTF-8"                  // 编码
     XMODIFIERS          "@im=fcitx"                    // X11输入法
-    GTK_IM_MODULE       "fcitx"                        // GTK输入法
     QT_IM_MODULE        "fcitx"                        // Qt输入法
     INPUT_METHOD        "fcitx"                        // 部分程序的输入法
     SDL_IM_MODULE       "fcitx"                        // SDL（游戏）的输入法

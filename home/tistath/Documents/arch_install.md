@@ -1,4 +1,4 @@
-# Arch Linux安装配置指南
+# Arch Linux安装配置指南（双系统最好放两个盘，一个盘则开两个efi）
 
 ## 1. 准备Live环境
 
@@ -32,7 +32,9 @@ eject /dev/sda
 
 ### 1.3 进入Live环境
 
-- 进入BIOS，禁用Secure Boot（若存在Secure Boot Mode，设为Standard或关闭）
+- 进入BIOS，禁用Secure Boot（若存在Secure Boot Mode，设为Standard或关闭）（进入方式因电脑而异）
+
+- 进入启动项（进入方式因电脑而异）
 
 - 确保处于UEFI模式（输出64表示成功）
 ```bash
@@ -41,10 +43,13 @@ cat /sys/firmware/efi/fw_platform_size
 
 ### 1.4 连接网络并同步时间
 
-- 连接wifi
+- 连接wifi（有线自动连接，无线执行以下命令）
 ```bash
 iwctl
-station wlan0 connect "wifi名"
+device list #查看设备名（以wlan0为例）
+station wlan0 scan #扫描网络
+station wlan0 get-networks #列出可用网络
+station wlan0 connect "wifi名"（不能是中文）
 输入密码
 exit
 ```
@@ -66,19 +71,23 @@ timedatectl set-ntp true
 - 查看磁盘设备
 ```bash
 lsblk -pf
+fdisk -l /dev/nvme0n1 #查看此设备是否有其他系统（Microsoft或Windows字样）
 ```
 
 - 对磁盘进行分区（以/dev/nvme0n1为例）
 ```bash
-cfdisk /dev/nvme0n1
+cfdisk /dev/nvme0n1 #新硬盘问询选择gpt
+# 如果不是gpt则
+fdisk /dev/nvme0n1
+输入g改为gpt #会清除原有数据！
+输入w保存
 
-delete所有已有分区
+delete所有已有分区（双系统别删）
 
 创建 EFI 分区：new -> 大小 1G -> type -> EFI System
 
 创建根分区：new -> 使用剩余全部空间 -> write -> quit
 ```
-
 - 确认分区结果
 ```bash
 lsblk -pf
@@ -86,7 +95,7 @@ lsblk -pf
 
 ### 2.2 格式化
 ```bash
-mkfs.fat -F 32 /dev/nvme0n1p1   # EFI 分区
+mkfs.fat -F 32 /dev/nvme0n1p1   # EFI 分区（如果同磁盘双系统应忽略此步骤）
 mkfs.btrfs -f /dev/nvme0n1p2    # 根分区
 ```
 
@@ -109,47 +118,44 @@ btrfs subvolume create /mnt/@swap
 umount /mnt
 ```
 
+
 - 正式挂载子卷
 ```bash
-mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
-mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
-mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
-```
-
-### 2.4 挂载启动分区
-```bash
-mount --mkdir /dev/nvme0n1p1 /mnt/boot
-df -h   # 检查挂载情况
-```
+mount -t btrfs -o subvol=/@,compress=zstd:15 /dev/nvme0n1p2 /mnt
+mount --mkdir -t btrfs -o subvol=/@home,compress=zstd:15 /dev/nvme0n1p2 /mnt/home
+mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd:15 /dev/nvme0n1p2 /mnt/swap
+mount --mkdir /dev/nvme0n1p1 /mnt/efi
+df -h # 检查挂载情况
+``` 
 
 ## 3. 安装基本系统
 
 ### 3.1 配置镜像源并安装基础包
 
-- 更新密钥
+- 配置镜像源
+```bash
+reflector -a 12 -c cn -f 10 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+```
+
+- 安装镜像
 ```bash
 pacman -Sy archlinux-keyring
 ```
 
-- 编辑/etc/pacman.d/mirrorlist，添加
-```text
-Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
-```
-
 - 安装基础包
 ```bash
-pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
-pacstrap /mnt networkmanager neovim amd-ucode
+pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs（如果是marvell网卡加上linux-firmware-marvell）
+pacstrap /mnt networkmanager neovim sudo amd-ucode（如果是Intel显卡改成intel-ucode）
 ```
 
-### 3.2 创建交换文件
+
+### 3.2 生成交换文件
 ```bash
-btrfs filesystem mkswapfile --size 8g --uuid clear /mnt/swap/swapfile
+btrfs filesystem mkswapfile --size 4g --uuid clear /mnt/swap/swapfile #由于采用Zram，swap比正常小
 chmod 600 /mnt/swap/swapfile
 swapon /mnt/swap/swapfile
 ```
+
 
 ### 3.3 生成 fstab
 ```bash
@@ -166,7 +172,7 @@ arch-chroot /mnt
 
 ### 4.1 时区与硬件时钟
 ```bash
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+timedatectl set-timezone Asia/Shanghai
 hwclock --systohc
 ```
 
@@ -203,37 +209,108 @@ echo "tistath" > /etc/hostname
 
 ### 4.4 设置root密码
 ```bash
-passwd
+passwd root
 ```
 
-### 4.5 安装并配置systemd-boot
+
+### 4.5 安装并配置grub或systemd-boot
+- grub
+
+    - 安装
+    ```bash
+    pacman -S grub efibootmgr
+    grub-install --target=x86_64-efi --efi-dictionary=/efi --boot-dictionary=/efi --removable（单盘单efi不要removable）
+    ln -s /efi/grub /boot/grub
+    grub-mkconfig -o /efi/grub/grub.cfg
+    ```
+
+    - 设置日志：编辑`/etc/default/grub`
+    ```text
+    将GRUB_CMDLINE_LINUX设为"loglevel=5"
+    ```
+
+    - 生效
+    ```bash
+    grub-mkconfig -o /efi/grub/grub.cfg
+    ```
+
+- systemd-boot
+
+    - 安装
+    ```bash
+    pacman -S efibootmgr
+    systemctl daemon-reload
+    bootctl install --esp-path=/boot
+    chmod 600 /boot/loader/random-seed
+    ```
+
+    - 创建启动项/boot/loader/entries/arch.conf
+    ```conf
+    title Arch Linux
+    linux /vmlinuz-linux
+    initrd /amd-ucode.img
+    initrd /initramfs-linux.img
+    options root=UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) rootflags=subvol=@ rw loglevel=5
+    ```
+
+    - 配置启动管理器/boot/loader/loader.conf
+    ```conf
+    default arch
+    timeout 3
+    console-mode max
+    editor no
+    ```
+
+    - 生效
+    ```bash
+    systemd-machine-id-setup
+    bootctl update
+    ```
+
+### 4.6 配置双系统（Windows）
+
+- 系统搜寻
 ```bash
-systemctl daemon-reload
-bootctl install --esp-path=/boot
-chmod 600 /boot/loader/random-seed
+pacman -S os-prober exfat-utils
 ```
 
-- 创建启动项/boot/loader/entries/arch.conf
-```conf
-title   Arch Linux
-linux   /vmlinuz-linux
-initrd  /amd-ucode.img
-initrd  /initramfs-linux.img
-options root=UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) rootflags=subvol=@ rw loglevel=5
+编辑`/etc/default/grub`
+```
+将GRUB_DEFAULT设为saved
+取消GRUB_DISABLE_OS_PROBER=false的注释
+取消GRUB_SAVEDEFAULT=true的注释
 ```
 
-- 配置启动管理器/boot/loader/loader.conf
-```conf
-default arch
-timeout 3
-console-mode max
-editor no
-```
-
-- 生效
 ```bash
-systemd-machine-id-setup
-bootctl update
+grub-mkconfig -o /efi/grub/grub.cfg
+```
+
+### 4.7配置Zram和交换空间
+
+安装Zram
+```bash
+pacman -S zram-generator
+```
+
+编辑`/etc/systemd/zram-generator.conf`，写入
+```text
+[zram0]
+zram-size = ram
+compression-algorithm = zstd
+```
+
+编辑`/etc/default/grub`
+```
+将GRUB_CMDLINE_LINUX_DEFAULT改为"loglevel=5 zswap.enable=0"
+```
+```bash
+grub-mkconfig -o /efi/grub/grub.cfg
+```
+
+### 4.8 重启
+```bash
+exit # 退出 chroot
+reboot
 ```
 
 ### 4.6 安装efibootmgr并重启
@@ -263,19 +340,17 @@ pacman -S zsh
 
 ### 5.3 创建普通用户并配置
 ```bash
-useradd -m -G wheel,users -s /usr/bin/fish tistath
+useradd -mG wheel,users tistath
 passwd tistath
-echo "tistath ALL=(ALL) ALL" > /etc/sudoers.d/tistath
+用visudo编辑`/etc/sudoers.d/`，取消 %wheel ALL=(ALL:ALL) ALL
 chmod 440 /etc/sudoers.d/tistath
 退出root，以普通用户登录
 ```
-
 ### 5.4 安装图形界面与基本应用
 ```bash
 sudo pacman -S  mate-polkit xdg-desktop-portal-gtk xwayland-satellite niri \
                 kitty \
-                adobe-source-han-sans-otc-fonts ttf-jetbrains-mono-nerd \
-                firefox #Firefox 的交互询问均选择2
+                adobe-source-han-sans-otc-fonts ttf-jetbrains-mono-nerd
 fc-cache -fv
 ```
 
@@ -311,6 +386,10 @@ sudo pacman -S libnotify mako
     Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
     Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch
     Server = https://repo.huaweicloud.com/archlinuxcn/$arch
+    取消
+    [multilib]
+    Include = /etc/pacman.d/mirrorlist
+    的注释
     ```
 
     - 安装yay并配置AUR镜像
@@ -339,8 +418,6 @@ patch:
   'engine/filters':
     - simplifier
 ```
-
-- 在输入法配置中添加Rime
 
 ### 7.2 Watt-Toolkit配置
 
@@ -654,6 +731,14 @@ cd ~/tistath_arch
 git remote set-url origin git@github.com:Tistath/tistath_arch.git
 ```
 
+### 7.19 快照启动项配置
+```bash
+sudo systemctl enable --now grub-btrfsd
+登录root，执行snapper -c root create-config /
+snapper -c home create-config /home
+grub-mkconfig -o /efi/grub/grub.cfg
+```
+
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
@@ -661,8 +746,6 @@ git remote set-url origin git@github.com:Tistath/tistath_arch.git
 ## 备份配置
 
 ```bash
-
-
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
 rsync -av --delete ~/.config/htop/ ~/tistath_arch/home/tistath/.config/htop/
@@ -674,7 +757,7 @@ rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
 rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
-rsync -av --delete ~/.config/mako/ ~/tistath_arch/home/tistath/.config/mako/
+rsync -av --delete ~/.config/dunst/ ~/tistath_arch/home/tistath/.config/dunst/
 rsync -av --delete ~/.config/niri/ ~/tistath_arch/home/tistath/.config/niri/
 rsync -av --delete ~/.config/nvim/ ~/tistath_arch/home/tistath/.config/nvim/
 rsync -av --delete ~/.config/swaylock/ ~/tistath_arch/home/tistath/.config/swaylock/
@@ -693,20 +776,23 @@ cd ~/tistath_arch
 git add .
 git commit -m ""
 git push -u origin main
-
 ```
 ## 包
 
 | 内核固件 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | linux | 内核本体 |
 | linux-firmware | 必需固件集合 |
 | amd-ucode | 微码，管理CPU |
 | tlp | 电源管理 |
 | brightnessctl | 亮度调节 |
+| sof-firmware | 现代固件 |
+| alsa-ucm-conf | 固件配置文件 |
+| alsa-firmware | 罕见固件 |
+（独立显卡需要参考wiki安装包）
 
 | 基础系统 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | base | 最小系统环境 |
 | base-devel | 编译环境 |
 | btrfs-progs | BTRFS文件系统管理工具 |
@@ -721,12 +807,18 @@ git push -u origin main
 | wireless-regdb | 无线监管数据库 |
 
 | 系统维护 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | snapper | 快照工具 |
 | snap-pac | 自动创建快照 |
+| grub-btrfs | 在启动项显示快照 |
+| inotify-tools | grub-btrfs的依赖 |
+| linux-lts | LTS长期稳定内核 |
+| linux-lts-headers | LTS内核头文件 |
+| downgrade | 软件包降级工具 |
+| snapper-tui | 快照管理工具 |
 
 | 桌面环境 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | niri | 窗口管理器 |
 | xwayland-satellite | 兼容X11应用 |
 | waybar | 状态栏 |
@@ -740,7 +832,7 @@ git push -u origin main
 | copyq | 图形化高级剪切板 |
 
 | 命令行工具 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | kitty | 终端 |
 | zsh | shell |
 | fzf | Zsh的模糊历史搜索后端 |
@@ -759,12 +851,12 @@ git push -u origin main
 | ripgrep | yazi的内容搜索后端 |
 
 | AUR | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | archlinuxcn-keyring | 仓库密钥 |
 | yay | AUR助手 |
 
 | 开发工具 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | neovim | 文本编辑器 |
 | tree-sitter-cli | 语法树解析，treesitter依赖 |
 | ripgrep | 高速文本搜索，telescope依赖 |
@@ -772,26 +864,25 @@ git push -u origin main
 | clang | C/C++前后端 |
 
 | 多媒体 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
-| gst-libav | 音视频编解码插件 |
-| gst-plugins-base | 音视频编解码插件 |
-| gst-plugins-good | 音视频编解码插件 |
+| :------------------------------------------- | :------------------------------------------- |
 | libva-utils | 硬件加速管理 |
-| pipewire-pulse | 音视频处理后端 |
+| pipewire | 音视频服务 |
+| wireplumber | 音视频会话管理器 |
+| pipewire-pulse | 音视频兼容包 |
+| pipewire-alsa | 音视频兼容包 |
+| pipewire-jack | 音视频兼容包 |
 
 | 浏览器 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | zen-browser | Zen浏览器 |
-| gnome-keyring | 密码管理 |
-| torbrowser-launcher | 洋葱浏览器 |
 
 | 加速器 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | watt-toolkit-bin | 加速github，steam等 |
 | clash-verge-rev | 梯子 |
 
 | 查看 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | zathura | PDF查看工具 |
 | zathura-pdf-mupdf | PDF渲染后端 |
 | tesseract-data-eng | PDF英文语言包 |
@@ -800,31 +891,30 @@ git push -u origin main
 | imv | 图片查看器 |
 
 | 字体 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | ttf-jetbrains-mono-nerd | JetBrainsMono Nerd Font，英文字体及图标 |
 | adobe-source-han-sans-otc-fonts | Source Han Sans SC，思源黑体，简繁日韩字体 |
 | noto-fonts-emoji | Noto Color Emoji，Emoji字体 |
 
 | 输入法| 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | fcitx5 | 输入法 |
 | fcitx5-rime | 中州韵，桥接中文输入法 |
-| fcitx5-configtool | 输入法配置工具 |
-| fcitx5-gtk | 使输入法在GTK中可用 |
-| fcitx5-qt | 使输入法在QT中可用 |
+| fcitx5-gtk | 使输入法在GTK应用中可用 |
+| fcitx5-qt | 使输入法在QT应用中可用 |
 | rime-ice-pinyin-git | 雾凇拼音 |
 
 | 游戏 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | steam | 游戏平台 |
 
 | 社交 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | linuxqq | QQ |
 | wechat-universal-bwrap | 隐私版微信 |
 
 | 音乐 | 说明 |
-| :-------------------------------------- | :-------------------------------------- |
+| :------------------------------------------- | :------------------------------------------- |
 | qqmusic-bin | QQ音乐 |
 
 - 清理孤儿包
