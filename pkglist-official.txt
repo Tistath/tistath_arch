@@ -32,7 +32,6 @@ libnotify
 linux
 linux-firmware
 man-db
-mate-polkit
 neovim
 networkmanager
 niri
@@ -55,6 +54,7 @@ swayidle
 swaylock-effects
 tesseract-data-chi_sim
 tlp
+trash-cli
 tree
 tree-sitter-cli
 ttf-jetbrains-mono-nerd
@@ -68,4 +68,5 @@ yay
 yazi
 zathura
 zathura-pdf-mupdf
+zoxide
 zsh

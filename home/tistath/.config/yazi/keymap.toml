@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on   = [ "g", "t" ]
+run  = "cd ~/.local/share/Trash"
+desc = "Go to trash bin"

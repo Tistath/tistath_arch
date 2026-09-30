@@ -23,8 +23,10 @@ plugins=(
 # 加载Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# fzf 集成
+# fzf集成
 source <(fzf --zsh)
+# fzf主题
+source ~/.oh-my-zsh/custom/themes/catppuccin-fzf-mocha.zsh
 
 # man手册搜索路径
 export MANPATH="/usr/local/man:$MANPATH"
@@ -44,12 +46,12 @@ unsetopt beep
 # 历史子串搜索结果去重
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
+# 函数
 source ~/.config/zsh/git_prompt_branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
 
 # 左侧提示符
 PROMPT=$'\n %~'$'\n %F{blue}╰─>%f'
-
 # 右侧提示符
 RPROMPT='$(git_prompt_branch)'
 

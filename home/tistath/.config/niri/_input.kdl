@@ -1,0 +1,19 @@
+input {
+    keyboard {           // 键盘
+        repeat-delay 190 // 长按的延迟
+        repeat-rate  20  // 每秒重复的次数
+        numlock          // 默认启用小键盘
+    }
+
+    touchpad {          // 触摸板
+        tap             // 点击视为左键
+        natural-scroll  // 自然滚动
+    }
+
+    mouse {             // 鼠标
+        accel-speed 0.5 // 鼠标速度
+    }
+
+    trackpoint {        // 指点杆
+    }
+}

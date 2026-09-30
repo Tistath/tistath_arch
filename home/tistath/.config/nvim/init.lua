@@ -17,6 +17,7 @@ vim.opt.hlsearch        = true          -- 高亮搜索结果
 vim.opt.incsearch       = true          -- 实时搜索
 vim.opt.ignorecase      = true          -- 忽略大小写
 vim.opt.smartcase       = true          -- 输入含大写时不忽略
+vim.opt.undofile        = true          -- 持久化撤销，关闭文件重新打开仍可撤销
 
 -- 键位映射
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, })

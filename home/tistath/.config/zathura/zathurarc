@@ -1,15 +1,18 @@
-include catppuccin-mocha
+include _catppuccin-mocha
+
 # 翻页
-map <C-k> navigate next
-map <C-l> navigate previous
-# 跳转页
-map g goto
+map <C-j> navigate next
+map <C-k> navigate previous
+
 # 滚动速度
 set scroll-step 120
+
 # 字体
 set font 'JetBrainsMono Nerd Font'
+
 # 仅显示文件名
 set window-title-basename true
 set statusbar-basename true
+
 # 使用系统剪切板
 set selection-clipboard clipboard

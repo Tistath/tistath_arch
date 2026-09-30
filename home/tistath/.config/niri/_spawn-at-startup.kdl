@@ -1,0 +1,13 @@
+spawn-at-startup "swaybg" "-i" "/home/tistath/Pictures/Pictures/tistath_desktop.png" "-m" "fill" // 壁纸
+
+spawn-at-startup "waybar"                                                                        // 状态栏
+
+spawn-at-startup "kitty" "-e" "zsh" "-c" "fastfetch; exec zsh"                                   // 终端及信息显示
+
+spawn-at-startup "fcitx5"                                                                        // 输入法
+
+spawn-at-startup "copyq"                                                                         // 剪切板
+
+spawn-at-startup "dunst"                                                                         // 消息
+
+spawn-at-startup "/home/tistath/.config/niri/_swayidle.sh"                                       // 锁屏

@@ -1,0 +1,7 @@
+cursor {
+        xcursor-theme "Colloid-Dracula-cursors-dark" // 主题
+
+        xcursor-size 37                              // 大小
+
+        hide-after-inactive-ms 15000                 // 待机隐藏时间
+}

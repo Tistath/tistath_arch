@@ -1,0 +1,5 @@
+gestures {
+    hot-corners { // 热角规则
+        off       // 关闭
+    }
+}

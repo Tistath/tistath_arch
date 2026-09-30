@@ -5,17 +5,20 @@
     "interval": 60,
     "format": "{:%y-%m-%d %a}"
   },
+
   // 时间
   "clock": {
     "tooltip": false,
     "interval": 59,
     "format": "󰥔 {:%H:%M}"
   },
+
   // 系统托盘（后台）
   "tray": {
     "icon-size": 22,
     "spacing": 7
   },
+
   // 电池信息
   "battery": {
     "interval": 10,
@@ -38,6 +41,7 @@
     ],
     "tooltip-format": "剩余电量：{capacity}%\n充放电：{power}\n可用时间：{timeTo}\n电池健康度：{health}%"
   },
+
   //  音量信息
   "wireplumber": {
     "format": "{icon} {volume}%",
@@ -51,6 +55,7 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
   },
+
   // 网络信息
   "group/network": {
     "orientation": "inherit",// 继承父类排列方式

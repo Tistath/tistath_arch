@@ -756,6 +756,7 @@ rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
 rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
 rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
+rsync -av --delete ~/.config/imv/ ~/tistath_arch/home/tistath/.config/imv/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
 rsync -av --delete ~/.config/dunst/ ~/tistath_arch/home/tistath/.config/dunst/
 rsync -av --delete ~/.config/niri/ ~/tistath_arch/home/tistath/.config/niri/
@@ -827,7 +828,6 @@ git push -u origin main
 | swaylock-effects | 屏保 |
 | mako | 消息通知 |
 | libnotify | 桌面通知库，mako依赖 |
-| mate-polkit | 图形应用提权 |
 | wl-clipboard | 底层剪切板 |
 | copyq | 图形化高级剪切板 |
 
@@ -849,6 +849,7 @@ git push -u origin main
 | poppler | yazi的pdf预览后端 |
 | resvg | yazi的SVG（矢量图）预览后端 |
 | ripgrep | yazi的内容搜索后端 |
+| trash-cli | yazi的回收站控制工具 |
 
 | AUR | 说明 |
 | :------------------------------------------- | :------------------------------------------- |
