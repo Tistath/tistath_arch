@@ -40,9 +40,6 @@ export EDITOR='nvim'
 # 编译标志：根据当前架构设置
 export ARCHFLAGS="-arch $(uname -m)"
 
-# 禁用提示音
-unsetopt beep
-
 # 历史子串搜索结果去重
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
