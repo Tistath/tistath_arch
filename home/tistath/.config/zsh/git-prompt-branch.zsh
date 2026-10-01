@@ -1,5 +1,6 @@
 # Git分支与状态提示
-git_prompt_branch() {
+
+git-prompt-branch() {
     # 不在 Git 仓库内则直接返回
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         return

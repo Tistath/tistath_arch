@@ -348,7 +348,7 @@ chmod 440 /etc/sudoers.d/tistath
 ```
 ### 5.4 安装图形界面与基本应用
 ```bash
-sudo pacman -S  mate-polkit xdg-desktop-portal-gtk xwayland-satellite niri \
+sudo pacman -S  xwayland-satellite niri \
                 kitty \
                 adobe-source-han-sans-otc-fonts ttf-jetbrains-mono-nerd
 fc-cache -fv
@@ -578,6 +578,14 @@ sudo udevadm trigger
 
         - 设置`壁纸`
 
+    - `扩展栏`：
+
+        - 点击搜索栏右侧`扩展`图标
+
+        - 右键`沉浸式翻译 - AI 双语网页翻译 | PDF翻译 | 视频翻译 | 漫画翻译`图标
+
+        - 点击`固定到工具栏`
+
 ### 7.6 htop配置
 
 - <F2>打开设置
@@ -597,7 +605,7 @@ sudo udevadm trigger
 
     - Colors:
 
-    Monochromatic
+    Broken Gray
 
 ### 7.7 [copyq](https://github.com/catppuccin/copyq)配置
 

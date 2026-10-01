@@ -4,6 +4,7 @@ amd-ucode
 archlinuxcn-keyring
 base
 base-devel
+bat
 bluetui
 bluez
 brightnessctl

@@ -47,13 +47,14 @@ unsetopt beep
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 # 函数
-source ~/.config/zsh/git_prompt_branch.zsh
+source ~/.config/zsh/fzf-preview.zsh
+source ~/.config/zsh/git-prompt-branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
 
 # 左侧提示符
 PROMPT=$'\n %~'$'\n %F{blue}╰─>%f'
 # 右侧提示符
-RPROMPT='$(git_prompt_branch)'
+RPROMPT='$(git-prompt-branch)'
 
 # 三省吾身
 alias tistath-zen='cat ~/Documents/tistath_zen.txt'

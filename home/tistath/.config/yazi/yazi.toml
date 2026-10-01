@@ -32,11 +32,11 @@ nvim = [
 
 [open]
 rules = [
-    { mime = "image/*",         use = "imv"     }, # 图片
-    { mime = "application/pdf", use = "zathura" }, # PDF
-    { mime = "video/*",         use = "ffplay"  }, # 视频
-    { mime = "audio/*",         use = "ffplay"  }, # 音频
-    { mime = "*",               use = "nvim"    }, # fallback
+    { mime = "image/*",         use = [ "imv",     "nvim" ] }, # 图片
+    { mime = "application/pdf", use = [ "zathura", "nvim" ] }, # PDF
+    { mime = "video/*",         use = [ "ffplay",  "nvim" ] }, # 视频
+    { mime = "audio/*",         use = [ "ffplay",  "nvim" ] }, # 音频
+    { mime = "*",               use = [ "nvim",    "nvim" ] }, # fallback
 ]
 
 [input]

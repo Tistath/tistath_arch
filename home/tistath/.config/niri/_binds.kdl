@@ -6,7 +6,8 @@ binds {
 
     Mod+T { spawn "kitty" "-e" "zsh" "-c" "htop; exec zsh"; }
 
-    Mod+Y { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; } // yazi文件管理器
+    Mod+Y       { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; } // yazi文件管理器
+    Mod+Shift+Y { spawn "kitty" "-e" "zsh" "-c" "sudo yazi; exec zsh"; }
 
     Mod+B { spawn "zen-browser"; } // 火狐浏览器
 
