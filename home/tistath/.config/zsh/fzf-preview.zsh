@@ -38,7 +38,7 @@ fzf-preview() {
             return
         fi
 
-        ${batname} --style="${BAT_STYLE:-numbers}" --color=always --pager=never --highlight-line="${center:-0}" -- "$file"
+        ${batname} --style="${BAT_STYLE:-numbers}" --color=always --highlight-line="${center:-0}" -- "$file"
         return
     fi
 

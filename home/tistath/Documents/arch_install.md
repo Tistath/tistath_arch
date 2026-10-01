@@ -754,6 +754,7 @@ grub-mkconfig -o /efi/grub/grub.cfg
 ## 备份配置
 
 ```bash
+rsync -av --delete ~/.config/bat/ ~/tistath_arch/home/tistath/.config/bat/
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
 rsync -av --delete ~/.config/htop/ ~/tistath_arch/home/tistath/.config/htop/
@@ -762,7 +763,7 @@ rsync -av --delete ~/.local/share/fcitx5/rime/default.custom.yaml ~/tistath_arch
 rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
 rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
 rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
-rsync -av --delete ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
+rsync -av --delete ~/.oh-my-zsh/custom/themes/ ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/
 rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
 rsync -av --delete ~/.config/imv/ ~/tistath_arch/home/tistath/.config/imv/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
