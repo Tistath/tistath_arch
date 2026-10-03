@@ -19,15 +19,7 @@ vim.opt.ignorecase      = true          -- 忽略大小写
 vim.opt.smartcase       = true          -- 输入含大写时不忽略
 vim.opt.undofile        = true          -- 持久化撤销，关闭文件重新打开仍可撤销
 
--- 键位映射
-vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, })
-
-vim.keymap.set("n", "<Leader>ms", ":messages<CR>", { noremap = true, silent = true, desc = "消息记录", })
-
-vim.keymap.set("n", "<Leader>tm", ":belowright split | terminal zsh<CR>", { noremap = true, silent = true, desc = "终端小窗", })
-
-vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { noremap = true, silent = true,})
-
+-- 光标样式
 vim.opt.guicursor =  "n-v-c-ve:block,"
                   .. "i-ci:block-blinkwait0-blinkon1-blinkoff1,"
                   .. "r-cr-o:hor1"

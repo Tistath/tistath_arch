@@ -2,24 +2,26 @@ binds {
 
 // 遵循Ctrl的效果比Shift大
 
-    Mod+Space allow-inhibiting=false repeat=false { spawn "kitty"; } // 终端
+    Mod+Return allow-inhibiting=false repeat=false cooldown-ms=190 { spawn "kitty"; } // 终端
 
-    Mod+T { spawn "kitty" "-e" "zsh" "-c" "htop; exec zsh"; }
+    Mod+T cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "htop; exec zsh"; }
 
-    Mod+Y       { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; } // yazi文件管理器
-    Mod+Shift+Y { spawn "kitty" "-e" "zsh" "-c" "sudo yazi; exec zsh"; }
+    Mod+Y       cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; } // yazi文件管理器
+    Mod+Shift+Y cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "sudo yazi; exec zsh"; }
 
-    Mod+B { spawn "zen-browser"; } // 火狐浏览器
+    Mod+B cooldown-ms=190 { spawn "zen-browser"; } // 火狐浏览器
 
-    Mod+W       { spawn "wechat-universal"; } // 微信
-    Mod+Shift+W { spawn "linuxqq";          } // QQ
-    Mod+Ctrl+W  { spawn "qqmusic";          } // QQ音乐
+    Mod+W       cooldown-ms=190 { spawn "wechat-universal"; } // 微信
+    Mod+Shift+W cooldown-ms=190 { spawn "linuxqq";          } // QQ
+    Mod+Ctrl+W  cooldown-ms=190 { spawn "qqmusic";          } // QQ音乐
 
-    Mod+S       { spawn "steam";        } // steam
-    Mod+Shift+S { spawn "watt-toolkit"; } // 加速器
+    Mod+S       cooldown-ms=190 { spawn "steam";        } // steam
+    Mod+Shift+S cooldown-ms=190 { spawn "watt-toolkit"; } // 加速器
 
-    Mod+D       { spawn    "swaylock";                              } // 锁屏
-    Mod+Shift+D { spawn-sh "pkill swayidle || /home/tistath/.config/niri/_swayidle.sh"; } // 开关定时锁屏
+    Mod+D       cooldown-ms=190 { spawn    "swaylock";                              } // 锁屏
+    Mod+Shift+D cooldown-ms=190 { spawn-sh "pkill swayidle || /home/tistath/.config/niri/_swayidle.sh"; } // 开关定时锁屏
+
+    Mod+Space cooldown-ms=190 { toggle-overview; } // 窗口概览
 
     // 功能键（Fn）
     XF86AudioRaiseVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; } // 增大音量
@@ -95,8 +97,8 @@ binds {
     Mod+Page_Down                       { focus-workspace-down; }
     Mod+O                               { focus-workspace-up;   }
     Mod+I                               { focus-workspace-down; }
-    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up;   } // 冷却
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=140 { focus-workspace-up;   } // 冷却
+    Mod+WheelScrollDown cooldown-ms=140 { focus-workspace-down; }
  
     Mod+Shift+1 { focus-workspace 1;  }
     Mod+Shift+2 { focus-workspace 2;  }
@@ -146,11 +148,11 @@ binds {
     Mod+E       { set-column-width "50%";  }
     Mod+Shift+E { set-window-height "50%"; }
 
-    Mod+V       { toggle-window-floating;                   } // 切换浮动/平铺
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; } // 在浮动/平铺间切换聚焦
+    Mod+V       cooldown-ms=190 { toggle-window-floating;                   } // 切换浮动/平铺
+    Mod+Shift+V cooldown-ms=190 { switch-focus-between-floating-and-tiling; } // 在浮动/平铺间切换聚焦
 
     // 切换标签页/堆叠
-    Mod+Tab { toggle-column-tabbed-display; }
+    Mod+Tab cooldown-ms=190 { toggle-column-tabbed-display; }
 
     // 截屏
     Print           { screenshot;                          }
@@ -163,7 +165,7 @@ binds {
     // 禁用niri快捷键
     Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
 
-    Mod+Q allow-inhibiting=false repeat=false { close-window;       } // 关闭窗口
+    Mod+Q allow-inhibiting=false repeat=false cooldown-ms=190 { close-window;       } // 关闭窗口
     Mod+Shift+Q                               { power-off-monitors; } // 熄屏
     Mod+Ctrl+Q                                { quit;               } // 退出niri
 }

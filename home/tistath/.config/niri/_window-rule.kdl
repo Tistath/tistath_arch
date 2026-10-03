@@ -2,12 +2,6 @@ window-rule {
     geometry-corner-radius 12         // 圆角大小
     clip-to-geometry true             // 裁掉超出边框的内容
     draw-border-with-background false // 不填充背景
-
-    focus-ring {               // 聚焦窗口的边框                  
-        on
-        width 1.50             // 宽度
-        active-color "#b4befe" // 颜色（mocha-Lavender）
-    }
 }
 // Zen浏览器窗口规则
 window-rule {

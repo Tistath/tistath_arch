@@ -9,8 +9,8 @@
   // 时间
   "clock": {
     "tooltip": false,
-    "interval": 59,
-    "format": "󰥔 {:%H:%M}"
+    "interval": 1,
+    "format": " {:%H:%M}"
   },
 
   // 系统托盘（后台）
@@ -45,11 +45,12 @@
   //  音量信息
   "wireplumber": {
     "format": "{icon} {volume}%",
-    "format-muted": "󰝟 {volume}%",
+    "format-muted": " {volume}%",
     "format-icons": [
-        "󰕿",
-        "󰖀",
-        "󰕾"
+        "",
+        "",
+        "",
+        ""
     ],
     "tooltip-format": "音量：{volume}%\n状态：{formatted_muted}",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",

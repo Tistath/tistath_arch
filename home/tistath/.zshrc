@@ -7,6 +7,9 @@ HYPHEN_INSENSITIVE="true"
 # 启用命令自动纠错
 ENABLE_CORRECTION="true"
 
+# 历史子串搜索结果去重
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
 # catppuccin-mocha语法高亮配色
 source ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 
@@ -40,16 +43,13 @@ export EDITOR='nvim'
 # 编译标志：根据当前架构设置
 export ARCHFLAGS="-arch $(uname -m)"
 
-# 历史子串搜索结果去重
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-
 # 函数
 source ~/.config/zsh/fzf-preview.zsh
 source ~/.config/zsh/git-prompt-branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
 
 # 左侧提示符
-PROMPT=$'\n %~'$'\n %F{blue}╰─>%f'
+PROMPT=$'\n %~'$'\n %F{blue}╰ %f'
 # 右侧提示符
 RPROMPT='$(git-prompt-branch)'
 
