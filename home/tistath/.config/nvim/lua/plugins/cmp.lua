@@ -16,15 +16,15 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<Up>"]        = cmp.mapping(function(fallback) fallback() end, { "i", "s" }),-- 防止覆盖i模式的移动
-        ["<Down>"]      = cmp.mapping(function(fallback) fallback() end, { "i", "s" }),
-        ["<C-j>"]       = cmp.mapping.select_next_item(),-- 替换用上下移动
-        ["<C-k>"]       = cmp.mapping.select_prev_item(),
+        ["<C-j>"]  = cmp.mapping.select_next_item(),         -- 下一候选词
+        ["<C-k>"]  = cmp.mapping.select_prev_item(),         -- 上一候选词
+        ["<C-CR>"] = cmp.mapping.confirm({ select = true }), -- 接受建议
+        ["<C-u>"]  = cmp.mapping.abort(),                    -- 取消建议
       }),
-      sources = cmp.config.sources({ -- 按次序补全lsp提供的名称，文件中出现过的词，文件路径
+      sources = cmp.config.sources({ -- 按次序补全文件中出现过的词，lsp提供的名称，文件路径
+        { name = "buffer"   },
         { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "path" },
+        { name = "path"     },
       }),
     })
   end,

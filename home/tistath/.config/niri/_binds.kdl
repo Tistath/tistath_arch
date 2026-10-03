@@ -21,7 +21,7 @@ binds {
     Mod+D       cooldown-ms=190 { spawn    "swaylock";                              } // 锁屏
     Mod+Shift+D cooldown-ms=190 { spawn-sh "pkill swayidle || /home/tistath/.config/niri/_swayidle.sh"; } // 开关定时锁屏
 
-    Mod+Space cooldown-ms=190 { toggle-overview; } // 窗口概览
+    Mod+Space { toggle-overview; } // 窗口概览
 
     // 功能键（Fn）
     XF86AudioRaiseVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; } // 增大音量
