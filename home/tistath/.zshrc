@@ -15,12 +15,12 @@ source ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 
 # 启用的插件列表
 plugins=(
-  git                          # Git 别名与提示符支持
-  zsh-autosuggestions          # 根据历史自动建议命令
-  zsh-syntax-highlighting      # 命令语法高亮
-  zsh-history-substring-search # 历史子串搜索（按上/下键循环匹配）
-  fzf                          # 模糊搜索
-  ohmyzsh-full-autoupdate      # 自动更新自定义插件
+        git                          # Git 别名与提示符支持
+        zsh-autosuggestions          # 根据历史自动建议命令
+        zsh-syntax-highlighting      # 命令语法高亮
+        zsh-history-substring-search # 历史子串搜索（按上/下键循环匹配）
+        fzf                          # 模糊搜索
+        ohmyzsh-full-autoupdate      # 自动更新自定义插件
 )
 
 # 加载Oh My Zsh

@@ -1,20 +1,20 @@
 {
-    "include": [
-        "modules.jsonc"
-    ],
-    "layer": "top",
-    "position": "top",
-    "fixed-center": true,
-    "modules-left": [
-        "tray"
-    ],
-    "modules-center":[
-        "clock#date",
-        "clock"
-    ],
-    "modules-right": [
-        "wireplumber",
-        "battery",
-        "network"
-    ]
+        "include": [
+                "modules.jsonc"
+        ],
+        "layer": "top",
+        "position": "top",
+        "fixed-center": true,
+        "modules-left": [
+                "tray"
+        ],
+        "modules-center":[
+                "clock#date",
+                "clock"
+        ],
+        "modules-right": [
+                "wireplumber",
+                "battery",
+                "network"
+        ]
 }

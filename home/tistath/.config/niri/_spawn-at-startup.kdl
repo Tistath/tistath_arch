@@ -1,4 +1,4 @@
-spawn-at-startup "swaybg" "-i" "/home/tistath/Pictures/Pictures/tistath_desktop.png" "-m" "fill" // 壁纸
+spawn-at-startup "swaybg" "-i" "/home/tistath/Pictures/Pictures/wallpaper/tistath_desktop.png" "-m" "fill" // 壁纸
 
 spawn-at-startup "waybar"                                                                        // 状态栏
 

@@ -1,10 +1,10 @@
 window-rule {
-    geometry-corner-radius 12         // 圆角大小
-    clip-to-geometry true             // 裁掉超出边框的内容
-    draw-border-with-background false // 不填充背景
+        geometry-corner-radius      12    // 圆角大小
+        clip-to-geometry            true  // 裁掉超出边框的内容
+        draw-border-with-background false // 不填充背景
 }
 // Zen浏览器窗口规则
 window-rule {
-    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$" // 图片窗口规则
-    open-floating true                                          // 设为浮动窗口
+        match         app-id=r#"zen-browser$"# title="^Picture-in-Picture$" // 图片窗口规则
+        open-floating true                                                  // 设为浮动窗口
 }

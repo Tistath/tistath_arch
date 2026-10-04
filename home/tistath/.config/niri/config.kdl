@@ -1,17 +1,17 @@
 // 输入设备
-include "_input.kdl"
+include         "_input.kdl"
 
 // 输出设备
-include "_output.kdl"
+include         "_output.kdl"
 
 // 快捷键
-include "_binds.kdl"
+include         "_binds.kdl"
 
 //布局
-include "_layout.kdl"
+include         "_layout.kdl"
 
 // 自启动项
-include "_spawn-at-startup.kdl"
+include         "_spawn-at-startup.kdl"
 
 // 接管客户端装饰（以隐藏标题栏）
 prefer-no-csd
@@ -20,22 +20,22 @@ prefer-no-csd
 screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // 环境变量
-include "_environment.kdl"
+include         "_environment.kdl"
 
 // 鼠标指针
-include "_cursor.kdl"
+include         "_cursor.kdl"
 
 // 窗口概览
-include "_overview.kdl"
+include         "_overview.kdl"
 
 // 快捷键面板
-include "_hotkey-overlate.kdl"
+include         "_hotkey-overlate.kdl"
 
 // 窗口规则
-include "_window-rule.kdl"
+include         "_window-rule.kdl"
 
 // 动画
-include "_animations.kdl"
+include         "_animations.kdl"
 
 // 手势规则
-include "_gestures.kdl"
+include         "_gestures.kdl"

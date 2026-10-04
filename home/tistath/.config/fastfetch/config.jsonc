@@ -1,145 +1,146 @@
 {
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+        "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
 // Arch Logo
-//  "logo": {
-//    "color": {
-//      "1": "#b4befe", // catppuccin-mocha-Lavender
-//      "2": "#b4befe"
-//    }
-//  },
-// 图片
-  "logo": {
-    "type": "kitty-direct",
-    "source": "~/.config/fastfetch/unreal_life_1792.png",
-    "width": 45
-  },
+//         "logo": {
+//                 "color": {
+//                         "1": "#b4befe", // catppuccin-mocha-Lavender
+//                         "2": "#b4befe"
+//                 }
+//         },
 // 字符画
-//  "logo": {
-//    "type": "file",
-//    "source": "~/.config/fastfetch/unreal_life.txt",
-//    "color": {
-//      "1": "#0B195B",
-//      "2": "#3E51A8",
-//      "3": "#233998",
-//      "4": "#DCDEF9",
-//      "5": "#471E89",
-//      "6": "#EC91B0",
-//      "7": "#E5AFCB",
-//      "8": "#8349A5",
-//      "9": "#D421A0"
-//    }
-//  },
-  "display": {
-    "separator": ""
-  },
-  "modules": [
-    {
-      "type": "title",
-      "format": "{##89b4fa}{user-name}{##b4befe}@{host-name}"
-    },
+//         "logo": {
+//                 "type": "file",
+//                 "source": "~/.config/fastfetch/unreal_life.txt",
+//                 "color": {
+//                         "1": "#0B195B",
+//                         "2": "#3E51A8",
+//                         "3": "#233998",
+//                         "4": "#DCDEF9",
+//                         "5": "#471E89",
+//                         "6": "#EC91B0",
+//                         "7": "#E5AFCB",
+//                         "8": "#8349A5",
+//                         "9": "#D421A0"
+//                 }
+//         },
+// 图片
+        "logo": {
+                "type": "kitty-direct",
+                "source": "~/.config/fastfetch/unreal_life_1792.png",
+                "width": 45
+        },
+        "display": {
+                "separator": ""
+        },
+        "modules": [
+                {
+                        "type": "title",
+                        "format": "{##89b4fa}{user-name}{##b4befe}@{host-name}"
+                },
 
-    {
-      "type": "custom",
-      "key": "├── {##89b4fa}Hardware",   // catppuccin-mocha-Blue
-      "keyColor": "#cdd6f4"              // catppuccin-mocha-Text
-    },
-    {
-      "type": "host",
-      "key": "│   ├── {##b4befe}host: ", // catppuccin-mocha-Lavender
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "cpu",
-      "key": "│   ├── {##b4befe}cpu: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "gpu",
-      "key": "│   ├── {##b4befe}gpu: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "disk",
-      "key": "│   ├── {##b4befe}disk: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "memory",
-      "key": "│   ├── {##b4befe}memory: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "swap",
-      "key": "│   ├── {##b4befe}swap: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "display",
-      "key": "│   ├── {##b4befe}display: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "brightness",
-      "key": "│   ╰── {##b4befe}brightness: ",
-      "keyColor": "#cdd6f4"
-    },
+                {
+                        "type": "custom",
+                        "key": "├── {##89b4fa}Hardware",   // catppuccin-mocha-Blue
+                        "keyColor": "#cdd6f4"              // catppuccin-mocha-Text
+                },
+                {
+                        "type": "host",
+                        "key": "│   ├── {##b4befe}host: ", // catppuccin-mocha-Lavender
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "cpu",
+                        "key": "│   ├── {##b4befe}cpu: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "gpu",
+                        "key": "│   ├── {##b4befe}gpu: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "disk",
+                        "key": "│   ├── {##b4befe}disk: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "memory",
+                        "key": "│   ├── {##b4befe}memory: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "swap",
+                        "key": "│   ├── {##b4befe}swap: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "display",
+                        "key": "│   ├── {##b4befe}display: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "brightness",
+                        "key": "│   ╰── {##b4befe}brightness: ",
+                        "keyColor": "#cdd6f4"
+                },
 
-    {
-      "type": "custom",
-      "key": "├── {##89b4fa}Environment",
-      "format": " ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "shell",
-      "key": "│   ├── {##b4befe}shell: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "terminal",
-      "key": "│   ├── {##b4befe}terminal: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "terminalfont",
-      "key": "│   ├── {##b4befe}terminalfont: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "lm",
-      "key": "│   ├── {##b4befe}lm: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "wm",
-      "key": "│   ╰── {##b4befe}wm: ",
-      "keyColor": "#cdd6f4"
-    },
+                {
+                        "type": "custom",
+                        "key": "├── {##89b4fa}Environment",
+                        "format": " ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "shell",
+                        "key": "│   ├── {##b4befe}shell: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "terminal",
+                        "key": "│   ├── {##b4befe}terminal: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "terminalfont",
+                        "key": "│   ├── {##b4befe}terminalfont: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "lm",
+                        "key": "│   ├── {##b4befe}lm: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "wm",
+                        "key": "│   ╰── {##b4befe}wm: ",
+                        "keyColor": "#cdd6f4"
+                },
 
-    {
-      "type": "custom",
-      "key": "╰── {##89b4fa}System",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "kernel",
-      "key": "    ├── {##b4befe}kernel: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "packages",
-      "key": "    ├── {##b4befe}packages: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "locale",
-      "key": "    ╰── {##b4befe}locale: ",
-      "keyColor": "#cdd6f4"
-    },
-    {
-      "type": "custom",
-      "key": "\n\r ~晒晒月亮哇{##89b4fa}:)",
-      "keyColor": "#b4befe"
-    }
+                {
+                        "type": "custom",
+                        "key": "╰── {##89b4fa}System",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "kernel",
+                        "key": "    ├── {##b4befe}kernel: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "packages",
+                        "key": "    ├── {##b4befe}packages: ",
+                        "keyColor": "#cdd6f4"
+                },
+                {
+                        "type": "locale",
+                        "key": "    ╰── {##b4befe}locale: ",
+                        "keyColor": "#cdd6f4"
+                },
+
+                {
+                        "type": "custom",
+                        "key": "\n\r ~晒晒月亮哇{##89b4fa}:)",
+                        "keyColor": "#b4befe"
+                }
   ]
 }
