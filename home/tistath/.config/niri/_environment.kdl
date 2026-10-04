@@ -9,9 +9,6 @@ environment {
 
         MOZ_ENABLE_WAYLAND  "1"                            // Mozilla应用使用Wayland
 
-        XCURSOR_SIZE        "37"                           // 鼠标大小
-        XCURSOR_THEME       "Colloid-Dracula-cursors-dark" // 鼠标主题
-
         EDITOR              "nvim"                         // 编辑器
         VISUAL              "nvim"                         // 可视化编辑器
 
