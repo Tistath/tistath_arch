@@ -33,9 +33,11 @@ libnotify
 linux
 linux-firmware
 man-db
+matugen
 neovim
 networkmanager
 niri
+noctalia
 noto-fonts-emoji
 pacman-contrib
 pastel

@@ -17,7 +17,7 @@ include         "_spawn-at-startup.kdl"
 prefer-no-csd
 
 // 截屏路径
-screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot-%y-%m-%d-%H-%M-%S.png"
 
 // 环境变量
 include         "_environment.kdl"

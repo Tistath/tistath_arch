@@ -342,8 +342,7 @@ pacman -S zsh
 ```bash
 useradd -mG wheel,users tistath
 passwd tistath
-用visudo编辑`/etc/sudoers.d/`，取消 %wheel ALL=(ALL:ALL) ALL
-chmod 440 /etc/sudoers.d/tistath
+运行visudo，取消 %wheel ALL=(ALL:ALL) ALL
 退出root，以普通用户登录
 ```
 ### 5.4 安装图形界面与基本应用

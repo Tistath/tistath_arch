@@ -82,6 +82,6 @@ return {
                 vim.keymap.set('n', "<Leader>dr", dap.repl.open,                                             { desc = "打开 REPL"  })
                 vim.keymap.set('n', "<Leader>dc", dap.run_to_cursor,                                         { desc = "运行到光标" })
                 vim.keymap.set('n', "<Leader>dv", function() require("dap.ui.widgets").hover() end,          { desc = "查看变量"   })
-                vim.keymap.set('n', "<Leader>dd", dap.disconnect,                                            { desc = "停止调试"   })
+                vim.keymap.set('n', "<Leader>dq", dap.disconnect,                                            { desc = "停止调试"   })
         end,
 }

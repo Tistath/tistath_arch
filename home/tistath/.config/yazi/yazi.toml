@@ -17,26 +17,32 @@ max_width  = 853  # 图片宽度
 max_height = 1080 # 图片高度
 
 [opener]
-imv = [
-    { run = 'imv %s',        desc = "imv",     orphan = true },
+imv =         [
+        { run = 'imv %s',               desc = "imv",         orphan = true },
 ]
-zathura = [
-    { run = 'zathura %s',    desc = "zathura", orphan = true },
+zathura =     [
+        { run = 'zathura %s',           desc = "zathura",     orphan = true },
 ]
-ffplay = [
-    { run = 'ffplay %s',     desc = "ffplay",  orphan = true },
+ffplay =      [
+        { run = 'ffplay %s',            desc = "ffplay",      orphan = true },
 ]
-nvim = [
-    { run = 'kitty nvim %s', desc = "nvim",    orphan = true },
+nvim =        [
+        { run = 'kitty nvim %s',        desc = "nvim",        orphan = true },
+]
+zen-browser = [
+        { run = 'zen-browser %s',       desc = "zen-browser", orphan = true },
+]
+swaybg =      [
+        { run = 'swaybg -i %s -m fill', desc = "swaybg",      orphan = true },
 ]
 
 [open]
 rules = [
-    { mime = "image/*",         use = [ "imv",     "nvim" ] }, # 图片
-    { mime = "application/pdf", use = [ "zathura", "nvim" ] }, # PDF
-    { mime = "video/*",         use = [ "ffplay",  "nvim" ] }, # 视频
-    { mime = "audio/*",         use = [ "ffplay",  "nvim" ] }, # 音频
-    { mime = "*",               use = [ "nvim",    "nvim" ] }, # fallback
+        { mime = "image/*",         use = [ "imv",     "nvim",        "zen-browser", "swaybg" ] }, # 图片
+        { mime = "application/pdf", use = [ "zathura", "nvim",        "zen-browser",          ] }, # PDF
+        { mime = "video/*",         use = [ "ffplay",  "nvim",        "zen-browser",          ] }, # 视频
+        { mime = "audio/*",         use = [ "ffplay",  "nvim",        "zen-browser",          ] }, # 音频
+        { mime = "*",               use = [ "nvim",    "zen-browser",                         ] }, # fallback
 ]
 
 [input]
