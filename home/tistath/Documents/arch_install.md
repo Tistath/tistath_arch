@@ -1,8 +1,8 @@
 # Arch Linux安装配置指南（双系统最好放两个盘，一个盘则开两个efi）
 
-## 1. 准备Live环境
+## 准备Live环境
 
-### 1.1 下载并校验镜像
+### 下载并校验镜像
 
 - 下载[ISO镜像，SIG签名](https://archlinux.org.cn/download)
 
@@ -12,7 +12,7 @@ cd ~/Downloads
 pacman-key -v archlinux-version-x86_64.iso.sig
 ```
     
-### 1.2 制作启动U盘
+### 制作启动U盘
 
 - 确认U盘名（以/dev/sda为例），并确保其未被挂载
 ```bash
@@ -30,7 +30,7 @@ sync
 eject /dev/sda
 ```
 
-### 1.3 进入Live环境
+### 进入Live环境
 
 - 进入BIOS，禁用Secure Boot（若存在Secure Boot Mode，设为Standard或关闭）（进入方式因电脑而异）
 
@@ -41,7 +41,7 @@ eject /dev/sda
 cat /sys/firmware/efi/fw_platform_size
 ```
 
-### 1.4 连接网络并同步时间
+### 连接网络并同步时间
 
 - 连接wifi（有线自动连接，无线执行以下命令）
 ```bash
@@ -64,9 +64,9 @@ ip a
 timedatectl set-ntp true
 ```
 
-## 2. 磁盘分区与文件系统
+## 磁盘分区与文件系统
 
-### 2.1 分区
+### 分区
 
 - 查看磁盘设备
 ```bash
@@ -93,13 +93,13 @@ delete所有已有分区（双系统别删）
 lsblk -pf
 ```
 
-### 2.2 格式化
+### 格式化
 ```bash
 mkfs.fat -F 32 /dev/nvme0n1p1   # EFI 分区（如果同磁盘双系统应忽略此步骤）
 mkfs.btrfs -f /dev/nvme0n1p2    # 根分区
 ```
 
-### 2.3 创建 Btrfs 子卷并挂载
+### 创建 Btrfs 子卷并挂载
 
 - 临时挂载根分区
 ```bash
@@ -128,9 +128,9 @@ mount --mkdir /dev/nvme0n1p1 /mnt/efi
 df -h # 检查挂载情况
 ``` 
 
-## 3. 安装基本系统
+## 安装基本系统
 
-### 3.1 配置镜像源并安装基础包
+### 配置镜像源并安装基础包
 
 - 配置镜像源
 ```bash
@@ -149,7 +149,7 @@ pacstrap /mnt networkmanager neovim sudo amd-ucode（如果是Intel显卡改成i
 ```
 
 
-### 3.2 生成交换文件
+### 生成交换文件
 ```bash
 btrfs filesystem mkswapfile --size 4g --uuid clear /mnt/swap/swapfile #由于采用Zram，swap比正常小
 chmod 600 /mnt/swap/swapfile
@@ -157,26 +157,26 @@ swapon /mnt/swap/swapfile
 ```
 
 
-### 3.3 生成 fstab
+### 生成 fstab
 ```bash
 genfstab -U /mnt > /mnt/etc/fstab
 cat /mnt/etc/fstab    # 检查内容
 ```
 
-### 3.4 chroot 进入新系统
+### chroot 进入新系统
 ```bash
 arch-chroot /mnt
 ```
 
-## 4. 系统基础配置（chroot内）
+## 系统基础配置（chroot内）
 
-### 4.1 时区与硬件时钟
+### 时区与硬件时钟
 ```bash
 timedatectl set-timezone Asia/Shanghai
 hwclock --systohc
 ```
 
-### 4.2 本地化设置
+### 本地化设置
 
 - 编辑/etc/locale.gen
 ```gen
@@ -193,7 +193,7 @@ locale-gen
 LANG=en_US.UTF-8
 ```
 
-### 4.3 网络配置
+### 网络配置
 
 - 设置主机名
 ```bash
@@ -207,13 +207,13 @@ echo "tistath" > /etc/hostname
 127.0.1.1   tistath.localdomain tistath
 ```
 
-### 4.4 设置root密码
+### 设置root密码
 ```bash
 passwd root
 ```
 
 
-### 4.5 安装并配置grub或systemd-boot
+### 安装并配置grub或systemd-boot
 - grub
 
     - 安装
@@ -267,7 +267,7 @@ passwd root
     bootctl update
     ```
 
-### 4.6 配置双系统（Windows）
+### 配置双系统（Windows）
 
 - 系统搜寻
 ```bash
@@ -285,7 +285,7 @@ pacman -S os-prober exfat-utils
 grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
-### 4.7配置Zram和交换空间
+### 配置Zram和交换空间
 
 安装Zram
 ```bash
@@ -307,13 +307,13 @@ compression-algorithm = zstd
 grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
-### 4.8 重启
+### 重启
 ```bash
 exit # 退出 chroot
 reboot
 ```
 
-### 4.6 安装efibootmgr并重启
+### 安装efibootmgr并重启
 ```bash
 pacman -S efibootmgr
 exit    # 退出 chroot
@@ -322,9 +322,9 @@ reboot
 
 > [!NOTE]以上是通用配置，其余按需选择
 
-## 5. 用户与桌面环境
+## 用户与桌面环境
 
-### 5.1 连接网络
+### 连接网络
 
 ```bash
 重启后以root登录，执行
@@ -333,19 +333,19 @@ nmcli dev wifi connect "wifi名" password "密码"
 ip a   # 验证
 ```
 
-### 5.2 安装Zsh Shell
+### 安装Zsh Shell
 ```bash
 pacman -S zsh
 ```
 
-### 5.3 创建普通用户并配置
+### 创建普通用户并配置
 ```bash
 useradd -mG wheel,users tistath
 passwd tistath
 运行visudo，取消 %wheel ALL=(ALL:ALL) ALL
 退出root，以普通用户登录
 ```
-### 5.4 安装图形界面与基本应用
+### 安装图形界面与基本应用
 ```bash
 sudo pacman -S  xwayland-satellite niri \
                 kitty \
@@ -353,7 +353,7 @@ sudo pacman -S  xwayland-satellite niri \
 fc-cache -fv
 ```
 
-### 5.5 配置Niri窗口管理器
+### 配置Niri窗口管理器
 
 - 生成默认配置
 ```bash
@@ -369,12 +369,12 @@ niri-session
 chmod +x ~/.config/niri/scripts/swayidle.sh
 ```
 
-### 5.6 安装通知服务
+### 安装通知服务
 ```bash
 sudo pacman -S libnotify mako
 ```
 
-## 6. AUR
+## AUR
 
 - 添加archlinuxcn源并安装yay
 
@@ -399,10 +399,10 @@ sudo pacman -S libnotify mako
     # 若失效，恢复官方源yay --aururl "https://aur.archlinux.org" --save
     ```
 
-## 7. 应用配置
+## 应用配置
 
-### 7.1 fcitx5输入法配置
-- 编辑Rime配置~/.local/share/fcitx5/rime/default.custom.yaml
+### [Fcitx5](https://github.com/catppuccin/fcitx5)配置
+- 编辑Rime配置`~/.local/share/fcitx5/rime/default.custom.yaml`
 ```yaml
 patch:
   __include: rime_ice_suggestion:/
@@ -418,7 +418,9 @@ patch:
     - simplifier
 ```
 
-### 7.2 Watt-Toolkit配置
+- 编辑`~/.config/fcitx5/conf/classicui.conf`，将`Themes`行改为`Theme=catppuccin-mocha-blue`
+
+### Watt-Toolkit配置
 
 - 初始化证书数据库并信任证书
 ```bash
@@ -432,7 +434,7 @@ sudo chmod a+w /etc/hosts
 
 - 加速github：见[Zen浏览器配置](#72-zen浏览器配置)
 
->[!NOTE]若Steam未被加速：在Steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在chrome://settings的安全中加入后缀名从cer改成pem的证书
+>[!NOTE]若Steam未被加速：在Steam中，打开任意游戏，按Shift+Tab，点击进入内置浏览器，在`chrome://settings`的安全中加入后缀名从cer改成pem的证书
 
 - 左下角设置中：
 
@@ -442,14 +444,14 @@ sudo chmod a+w /etc/hosts
 
         - `主题`设为`深色`
 
-### 7.3 Git配置
+### Git配置
 ```bash
 git config --global user.name "Tistath"
 git config --global user.email "eta_gamma_omega@qq.com"
 git config --global init.defaultBranch main
 ```
 
-### 7.4 大写锁定映射为Ctrl
+### 大写锁定映射为Ctrl
 
 - 编辑/etc/udev/hwdb.d/99-caps-ctrl.hwdb，添加：
 ```hwdb
@@ -463,7 +465,7 @@ sudo systemd-hwdb update
 sudo udevadm trigger
 ```
 
-### 7.5 Zen浏览器配置
+### Zen浏览器配置
 
 - 点击左上角三点，在`Settings`中：
 
@@ -591,7 +593,7 @@ sudo udevadm trigger
 
         - `猫抓`
 
-### 7.6 htop配置
+### htop配置
 
 - <F2>打开设置
 
@@ -612,22 +614,18 @@ sudo udevadm trigger
 
     Broken Gray
 
-### 7.7 [copyq](https://github.com/catppuccin/copyq)配置
+### [copyq](https://github.com/catppuccin/copyq)配置
 
 - 右键选择首选项，在外观中载入主题
 
-### 7.8 [Fcitx5](https://github.com/catppuccin/fcitx5)配置
-
-- 编辑~/.config/fcitx5/conf/classicui.conf，将Themes行改为Theme=catppuccin-mocha-blue
-
-### 7.9 Neovim配置
+### Neovim配置
 
 - 安装treesitter解析器
 ```Vimscript
 :TSInstall cpp html latex yaml
 ```
 
-### 7.10 沙盒版微信配置
+### 沙盒版微信配置
 
 - 创建共享目录用于文件传输
 ```bash
@@ -644,29 +642,29 @@ ls /usr/bin/wechat*
 --bind /home/tistath/wechat-shared /home/tistath/wechat-shared
 ```
 
-### 7.11 电源服务
+### 电源服务
 ```bash
 sudo systemctl enable tlp --now
 ```
 
-### 7.12 蓝牙服务
+### 蓝牙服务
 ```bash
 sudo systemctl enable --now bluetooth
 ```
 
-### 7.13 定时清理磁盘垃圾
+### 定时清理磁盘垃圾
 ```bash
 cat /sys/block/nvme0n1/queue/rotational #如果输出为0说明磁盘为SSD，则执行下述操作
 sudo systemctl enable --now fstrim.timer
 ```
 
-### 7.14 壁纸
+### 壁纸
 
 - 文字：在[艺术字体网站](https://patorjk.com/software/taag/)，使用Tmplr字体
 
 - 图片生成：在[在线图片编辑网站](https://www.photopea.com/)，使用[catppuccin](https://github.com/catppuccin/catppuccin)的mocha-Base背景，mocha-Surface1文字，JetBrains Mono字体
 
-### 7.15 防火墙服务
+### 防火墙服务
 
 ```bash
 sudo ufw default deny incoming  # 拒绝所有入站
@@ -675,7 +673,7 @@ sudo ufw enable                 # 激活防火墙规则
 sudo systemctl enable --now ufw # 开机自启
 ```
 
-### 7.16 Yazi配置
+### Yazi配置
 
 将`~/.config/yazi/yazi.toml`中的`max_width`和`max_height`改为`显示器宽度 * 4 / 9`和`显示器高度`
 
@@ -701,7 +699,7 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CU
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 ```
 
-### 7.18 Git配置
+### Git配置
 
 - 基本设置
 ```bash
@@ -744,7 +742,7 @@ cd ~/tistath_arch
 git remote set-url origin git@github.com:Tistath/tistath_arch.git
 ```
 
-### 7.19 快照启动项配置
+### 快照启动项配置
 ```bash
 sudo systemctl enable --now grub-btrfsd
 登录root，执行snapper -c root create-config /
@@ -752,9 +750,113 @@ snapper -c home create-config /home
 grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
+### 非自创配置的记录（以防上游更新）
+
+- [bat](https://github.com/catppuccin/bat)
+
+- [copyq](https://github.com/catppuccin/copyq)
+
+- [dunst](https://github.com/catppuccin/dunst)
+
+- [imv](https://github.com/catppuccin/imv)
+
+- [kitty](https://github.com/catppuccin/kitty)
+
+- [swaylock](https://github.com/catppuccin/swaylock)
+
+- [waybar](https://github.com/catppuccin/waybar)
+
+- [yazi](https://github.com/catppuccin/yazi)
+
+- [zathura](https://github.com/catppuccin/zathura)
+
+- [cursor](https://github.com/catppuccin/fcitx5)
+
+- [cursor](https://www.gnome-look.org/p/1519633)
+
+### 官方文档
+
+- [Arch Linux Wiki](https://wiki.archlinux.org.cn/title/Main_page)
+
+- [bat](https://github.com/sharkdp/bat)
+
+- [copyq](https://copyq.readthedocs.io/)
+
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch/wiki)
+
+- [fcitx5](https://fcitx-im.org/wiki/Fcitx_5)
+
+- [htop](https://github.com/htop-dev/htop)
+
+- [imv](https://sr.ht/~exec64/imv/)
+
+- [kitty](https://sw.kovidgoyal.net/kitty/)
+
+- [niri](https://niri-wm.github.io/niri/)
+
+- [nvim](https://neovim.io/)
+
+    - [lazy](https://lazy.folke.io/)
+
+    - [autopairs](https://github.com/windwp/nvim-autopairs)
+
+    - [barbar](https://github.com/romgrk/barbar.nvim)
+
+    - [catppuccin](https://github.com/catppuccin/nvim)
+
+    - [cmp](https://github.com/hrsh7th/nvim-cmp)
+
+    - [dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+
+    - [dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text)
+
+    - [dap](https://github.com/mfussenegger/nvim-dap)
+
+    - [hlchunk](https://github.com/shellRaining/hlchunk.nvim)
+
+    - [lsp](https://github.com/neovim/nvim-lspconfig)
+
+    - [lualine](https://github.com/nvim-lualine/lualine.nvim)
+
+    - [noice](https://github.com/folke/noice.nvim)
+
+    - [notify](https://github.com/rcarriga/nvim-notify)
+
+    - [rainbow-delimiters](https://github.com/HiPhish/rainbow-delimiters.nvim)
+
+    - [render-markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+
+    - [telescope](https://github.com/nvim-telescope/telescope.nvim)
+
+    - [tree](https://github.com/nvim-tree/nvim-tree.lua)
+
+    - [treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+
+    - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+
+    - [trouble](https://github.com/folke/trouble.nvim)
+
+    - [web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+
+    - [which-key](https://github.com/folke/which-key.nvim)
+
+- [swaylock-effects](https://github.com/mortie/swaylock-effects)
+
+- [waybar](https://github.com/Alexays/Waybar)
+
+- [yazi](https://yazi-rs.github.io/)
+
+- [zathura](https://pwmt.org/projects/zathura/)
+
+- [zsh](https://zsh.sourceforge.io/Doc/)
+
+    - [oh-my-zsh](https://ohmyz.sh/)
+
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
+
+
 
 ## 备份配置
 

@@ -6,15 +6,21 @@
         "position": "top",
         "fixed-center": true,
         "modules-left": [
-                "tray"
+                "custom/left_separator",
+                "tray",
+                "custom/right_separator"
         ],
         "modules-center":[
+                "custom/left_separator",
                 "clock#date",
-                "clock"
+                "clock",
+                "custom/right_separator"
         ],
         "modules-right": [
+                "custom/left_separator",
                 "wireplumber",
                 "battery",
-                "network"
+                "network",
+                "custom/right_separator"
         ]
 }

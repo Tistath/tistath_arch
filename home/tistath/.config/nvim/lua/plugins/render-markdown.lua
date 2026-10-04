@@ -29,12 +29,12 @@ return {
                         heading     = {
                                 sign        = false,
                                 icons       = {
-                                        ' 󰼏 ',
-                                        ' 󰎨 ',
-                                        ' 󰼑 ',
-                                        ' 󰎲 ',
-                                        ' 󰼓 ',
-                                        ' 󰎴 ',
+                                        '󰼏 ',
+                                        '󰎨 ',
+                                        '󰼑 ',
+                                        '󰎲 ',
+                                        '󰼓 ',
+                                        '󰎴 ',
                                 },
                                 backgrounds = {
                                         nil,

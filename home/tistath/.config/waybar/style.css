@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-        background: @mantle;
+        background: transparent;
 }
 
 #tray,
@@ -17,9 +17,11 @@ window#waybar {
 #battery,
 #network {
         background-color: @surface0;
-        padding: 0.2rem 0.6rem;
-        margin: 0px 4px;  
-        border-radius: 0.47rem;
+}
+
+#tray {
+        font-size: 1.11em;
+        color: white;
 }
 
 #clock.date {
@@ -28,11 +30,6 @@ window#waybar {
 
 #clock {
   color: white;
-}
-
-#tray {
-        font-size: 1.11em;
-        color: white;
 }
 
 #wireplumber {
@@ -52,3 +49,9 @@ window#waybar {
         font-size: 1.1em;
 }
 
+#custom-left_separator,
+#custom-right_separator {
+        background-color: transparent;
+        color: @surface0;
+        font-size: 1.1em;
+}
