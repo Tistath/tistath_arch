@@ -3,7 +3,7 @@
                 "modules.jsonc"
         ],
         "layer": "top",
-        "position": "top",
+        "position": "bottom",
         "fixed-center": true,
         "modules-left": [
                 "custom/left_separator",
