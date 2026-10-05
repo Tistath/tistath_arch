@@ -19,6 +19,9 @@ vim.opt.incsearch      = true          -- 实时搜索
 vim.opt.ignorecase     = true          -- 忽略大小写
 vim.opt.smartcase      = true          -- 输入含大写时不忽略
 vim.opt.undofile       = true          -- 持久化撤销，关闭文件重新打开仍可撤销
+vim.opt.foldmethod     = "indent"      -- 按缩进折叠
+vim.opt.foldlevel      = 99            -- 默认全部展开
+vim.opt.foldlevelstart = 99
 
 -- 光标样式
 vim.opt.guicursor =  "n-v-c-ve:block,"

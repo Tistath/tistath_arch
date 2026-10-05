@@ -39,3 +39,5 @@ include         "_animations.kdl"
 
 // 手势规则
 include         "_gestures.kdl"
+
+include         "_center-focused-column.kdl"

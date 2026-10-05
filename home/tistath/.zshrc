@@ -49,7 +49,7 @@ source ~/.config/zsh/git-prompt-branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
 
 # 左侧提示符
-PROMPT=$'\n %~'$'\n %F{blue}╰ %f'
+PROMPT=' %~'$'\n %F{blue}╰ %f'
 # 右侧提示符
 RPROMPT='$(git-prompt-branch)'
 

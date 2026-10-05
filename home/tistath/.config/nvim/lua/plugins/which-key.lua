@@ -15,13 +15,14 @@ return {
         end,
 
         config = function()
-                local which=require("which-key")
+                local which = require("which-key")
 
                 which.setup({
-                        win = { --样式设置
-                                width  = 0.5,
-                                title  = false,
-                                border = "rounded",
+                        win = {
+                        col    = -1,
+                        width  = 0.5,
+                        border = "rounded",
+                        title  = false,
                         },
                 })
 
