@@ -545,7 +545,7 @@ sudo udevadm trigger
 
             - 添加`Chinese [zh]`、`Chinese (China) [zh-cn]`
 
-    - Themes：右键左侧或上方，选择编辑主题，选择第一页最后一个，明度拉到最低
+    - Themes：右键左侧或上方，选择编辑主题，选择第三页第一个，明度拉到0.92
 
     - [Config](about:config)：
 

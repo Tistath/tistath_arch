@@ -16,11 +16,11 @@ layout {
         }
 
         default-column-width { // 新窗口默认宽度
-                proportion 1.0;
+                proportion 0.5;
         }
 
         focus-ring {                   // 聚焦窗口的边框
-                width 1.50             // 宽度
-                active-color "#b4befe" // 颜色（mocha-Lavender）
+                width 3.00             // 宽度
+                active-color "#f5c2e7" // 颜色（mocha-Pink）
         }
 }

@@ -34,6 +34,7 @@ linux
 linux-firmware
 man-db
 matugen
+mpv
 neovim
 networkmanager
 niri

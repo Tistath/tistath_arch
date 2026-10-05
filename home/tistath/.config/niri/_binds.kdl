@@ -1,6 +1,6 @@
 binds {
 
-// 遵循Ctrl的效果比Shift大
+        // 遵循Ctrl的效果比Shift大
 
         Mod+Return allow-inhibiting=false repeat=false cooldown-ms=190 { spawn "kitty"; } // 终端
 
@@ -98,7 +98,7 @@ binds {
         Mod+Page_Down                       { focus-workspace-down; }
         Mod+O                               { focus-workspace-up;   }
         Mod+I                               { focus-workspace-down; }
-        Mod+WheelScrollUp   cooldown-ms=140 { focus-workspace-up;   } // 冷却
+        Mod+WheelScrollUp   cooldown-ms=140 { focus-workspace-up;   }
         Mod+WheelScrollDown cooldown-ms=140 { focus-workspace-down; }
  
         Mod+Shift+1 { focus-workspace 1;  }

@@ -15,43 +15,23 @@ window#waybar {
 #clock,
 #wireplumber,
 #battery,
-#network {
+#network,
+#custom-left_separator,
+#custom-right_separatork {
         background-color: @surface0;
-}
-
-#tray {
+        margin: 4px 0px;  
         font-size: 1.11em;
         color: white;
 }
 
-#clock.date {
-        color: white;
-}
 
-#clock {
-  color: white;
-}
-
-#wireplumber {
-        color: white;
-        font-size: 1.1em;
-}
-
-#battery {
-        color: white;
-}
 #battery.critical:not(.charging) {
         color: @red;
-}
-
-#network {
-        color: white;
-        font-size: 1.1em;
 }
 
 #custom-left_separator,
 #custom-right_separator {
         background-color: transparent;
         color: @surface0;
-        font-size: 1.1em;
+        font-size: 1.11em
 }

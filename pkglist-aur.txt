@@ -1,3 +1,4 @@
+baidunetdisk-bin
 linuxqq
 qqmusic-bin
 watt-toolkit-bin

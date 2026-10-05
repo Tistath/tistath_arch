@@ -34,6 +34,11 @@
         },
         "modules": [
                 {
+                        "type": "command",
+                        "text": "niri msg action set-window-width \"100%\""
+                },
+
+                {
                         "type": "title",
                         "format": "{##89b4fa}{user-name}{##b4befe}@{host-name}"
                 },

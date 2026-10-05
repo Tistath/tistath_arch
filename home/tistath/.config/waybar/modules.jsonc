@@ -10,8 +10,7 @@
         "clock": {
                 "tooltip": false,
                 "interval": 1,
-                "format": "  {:%H:%M}",
-                "max-length": 40
+                "format": "  {:%H:%M}"
         },
 
         // 系统托盘（后台）
@@ -22,6 +21,7 @@
 
         // 音量信息
         "wireplumber": {
+                "tooltip": false,
                 "format": "{icon} {volume}% ",
                 "format-muted": " {volume}% ",
                 "format-icons": [
@@ -30,10 +30,9 @@
                                 "",
                                 ""
                 ],
-                "tooltip-format": "音量：{volume}%\n状态：{formatted_muted}",
                 "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-                "scroll-step": 5,
-                "max-length": 17
+                "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+                "scroll-step": 5
         },
 
         // 电池信息
@@ -60,15 +59,6 @@
         },
 
         // 网络信息
-        "group/network": {
-                "orientation": "inherit",// 继承父类排列方式
-                "drawer": {
-                        "transition-left-to-right": false// 竖向排列
-                },
-                "modules": [
-                        "network"
-                ]
-        },
         "network": {
                 "format-disconnected": " {icon} {ifname}",
                 "format-wifi": " {icon} {essid}",
@@ -90,11 +80,11 @@
                 "tooltip-format-disconnected": "网络未连接\n{ifname} ({ipaddr})"
         },
 	"custom/left_separator": {
-		"format": "",
+		"format": " ",
 		"tooltip": false
 	},
 	"custom/right_separator": {
-		"format": "",
+		"format": " ",
 		"tooltip": false
 	}
  }

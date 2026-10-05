@@ -2,6 +2,10 @@ environment {
         LC_MESSAGES         "zh_CN.UTF-8"                  // 编码
 
         XMODIFIERS          "@im=fcitx"                    // X11输入法
+        QT_IM_MODULE        "fcitx"                        // Qt输入法
+        INPUT_METHOD        "fcitx"                        // 部分程序的输入法
+        SDL_IM_MODULE       "fcitx"                        // SDL（游戏）的输入法
+        GLFW_IM_MODULE      "ibus"                         // GLFW的输入法协议
 
         XDG_CURRENT_DESKTOP "niri"                         // 桌面
 
