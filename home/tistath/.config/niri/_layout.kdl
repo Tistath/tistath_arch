@@ -21,6 +21,6 @@ layout {
 
         focus-ring {                   // 聚焦窗口的边框
                 width 3.00             // 宽度
-                active-color "#f5c2e7" // 颜色（mocha-Pink）
+                active-color "#b4befe" // 颜色（mocha-Pink）
         }
 }

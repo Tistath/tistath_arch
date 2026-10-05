@@ -764,6 +764,8 @@ grub-mkconfig -o /efi/grub/grub.cfg
 
 - [swaylock](https://github.com/catppuccin/swaylock)
 
+- [mpv](https://github.com/catppuccin/mpv)
+
 - [waybar](https://github.com/catppuccin/waybar)
 
 - [yazi](https://github.com/catppuccin/yazi)
@@ -861,6 +863,7 @@ grub-mkconfig -o /efi/grub/grub.cfg
 ## 备份配置
 
 ```bash
+
 rsync -av --delete ~/.config/bat/ ~/tistath_arch/home/tistath/.config/bat/
 rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
 rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
@@ -875,6 +878,7 @@ rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fon
 rsync -av --delete ~/.config/imv/ ~/tistath_arch/home/tistath/.config/imv/
 rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
 rsync -av --delete ~/.config/dunst/ ~/tistath_arch/home/tistath/.config/dunst/
+rsync -av --delete ~/.config/mpv/ ~/tistath_arch/home/tistath/.config/mpv/
 rsync -av --delete ~/.config/niri/ ~/tistath_arch/home/tistath/.config/niri/
 rsync -av --delete ~/.config/nvim/ ~/tistath_arch/home/tistath/.config/nvim/
 rsync -av --delete ~/.config/swaylock/ ~/tistath_arch/home/tistath/.config/swaylock/
