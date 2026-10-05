@@ -19,7 +19,7 @@ binds {
         Mod+Shift+S repeat=false cooldown-ms=190 { spawn "watt-toolkit"; } // 加速器
 
         Mod+D       repeat=false cooldown-ms=190 { spawn    "swaylock";                                                  } // 锁屏
-        Mod+Shift+D repeat=false cooldown-ms=190 { spawn-sh "pkill swayidle || /home/tistath/.config/niri/_swayidle.sh"; } // 开关定时锁屏
+        Mod+Shift+D repeat=false cooldown-ms=190 { spawn-sh "pkill swayidle || swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'"; } // 开关定时锁屏
 
         Mod+Space       repeat=false { toggle-overview; } // 窗口概览
         Mod+MouseMiddle repeat=false { toggle-overview; }
@@ -65,7 +65,7 @@ binds {
         // 移动窗口
         Mod+Ctrl+Left      { move-column-left;  }
         Mod+Ctrl+Right     { move-column-right; }
-        Mod+Ctrl+Up        { move-window-up;        }
+        Mod+Ctrl+Up        { move-window-up;    }
         Mod+Ctrl+Down      { move-window-down;  }
         Mod+Ctrl+H         { move-column-left;  }
         Mod+Ctrl+L         { move-column-right; }
@@ -139,7 +139,7 @@ binds {
         // 居中当前/所有可见窗口/所有窗口
         Mod+C       { center-column;          }
         Mod+Shift+C { center-visible-columns; }
-        Mod+Ctrl+C  { spawn-sh "if [ -s /home/tistath/.config/niri/_center-focused-column.kdl ]; then > /home/tistath/.config/niri/_center-focused-column.kdl; else printf 'layout{\n\tcenter-focused-column \"always\"\n}\n' > /home/tistath/.config/niri/_center-focused-column.kdl; fi";}
+        Mod+Ctrl+C  { spawn-sh "niri msg action center-column; [ -s ~/.config/niri/_center-focused-column.kdl ] && : > ~/.config/niri/_center-focused-column.kdl || printf 'layout {\n        center-focused-column \"always\"\n}' > ~/.config/niri/_center-focused-column.kdl"; }
 
         // 调整窗口大小
         Mod+Minus       { set-column-width  "-12.5%"; }

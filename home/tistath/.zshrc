@@ -10,6 +10,9 @@ ENABLE_CORRECTION="true"
 # 历史子串搜索结果去重
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
+# 逐条查看历史时去重
+setopt hist_ignore_all_dups
+
 # catppuccin-mocha语法高亮配色
 source ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 
