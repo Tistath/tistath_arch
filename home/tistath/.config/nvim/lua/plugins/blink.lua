@@ -65,6 +65,7 @@ return {
                         },
                 },
                 keymap     = {
+                        preset     = "none",
                         ["<C-j>"]  = {
                                 "select_next",
                                 "fallback",
@@ -103,6 +104,7 @@ return {
                                 },
                         },
                         keymap     = {
+                                preset     = "none",
                                 ["<C-j>"]  = {
                                         "select_next",
                                         "fallback",

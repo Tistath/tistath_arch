@@ -2,6 +2,8 @@ binds {
 
 // 遵循Ctrl的效果比Shift大
 
+        Mod+Shift+Slash { show-hotkey-overlay; }
+
         Mod+Return allow-inhibiting=false repeat=false cooldown-ms=190 { spawn "kitty"; } // 终端
 
         Mod+T repeat=false cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "htop; exec zsh"; }
