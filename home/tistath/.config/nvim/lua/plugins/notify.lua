@@ -1,7 +1,10 @@
+-- 通知系统
 return {
         "rcarriga/nvim-notify",
 
-        event  = "VeryLazy",
+        event  = {
+                "VeryLazy",
+        },
 
         config = function()
                 local notify = require("notify")

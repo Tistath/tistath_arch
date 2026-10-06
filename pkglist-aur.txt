@@ -1,4 +1,5 @@
 baidunetdisk-bin
+libtexprintf
 linuxqq
 qqmusic-bin
 watt-toolkit-bin

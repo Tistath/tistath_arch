@@ -1,7 +1,11 @@
+-- 错误信息
 return {
         "folke/trouble.nvim",
 
-        event  = "BufReadPost",
+        event  = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         config = function()
                 vim.keymap.set('n', "<leader>tf", ":Trouble diagnostics filter.buf=0 toggle<CR>", { noremap = true, silent = true, desc = "当前文件诊断" })

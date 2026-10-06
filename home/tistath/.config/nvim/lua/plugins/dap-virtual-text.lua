@@ -1,7 +1,11 @@
+-- 调试时显示信息
 return {
         "theHamsta/nvim-dap-virtual-text",
 
-        event        = "BufReadPost",
+        event        = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         dependencies = {
                 "mfussenegger/nvim-dap",

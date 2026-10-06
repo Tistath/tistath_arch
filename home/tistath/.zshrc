@@ -18,6 +18,7 @@ source ~/.oh-my-zsh/custom/themes/catppuccin-mocha.zsh
 
 # 启用的插件列表
 plugins=(
+        sudo                         # 双击Esc加sudo
         git                          # Git 别名与提示符支持
         zsh-autosuggestions          # 根据历史自动建议命令
         zsh-syntax-highlighting      # 命令语法高亮

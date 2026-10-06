@@ -63,14 +63,23 @@ binds {
         Mod+0 { focus-column 10; }
 
         // 移动窗口
-        Mod+Ctrl+Left      { move-column-left;  }
-        Mod+Ctrl+Right     { move-column-right; }
-        Mod+Ctrl+Up        { move-window-up;    }
-        Mod+Ctrl+Down      { move-window-down;  }
-        Mod+Ctrl+H         { move-column-left;  }
-        Mod+Ctrl+L         { move-column-right; }
-        Mod+Ctrl+K         { move-window-up;    }
-        Mod+Ctrl+J         { move-window-down;  }
+        Mod+Shift+Left  { move-column-left;  }
+        Mod+Shift+Right { move-column-right; }
+        Mod+Shift+Up    { move-window-up;    }
+        Mod+Shift+Down  { move-window-down;  }
+        Mod+Shift+H     { move-column-left;  }
+        Mod+Shift+L     { move-column-right; }
+        Mod+Shift+K     { move-window-up;    }
+        Mod+Shift+J     { move-window-down;  }
+
+        Mod+Ctrl+Left  { move-column-to-first;          }
+        Mod+Ctrl+Right { move-column-to-last;           }
+        Mod+Ctrl+Up    { move-window-to-workspace-up;   }
+        Mod+Ctrl+Down  { move-window-to-workspace-down; }
+        Mod+Ctrl+H     { move-column-to-first;          }
+        Mod+Ctrl+L     { move-column-to-last;           }
+        Mod+Ctrl+K     { move-window-to-workspace-up;   }
+        Mod+Ctrl+J     { move-window-to-workspace-down; }
 
         Mod+Shift+Page_Up                         { move-column-to-workspace-up;   }
         Mod+Shift+Page_Down                       { move-column-to-workspace-down; }
@@ -81,6 +90,17 @@ binds {
 
         Mod+Ctrl+Home { move-column-to-first; }
         Mod+Ctrl+End  { move-column-to-last;  }
+
+        Mod+Alt+1 { move-window-to-workspace 1;  }
+        Mod+Alt+2 { move-window-to-workspace 2;  }
+        Mod+Alt+3 { move-window-to-workspace 3;  }
+        Mod+Alt+4 { move-window-to-workspace 4;  }
+        Mod+Alt+5 { move-window-to-workspace 5;  }
+        Mod+Alt+6 { move-window-to-workspace 6;  }
+        Mod+Alt+7 { move-window-to-workspace 7;  }
+        Mod+Alt+8 { move-window-to-workspace 8;  }
+        Mod+Alt+9 { move-window-to-workspace 9;  }
+        Mod+Alt+0 { move-window-to-workspace 10; }
 
         Mod+Ctrl+1 { move-column-to-workspace 1;  }
         Mod+Ctrl+2 { move-column-to-workspace 2;  }
@@ -133,6 +153,7 @@ binds {
 
         // 最大化窗口
         Mod+F       repeat=false { maximize-column;          }
+        Mod+Alt+F   repeat=false { set-window-height "100%"; }
         Mod+Shift+F repeat=false { maximize-window-to-edges; }
         Mod+Ctrl+F  repeat=false { fullscreen-window;        }
 

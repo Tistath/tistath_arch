@@ -3,6 +3,7 @@ vim.g.mapleader      = ' '
 vim.g.maplocalleader = ' '
 
 -- 基础设置
+vim.opt.mouse          = "a"           -- 启用鼠标支持
 vim.opt.tabstop        = 8             -- 缩进显示为8
 vim.opt.softtabstop    = 8             -- tab输出8
 vim.opt.shiftwidth     = 8             -- >>,<<输出8

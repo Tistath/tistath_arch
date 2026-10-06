@@ -10,4 +10,4 @@ spawn-at-startup "copyq"                                                        
 
 spawn-at-startup "dunst"                                                                         // 消息
 
-spawn-at-startup "/home/tistath/.config/niri/_swayidle.sh"                                       // 锁屏
+spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors"                                       // 锁屏

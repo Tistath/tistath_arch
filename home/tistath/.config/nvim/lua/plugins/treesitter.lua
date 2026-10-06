@@ -1,7 +1,8 @@
+-- 语法解析树
 return {
         "nvim-treesitter/nvim-treesitter",
 
-        event  = "BufReadPost",
+        lazy   = false,
 
         build  = ":TSUpdate",
 

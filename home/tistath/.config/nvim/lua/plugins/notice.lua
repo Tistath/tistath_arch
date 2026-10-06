@@ -1,6 +1,10 @@
+-- 消息提示
 return {
         "folke/noice.nvim",
-        event        = "VeryLazy",
+
+        event        = {
+                "VeryLazy",
+        },
 
         dependencies = {
                 "MunifTanjim/nui.nvim",

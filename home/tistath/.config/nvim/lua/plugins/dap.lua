@@ -1,7 +1,11 @@
+-- 代码调试
 return {
         "mfussenegger/nvim-dap",
 
-        event  = "BufReadPost",
+        event  = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         config = function()
                 local dap              = require("dap")

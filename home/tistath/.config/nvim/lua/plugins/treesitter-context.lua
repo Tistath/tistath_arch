@@ -1,7 +1,11 @@
+-- 粘滞滚动
 return {
         "nvim-treesitter/nvim-treesitter-context",
 
-        event  = "BufReadPost",
+        event  = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         config = function()
                 local context = require("treesitter-context")

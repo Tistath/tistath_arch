@@ -1,11 +1,14 @@
+-- MarkDown渲染
 return {
         "MeanderingProgrammer/render-markdown.nvim",
 
-        event        = "BufReadPost",
+        event        = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         dependencies = {
                 "nvim-treesitter/nvim-treesitter",
-                "nvim-tree/nvim-web-devicons",
         },
 
         config       = function()
@@ -15,7 +18,7 @@ return {
                         completions = {
                                 lsp = {
                                         enabled = true,
-                                }
+                                },
                         },
                         code        = { -- 代码块左对齐
                                 sign         = false,
@@ -50,7 +53,7 @@ return {
                         	border              = { '╭', '┬', '╮',
                                                         '├', '┼', '┤',
                                                         '╰', '┴', '╯', 
-                                                        '│', '─' 
+                                                        '│', '─',
                                 },
                         },
                         indent      = {

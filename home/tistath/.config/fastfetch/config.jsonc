@@ -35,7 +35,7 @@
         "modules": [
                 {
                         "type": "command",
-                        "text": "niri msg action set-window-width \"100%\""
+                        "text": "niri msg action maximize-column"
                 },
 
                 {
@@ -144,7 +144,7 @@
 
                 {
                         "type": "custom",
-                        "key": "\n\r ~晒晒月亮哇{##89b4fa}:)\n",
+                        "key": "\n\r ~晒晒月亮哇{##89b4fa}:D\n",
                         "keyColor": "#b4befe"
                 }
   ]

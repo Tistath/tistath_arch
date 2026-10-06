@@ -1,7 +1,11 @@
+-- 缩进、作用域线
 return{
         "shellRaining/hlchunk.nvim",
 
-        event  = "BufReadPost",
+        event  = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         config = function()
                 local hlchunk = require("hlchunk")

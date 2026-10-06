@@ -35,6 +35,7 @@ linux-firmware
 man-db
 matugen
 mpv
+nano
 neovim
 networkmanager
 niri
@@ -44,12 +45,14 @@ pacman-contrib
 pastel
 pipewire-alsa
 pipewire-pulse
+polkit-gnome
 poppler
 python-pylatexenc
 resvg
 rime-ice-pinyin-git
 ripgrep
 rsync
+rust
 snap-pac
 snapper
 steam
@@ -64,9 +67,11 @@ tree-sitter-cli
 ttf-jetbrains-mono-nerd
 ufw
 waybar
+weechat
 wget
 wireless-regdb
 wl-clipboard
+xdg-desktop-portal-gnome
 xwayland-satellite
 yay
 yazi

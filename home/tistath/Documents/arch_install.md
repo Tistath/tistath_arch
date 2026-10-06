@@ -620,9 +620,14 @@ sudo udevadm trigger
 
 ### Neovim配置
 
-- 安装treesitter解析器
+- 安装`treesitter`解析器：
 ```Vimscript
-:TSInstall cpp html latex yaml
+TSInstall c cpp css python lua html xml bash make cmake latex markdown markdown_inline zsh json ini kdl toml yaml regex vim vimdoc query gitcommit gitignore
+```
+
+- 构建`blink.cmp`：
+```vimscript
+Lazy build blink.cmp
 ```
 
 ### 沙盒版微信配置
@@ -750,6 +755,15 @@ snapper -c home create-config /home
 grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
+### 桌面门户配置
+
+- `xdg-desktop-portal-gnome`：
+    
+    - 设置深色主题：
+    ```bash
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+    ```
+
 ### 非自创配置的记录（以防上游更新）
 
 - [bat](https://github.com/catppuccin/bat)
@@ -858,46 +872,6 @@ grub-mkconfig -o /efi/grub/grub.cfg
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
 
-
-
-## 备份配置
-
-```bash
-
-rsync -av --delete ~/.config/bat/ ~/tistath_arch/home/tistath/.config/bat/
-rsync -av --delete ~/.config/copyq/themes/ ~/tistath_arch/home/tistath/.config/copyq/themes/
-rsync -av --delete ~/.config/fastfetch/ ~/tistath_arch/home/tistath/.config/fastfetch/
-rsync -av --delete ~/.config/htop/ ~/tistath_arch/home/tistath/.config/htop/
-rsync -av --delete ~/.config/fcitx5/ ~/tistath_arch/home/tistath/.config/fcitx5/
-rsync -av --delete ~/.local/share/fcitx5/rime/default.custom.yaml ~/tistath_arch/home/tistath/.local/share/fcitx5/rime/default.custom.yaml
-rsync -av --delete ~/.local/share/fcitx5/themes/ ~/tistath_arch/home/tistath/.local/share/fcitx5/themes/
-rsync -av --delete ~/.zshrc ~/tistath_arch/home/tistath/.zshrc
-rsync -av --delete ~/.config/zsh/ ~/tistath_arch/home/tistath/.config/zsh/
-rsync -av --delete ~/.oh-my-zsh/custom/themes/ ~/tistath_arch/home/tistath/.oh-my-zsh/custom/themes/
-rsync -av --delete ~/.config/fontconfig/ ~/tistath_arch/home/tistath/.config/fontconfig/
-rsync -av --delete ~/.config/imv/ ~/tistath_arch/home/tistath/.config/imv/
-rsync -av --delete ~/.config/kitty/ ~/tistath_arch/home/tistath/.config/kitty/
-rsync -av --delete ~/.config/dunst/ ~/tistath_arch/home/tistath/.config/dunst/
-rsync -av --delete ~/.config/mpv/ ~/tistath_arch/home/tistath/.config/mpv/
-rsync -av --delete ~/.config/niri/ ~/tistath_arch/home/tistath/.config/niri/
-rsync -av --delete ~/.config/nvim/ ~/tistath_arch/home/tistath/.config/nvim/
-rsync -av --delete ~/.config/swaylock/ ~/tistath_arch/home/tistath/.config/swaylock/
-rsync -av --delete ~/.config/waybar/ ~/tistath_arch/home/tistath/.config/waybar/
-rsync -av --delete ~/.config/yazi/ ~/tistath_arch/home/tistath/.config/yazi/
-rsync -av --delete ~/.config/zathura/ ~/tistath_arch/home/tistath/.config/zathura/
-rsync -av --delete ~/.local/share/icons/ ~/tistath_arch/home/tistath/.local/share/icons/
-rsync -av --delete ~/Documents/arch_install.md ~/tistath_arch/home/tistath/Documents/arch_install.md
-rsync -av --delete /etc/environment ~/tistath_arch/etc/environment
-
-pacman -Qqen > ~/tistath_arch/pkglist-official.txt
-pacman -Qqem > ~/tistath_arch/pkglist-aur.txt
-
-cd ~/tistath_arch
-
-git add .
-git commit -m ""
-git push -u origin main
-```
 ## 包
 
 | 内核固件 | 说明 |
@@ -942,11 +916,15 @@ git push -u origin main
 | :------------------------------------------- | :------------------------------------------- |
 | niri | 窗口管理器 |
 | xwayland-satellite | 兼容X11应用 |
+| xdg-desktop-portal-gtk | 却缺省门户 |
+| xdg-desktop-portal-gnome | 投屏门户 |
+| gnome-keyring | 密码门户 |
+| polkit-gnome | 认证代理 |
 | waybar | 状态栏 |
 | swaybg | 壁纸 |
 | swayidle | 锁屏 |
 | swaylock-effects | 屏保 |
-| mako | 消息通知 |
+| dunst | 消息通知 |
 | libnotify | 桌面通知库，mako依赖 |
 | wl-clipboard | 底层剪切板 |
 | copyq | 图形化高级剪切板 |
@@ -964,6 +942,8 @@ git push -u origin main
 | htop | 系统监测工具 |
 | wget | 网络文件下载工具|
 | yazi | 文件查看工具 |
+| ripgrep | 高速文本搜索，yazi依赖 |
+| fd | 快速目录搜索，yazi依赖 |
 | 7zip | yazi的压缩包预览后端 |
 | imagemagick | yazi的图片、字体等预览后端 |
 | poppler | yazi的pdf预览后端 |
@@ -980,8 +960,6 @@ git push -u origin main
 | :------------------------------------------- | :------------------------------------------- |
 | neovim | 文本编辑器 |
 | tree-sitter-cli | 语法树解析，treesitter依赖 |
-| ripgrep | 高速文本搜索，telescope依赖 |
-| fd | 快速目录搜索，telescope依赖 |
 | clang | C/C++前后端 |
 
 | 多媒体 | 说明 |
@@ -1009,6 +987,7 @@ git push -u origin main
 | tesseract-data-eng | PDF英文语言包 |
 | tesseract-data-chi_sim | PDF中文语言包 |
 | python-pylatexenc | markdown的LaTeX依赖 |
+| libtexprintf | markdown的LaTeX依赖 |
 | imv | 图片查看器 |
 
 | 字体 | 说明 |
@@ -1037,6 +1016,10 @@ git push -u origin main
 | 音乐 | 说明 |
 | :------------------------------------------- | :------------------------------------------- |
 | qqmusic-bin | QQ音乐 |
+
+| 网盘 | 说明 |
+| :------------------------------------------- | :------------------------------------------- |
+| baidunetdisk | 百度网盘 |
 
 - 清理孤儿包
 ```bash

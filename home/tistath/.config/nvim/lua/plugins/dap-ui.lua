@@ -1,7 +1,11 @@
+-- 断点调试界面
 return {
         "rcarriga/nvim-dap-ui",
 
-        event        = "BufReadPost",
+        event        = {
+                "BufReadPost",
+                "BufNewFile",
+        },
 
         dependencies = {
                 "mfussenegger/nvim-dap",
@@ -79,6 +83,6 @@ return {
                         dapui.close()
                 end
 
-                vim.keymap.set('n', "<Leader>du", dapui.toggle, { desc = "切换 DAP UI" })
+                vim.keymap.set('n', "<Leader>du", dapui.toggle, { desc = "切换DAP UI" })
         end,
 }

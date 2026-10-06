@@ -1,3 +1,4 @@
+-- Catppuccin颜色主题
 return {
         "catppuccin/nvim",
 
@@ -19,8 +20,10 @@ return {
 
                         transparent_background = true,
 
-                        integrations           = {
-                                barbar             = true,
+                        integrations           = { -- 集成
+                                blink_cmp = {
+                                        style = 'bordered',
+                                },
                                 lualine            = {
                                         normal   = {
                                                 a = { bg = catppuccin_palettes.blue,     fg = catppuccin_palettes.mantle,   gui = "bold" },
@@ -55,10 +58,8 @@ return {
                                 },
                                 noice              = true,
                                 notify             = true,
-                                cmp                = true,
                                 dap                = true,
                                 dap_ui             = true,
-                                nvimtree           = true,
                                 treesitter_context = true,
                                 rainbow_delimiters = true,
                                 render_markdown    = true,
