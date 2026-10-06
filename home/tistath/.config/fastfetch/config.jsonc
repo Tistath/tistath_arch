@@ -35,7 +35,7 @@
         "modules": [
                 {
                         "type": "command",
-                        "text": "niri msg action maximize-column"
+                        "text": "niri msg action set-window-width \"100%\";niri msg action set-window-height \"100%\""
                 },
 
                 {

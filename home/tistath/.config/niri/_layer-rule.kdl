@@ -1,0 +1,4 @@
+layer-rule {
+        match namespace="^wallpaper$"  // 将壁纸内嵌于概览
+        place-within-backdrop true
+}

@@ -8,7 +8,7 @@ sort_translit  = true      # 转写非英文字符
 linemode       = "size"    # 显示文件大小
 show_hidden    = true      # 显示隐藏文件
 show_symlink   = true      # 显示符号链接所指
-scrolloff      = 5         # 到头时光标上下的文件个数
+scrolloff      = 4         # 到头时光标上下的文件个数
 
 [preview]
 wrap       = "no" # 代码预览不换行

@@ -34,6 +34,9 @@ include         "_hotkey-overlate.kdl"
 // 窗口规则
 include         "_window-rule.kdl"
 
+// 层级规则
+include         "_layer-rule.kdl"
+
 // 动画
 include         "_animations.kdl"
 

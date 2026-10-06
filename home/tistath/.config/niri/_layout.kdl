@@ -23,4 +23,6 @@ layout {
                 width 3.00             // 宽度
                 active-color "#b4befe" // 颜色（mocha-Pink）
         }
+
+        background-color "transparent" // 不绘制底色
 }

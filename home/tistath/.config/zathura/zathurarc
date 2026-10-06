@@ -12,7 +12,7 @@ set font 'JetBrainsMono Nerd Font'
 
 # 仅显示文件名
 set window-title-basename true
-set statusbar-basename true
+set statusbar-basename    true
 
 # 使用系统剪切板
 set selection-clipboard clipboard

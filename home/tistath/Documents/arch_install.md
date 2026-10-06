@@ -910,7 +910,6 @@ grub-mkconfig -o /efi/grub/grub.cfg
 | linux-lts | LTS长期稳定内核 |
 | linux-lts-headers | LTS内核头文件 |
 | downgrade | 软件包降级工具 |
-| snapper-tui | 快照管理工具 |
 
 | 桌面环境 | 说明 |
 | :------------------------------------------- | :------------------------------------------- |

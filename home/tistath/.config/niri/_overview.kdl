@@ -4,9 +4,9 @@ overview {
 
         workspace-shadow {           // 窗口阴影
                 softness 30          // 模糊程度
-                spread   10          // 扩散范围
-                offset   x=0 y=10    // 阴影偏移
-                color    "#11111bff" // 阴影颜色（最后两位透明度）（mocha-Crust）
+                spread   5           // 扩散范围
+                offset   x=0 y=0     // 阴影偏移
+                color    "#11111bcb" // 阴影颜色（最后两位透明度）（mocha-Crust）
         }
 
 }
