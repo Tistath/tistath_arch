@@ -32,8 +32,9 @@ source $ZSH/oh-my-zsh.sh
 
 # fzf集成
 source <(fzf --zsh)
-# fzf主题
-source ~/.oh-my-zsh/custom/themes/catppuccin-fzf-mocha.zsh
+# 搜索命令时无预览窗口
+export FZF_CTRL_R_OPTS="--no-preview"
+export FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzfrc
 
 # man手册搜索路径
 export MANPATH="/usr/local/man:$MANPATH"
@@ -48,7 +49,6 @@ export EDITOR='nvim'
 export ARCHFLAGS="-arch $(uname -m)"
 
 # 函数
-source ~/.config/zsh/fzf-preview.zsh
 source ~/.config/zsh/git-prompt-branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
 

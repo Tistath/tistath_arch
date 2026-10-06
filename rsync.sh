@@ -14,6 +14,7 @@ files=(
 "$HOME/.config/fastfetch/"
 "$HOME/.config/fcitx5/"
 "$HOME/.config/fontconfig/"
+"$HOME/.config/fzf/"
 "$HOME/.config/htop/"
 "$HOME/.config/imv/"
 "$HOME/.config/kitty/"
