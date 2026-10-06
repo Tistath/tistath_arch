@@ -34,16 +34,10 @@ source $ZSH/oh-my-zsh.sh
 source <(fzf --zsh)
 # 搜索命令时无预览窗口
 export FZF_CTRL_R_OPTS="--no-preview"
-export FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzfrc
+alias fzf='fzf --no-preview'
 
 # man手册搜索路径
 export MANPATH="/usr/local/man:$MANPATH"
-
-# 默认语言环境
-export LANG=en_US.UTF-8
-
-# 默认编辑器
-export EDITOR='nvim'
 
 # 编译标志：根据当前架构设置
 export ARCHFLAGS="-arch $(uname -m)"
