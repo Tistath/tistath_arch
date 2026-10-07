@@ -7,21 +7,24 @@ return {
         config   = function()
 
                 local catppuccin          = require("catppuccin")
+                -- 调色板
                 local catppuccin_palettes = require("catppuccin.palettes").get_palette("mocha")
-                local transparent_bg      = "NONE"
 
                 catppuccin.setup({
+                        -- 口味
                         flavour                = "mocha",
-
                         background             = {
                                 light = "mocha",
                                 dark  = "mocha",
                         },
 
+                        -- 全局透明背景
                         transparent_background = true,
 
-                        integrations           = { -- 集成
+                        -- 集成
+                        integrations           = {
                                 blink_cmp = {
+                                        -- 补全菜单圆角
                                         style = 'bordered',
                                 },
                                 lualine            = {
@@ -71,6 +74,7 @@ return {
                         },
                 })
 
+                -- 设置主题
                 vim.cmd.colorscheme("catppuccin-nvim")
         end,
 }

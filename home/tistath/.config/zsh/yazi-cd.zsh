@@ -1,5 +1,4 @@
 # yazi退出时保留路径
-
 yazi-cd() {
         local tmp cwd
         tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

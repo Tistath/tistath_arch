@@ -9,6 +9,7 @@ return {
 
                 lualine.setup({
                         options           = {
+                                -- 分隔符
                                 component_separators = {
                                         left  = '',
                                         right = '',
@@ -18,6 +19,7 @@ return {
                                         right = '',
                                 },
                         },
+                        -- 显示项
                         sections          = {
                                 lualine_x = {
                                         "encoding",

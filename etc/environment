@@ -1,10 +1,13 @@
+# 编码
+LANG=en_US.UTF-8
+
 # 编辑器
 EDITOR=nvim
 # 可视编辑器
 VISUAL=nvim
+
 # 分页器
 PAGER=less
+
 # 浏览器
 BROWSER=zen-browser
-# 编码
-LANG=en_US.UTF-8

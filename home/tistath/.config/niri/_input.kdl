@@ -1,16 +1,25 @@
 input {
-        keyboard {               // 键盘
-                repeat-delay 190 // 长按的延迟
-                repeat-rate  20  // 每秒重复的次数
-                numlock          // 默认启用小键盘
+        // 键盘
+        keyboard {
+                // 长按的延迟
+                repeat-delay 190
+                // 每秒重复的次数
+                repeat-rate  20
+                // 默认启用小键盘
+                numlock
         }
 
-        touchpad {              // 触摸板
-                tap             // 点击视为左键
-                natural-scroll  // 自然滚动
+        // 触摸板
+        touchpad {
+                // 点击视为左键
+                tap
+                // 自然滚动
+                natural-scroll
         }
 
-        mouse {                 // 鼠标
-                accel-speed 0.5 // 鼠标速度
+        // 鼠标
+        mouse {
+                // 鼠标速度
+                accel-speed 0.5
         }
 }

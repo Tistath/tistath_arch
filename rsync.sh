@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 
-set -e # 一步成功才会接着执行
+# 一步成功才会接着执行
+set -e
 
 read -rp "commit message(默认'update'): " msg
 msg="${msg:-update}"

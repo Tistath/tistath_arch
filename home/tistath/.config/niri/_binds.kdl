@@ -1,42 +1,62 @@
 binds {
 
-// 遵循Ctrl的效果比Shift大
+// 遵循None<Shift<Ctrl，都用完了则最不常用的改为Alt
 
-        Mod+Shift+Slash { show-hotkey-overlay; }
+        // 终端
+        Mod+Return allow-inhibiting=false repeat=false cooldown-ms=190 { spawn "kitty"; }
 
-        Mod+Return allow-inhibiting=false repeat=false cooldown-ms=190 { spawn "kitty"; } // 终端
+        // htop
+        Mod+T repeat=false cooldown-ms=190 { spawn-sh "kitty htop; exec zsh"; }
 
-        Mod+T repeat=false cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "htop; exec zsh"; }
+        // yazi文件管理器
+        Mod+Y       repeat=false cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; }
+        Mod+Shift+Y repeat=false cooldown-ms=190 { spawn "kitty" "-e" "sh" "-c" "sudo yazi /; exec zsh";                                }
+        
+        // 火狐浏览器
+        Mod+B repeat=false cooldown-ms=190 { spawn "zen-browser"; }
 
-        Mod+Y       repeat=false cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; } // yazi文件管理器
-        Mod+Shift+Y repeat=false cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "sudo yazi; exec zsh";                                 }
+        // 微信
+        Mod+W       repeat=false cooldown-ms=190 { spawn "wechat-universal"; }
+        // QQ
+        Mod+Shift+W repeat=false cooldown-ms=190 { spawn "linuxqq";          }
+        // QQ音乐
+        Mod+Ctrl+W  repeat=false cooldown-ms=190 { spawn "qqmusic";          }
 
-        Mod+B repeat=false cooldown-ms=190 { spawn "zen-browser"; } // 火狐浏览器
+        // steam
+        Mod+S       repeat=false cooldown-ms=190 { spawn "steam";        }
+        // 加速器
+        Mod+Shift+S repeat=false cooldown-ms=190 { spawn "watt-toolkit"; }
 
-        Mod+W       repeat=false cooldown-ms=190 { spawn "wechat-universal"; } // 微信
-        Mod+Shift+W repeat=false cooldown-ms=190 { spawn "linuxqq";          } // QQ
-        Mod+Ctrl+W  repeat=false cooldown-ms=190 { spawn "qqmusic";          } // QQ音乐
+        // 锁屏
+        Mod+D       repeat=false cooldown-ms=190 { spawn    "swaylock"; }
+        // 开/关定时锁屏
+        Mod+Shift+D repeat=false cooldown-ms=190 { spawn-sh "pkill swayidle || swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'"; }
 
-        Mod+S       repeat=false cooldown-ms=190 { spawn "steam";        } // steam
-        Mod+Shift+S repeat=false cooldown-ms=190 { spawn "watt-toolkit"; } // 加速器
-
-        Mod+D       repeat=false cooldown-ms=190 { spawn    "swaylock";                                                  } // 锁屏
-        Mod+Shift+D repeat=false cooldown-ms=190 { spawn-sh "pkill swayidle || swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'"; } // 开关定时锁屏
-
-        Mod+Space       repeat=false { toggle-overview; } // 窗口概览
+        // 窗口概览
+        Mod+Space       repeat=false { toggle-overview; }
         Mod+MouseMiddle repeat=false { toggle-overview; }
 
-        // 功能键（Fn）
-        XF86AudioRaiseVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; } // 增大音量
-        XF86AudioLowerVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";        } // 减小音量
-        XF86AudioMute          allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";        } // 开关静音
-        XF86AudioMicMute       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";      } // 开关麦克风静音
-        XF86AudioPlay          allow-when-locked=true { spawn-sh "playerctl play-pause";                              } // 播放/暂停
-        XF86AudioStop          allow-when-locked=true { spawn-sh "playerctl stop";                                    } // 停止
-        XF86AudioPrev          allow-when-locked=true { spawn-sh "playerctl previous";                                } // 上一首
-        XF86AudioNext          allow-when-locked=true { spawn-sh "playerctl next";                                    } // 下一首
-        XF86MonBrightnessUp    allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "+10%";    } // 增大亮度
-        XF86MonBrightnessDown  allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "10%-";    } // 减小亮度
+        // Fn+
+        // 增大音量
+        XF86AudioRaiseVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+        // 减小音量
+        XF86AudioLowerVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";        }
+        // 开关静音
+        XF86AudioMute          allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";        }
+        // 开关麦克风静音
+        XF86AudioMicMute       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";      }
+        // 播放/暂停
+        XF86AudioPlay          allow-when-locked=true { spawn-sh "playerctl play-pause";                              }
+        // 停止
+        XF86AudioStop          allow-when-locked=true { spawn-sh "playerctl stop";                                    }
+        // 上一首
+        XF86AudioPrev          allow-when-locked=true { spawn-sh "playerctl previous";                                }
+        // 下一首
+        XF86AudioNext          allow-when-locked=true { spawn-sh "playerctl next";                                    }
+        // 增大亮度
+        XF86MonBrightnessUp    allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "+10%";    }
+        // 减小亮度
+        XF86MonBrightnessDown  allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "10%-";    }
     
         // 切换聚焦窗口
         Mod+Left                                { focus-column-left;  }
@@ -146,8 +166,10 @@ binds {
         Mod+BracketLeft  { consume-or-expel-window-left;  }
         Mod+BracketRight { consume-or-expel-window-right; }
 
-        Mod+Comma  { consume-window-into-column; } // 吸入相邻窗口
-        Mod+Period { expel-window-from-column;   } // 弹出当前窗口
+        // 吸入相邻窗口
+        Mod+Comma  { consume-window-into-column; }
+        // 弹出当前窗口
+        Mod+Period { expel-window-from-column;   }
         
         // 调整窗口至预设大小
         Mod+R       repeat=false { switch-preset-column-width;  }
@@ -159,10 +181,10 @@ binds {
         Mod+Shift+F repeat=false { maximize-window-to-edges; }
         Mod+Ctrl+F  repeat=false { fullscreen-window;        }
 
-        // 居中当前/所有可见窗口/所有窗口
+        // 居中当前/所有可见/所有窗口
         Mod+C       { center-column;          }
         Mod+Shift+C { center-visible-columns; }
-        Mod+Ctrl+C  { spawn-sh "niri msg action center-column; [ -s ~/.config/niri/_center-focused-column.kdl ] && : > ~/.config/niri/_center-focused-column.kdl || printf 'layout {\n        center-focused-column \"always\"\n}' > ~/.config/niri/_center-focused-column.kdl"; }
+        Mod+Ctrl+C  { spawn-sh "niri msg action center-column; sed -i '1{s|^/-||;t;s|^|/-|}' ~/.config/niri/_center-focused-column.kdl"; }
 
         // 调整窗口大小
         Mod+Minus       { set-column-width  "-12.5%"; }
@@ -170,11 +192,14 @@ binds {
         Mod+Shift+Minus { set-window-height "-12.5%"; }
         Mod+Shift+Equal { set-window-height "+12.5%"; }
 
+        // 大小调为一半
         Mod+E       { set-column-width  "50%";  }
         Mod+Shift+E { set-window-height "50%"; }
 
-        Mod+V       repeat=false cooldown-ms=190 { toggle-window-floating;                   } // 切换浮动/平铺
-        Mod+Shift+V repeat=false cooldown-ms=190 { switch-focus-between-floating-and-tiling; } // 在浮动/平铺间切换聚焦
+        // 开/关浮动模式
+        Mod+V       repeat=false cooldown-ms=190 { toggle-window-floating;                   }
+        // 在浮动/平铺间切换聚焦
+        Mod+Shift+V repeat=false cooldown-ms=190 { switch-focus-between-floating-and-tiling; }
 
         // 切换标签页/堆叠
         Mod+Tab repeat=false cooldown-ms=190 { toggle-column-tabbed-display; }
@@ -190,7 +215,10 @@ binds {
         // 禁用niri快捷键
         Mod+Escape repeat=false { toggle-keyboard-shortcuts-inhibit; }
 
-        Mod+Q allow-inhibiting=false repeat=false cooldown-ms=190 { close-window;       } // 关闭窗口
-        Mod+Shift+Q                                               { power-off-monitors; } // 熄屏
-        Mod+Ctrl+Q                                                { quit;               } // 退出niri
+        // 关闭窗口
+        Mod+Q allow-inhibiting=false repeat=false cooldown-ms=190 { close-window;       }
+        // 熄屏
+        Mod+Shift+Q                                               { power-off-monitors; }
+        // 退出niri
+        Mod+Ctrl+Q                                                { quit;               }
 }

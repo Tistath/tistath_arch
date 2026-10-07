@@ -2,10 +2,14 @@
 return {
         "folke/which-key.nvim",
 
-        lazy         = false,
+        event        = {
+                "VeryLazy",
+        },
 
-        init         = function() --按键后提示快捷键延迟
+        init         = function()
+                -- 按键后提示快捷键延迟
                 vim.o.timeout    = true
+                -- 延迟ms 
                 vim.o.timeoutlen = 300
         end,
 
@@ -13,17 +17,25 @@ return {
                 local which = require("which-key")
 
                 which.setup({
-                        win   = {
-                        col    = -1,
-                        width  = 0.5,
-                        border = "rounded",
-                        title  = false,
+                        -- 禁用图标
+                        icons= {
+                                mappings = false,
+                                rules = false
                         },
-                        icons = {
-                                mappings = true,
+                        -- 窗口
+                        win   = {
+                                -- 右侧 
+                                col    = -1,
+                                -- 宽度
+                                width  = 0.5,
+                                -- 圆角
+                                border = "rounded",
+                                -- 无标题
+                                title  = false,
                         },
                 })
 
+                -- 框线无背景
                 vim.api.nvim_set_hl(0, "WhichKeyBorder", { bg = "NONE" })
         end,
 }

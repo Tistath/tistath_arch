@@ -3,7 +3,7 @@
 // Arch Logo
 //         "logo": {
 //                 "color": {
-//                         "1": "#b4befe", // catppuccin-mocha-Lavender
+//                         "1": "#b4befe", // (catppuccin-mocha-Lavender)
 //                         "2": "#b4befe"
 //                 }
 //         },
@@ -33,9 +33,10 @@
                 "separator": ""
         },
         "modules": [
+                // 最大化窗口
                 {
                         "type": "command",
-                        "text": "niri msg action set-window-width \"100%\";niri msg action set-window-height \"100%\""
+                        "text": "niri msg action set-window-width '100%';niri msg action set-window-height '100%'"
                 },
 
                 {
@@ -45,12 +46,12 @@
 
                 {
                         "type": "custom",
-                        "key": "├── {##89b4fa}Hardware",   // catppuccin-mocha-Blue
-                        "keyColor": "#cdd6f4"              // catppuccin-mocha-Text
+                        "key": "├── {##89b4fa}Hardware",   // (catppuccin-mocha-Blue)
+                        "keyColor": "#cdd6f4"              // (catppuccin-mocha-Text)
                 },
                 {
                         "type": "host",
-                        "key": "│   ├── {##b4befe}host: ", // catppuccin-mocha-Lavender
+                        "key": "│   ├── {##b4befe}host: ", // (catppuccin-mocha-Lavende)r
                         "keyColor": "#cdd6f4"
                 },
                 {

@@ -17,23 +17,36 @@ return {
                 local dap   = require("dap")
 
                 dapui.setup({
+                        -- 各面板键位
                         element_mappings = {
+                                -- 变量
                                 scopes      = {
+                                        -- 编辑变量值
                                         edit = 'e',
+                                        -- 送到交互面板
                                         repl = 'r',
                                 },
-                                watches     = {
-                                        edit = 'e',
-                                        repl = 'r',
-                                },
+                                -- 栈
                                 stacks      = {
+                                        -- 跳转到栈帧
                                         open = 'o',
                                 },
+                                -- 断点
                                 breakpoints = {
+                                        -- 打开断点位置
                                         open   = 'o',
+                                        -- 开/关断点
                                         toggle = 't',
                                 },
+                                -- 监视
+                                watches     = {
+                                        -- 编辑监视表达式
+                                        edit = 'e',
+                                        -- 送到交互面板
+                                        repl = 'r',
+                                },
                         },
+                        -- 布局
                         layouts          = {
                                 {
                                         elements = {
@@ -46,6 +59,7 @@ return {
                                         position = "left",
                                 },
                                 {
+                                        -- 交互面板
                                         elements = {
                                                 "repl",
                                         },
@@ -53,6 +67,7 @@ return {
                                         position = "bottom",
                                 },
                                 {
+                                        -- 控制台
                                         elements = {
                                                 "console",
                                         },
@@ -60,11 +75,15 @@ return {
                                         position = "right",
                                 },
                         },
+                        -- 浮动窗口
                         floating         = {
+                                -- 不限尺寸
                                 max_height = nil,
                                 max_width  = nil,
+                                -- 圆角
                                 border     = "rounded",
                                 mappings   = {
+                                        -- 关闭
                                         close = {
                                                 'q',
                                                 "<Esc>",
@@ -73,9 +92,11 @@ return {
                         },
                 })
 
+                -- 调试时打开
                 dap.listeners.after.event_initialized["dapui_config"] = function()
                         dapui.open()
                 end
+                -- 调试结束时关闭
                 dap.listeners.before.event_terminated["dapui_config"] = function()
                         dapui.close()
                 end
@@ -83,6 +104,6 @@ return {
                         dapui.close()
                 end
 
-                vim.keymap.set('n', "<Leader>du", dapui.toggle, { desc = "切换DAP UI" })
+                vim.keymap.set('n', "<Leader>du", dapui.toggle, { desc = "开/关DAP UI" })
         end,
 }

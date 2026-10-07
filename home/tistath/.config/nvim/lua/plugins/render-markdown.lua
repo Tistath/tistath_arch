@@ -20,7 +20,8 @@ return {
                                         enabled = true,
                                 },
                         },
-                        code        = { -- 代码块左对齐
+                        -- 代码块左对齐
+                        code        = {
                                 sign         = false,
                                 width        = "block",
                                 min_width    = 80,
@@ -52,16 +53,25 @@ return {
                                 alignment_indicator = '─',
                         	border              = { '╭', '┬', '╮',
                                                         '├', '┼', '┤',
-                                                        '╰', '┴', '╯', 
+                                                        '╰', '┴', '╯',
                                                         '│', '─',
                                 },
                         },
                         indent      = {
-                                enabled      = true, -- 启用缩进线
-                                per_level    = 4,     -- 每级缩进的空格数（通常为 2 或 4）
-                                skip_level   = 1,     -- 从第几级标题开始显示缩进线
-                                skip_heading = false, -- 标题自身不缩进，标题下的内容缩进
-                                icon         = '│',   -- 缩进线图标
+                                -- 启用缩进线
+                                enabled      = true,
+
+                                -- 每级缩进的空格数（通常为 2 或 4）
+                                per_level    = 4,
+
+                                -- 从第几级标题开始显示缩进线
+                                skip_level   = 1,
+
+                                -- 标题自身不缩进，标题下的内容缩进
+                                skip_heading = false,
+
+                                -- 缩进线图标
+                                icon         = '│',
                         },
                 })
         end,

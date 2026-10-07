@@ -74,6 +74,7 @@
                         ],
                         "ethernet": "󰈀"
                 },
+
                 // 鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
                 "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} ({ipaddr})",
                 "tooltip-format-ethernet": "\n{ifname} ({ipaddr})",

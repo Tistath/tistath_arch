@@ -1,17 +1,27 @@
 environment {
-        LC_MESSAGES           "zh_CN.UTF-8"                     // 编码
+        // 编码
+        LC_MESSAGES           "zh_CN.UTF-8"                     
 
-        XMODIFIERS            "@im=fcitx"                       // X11输入法
-        QT_IM_MODULE          "fcitx"                           // Qt输入法
-        INPUT_METHOD          "fcitx"                           // 部分程序的输入法
-        SDL_IM_MODULE         "fcitx"                           // SDL（游戏）的输入法
-        GLFW_IM_MODULE        "ibus"                            // GLFW的输入法协议
+        // 桌面
+        XDG_CURRENT_DESKTOP   "niri"
 
-        XDG_CURRENT_DESKTOP   "niri"                            // 桌面
+        // 图形会话
+        XDG_SESSION_TYPE      "wayland"
 
-        XDG_SESSION_TYPE      "wayland"                         // 图形会话
+        // X11输入法
+        XMODIFIERS            "@im=fcitx"
+        // Qt输入法
+        QT_IM_MODULE          "fcitx"
+        // 部分程序的输入法
+        INPUT_METHOD          "fcitx"
+        // SDL（游戏）的输入法
+        SDL_IM_MODULE         "fcitx"
+        // GLFW的输入法协议
+        GLFW_IM_MODULE        "ibus"
 
-        MOZ_ENABLE_WAYLAND    "1"                               // Mozilla应用使用Wayland
+        // Mozilla应用使用Wayland
+        MOZ_ENABLE_WAYLAND    "1"
 
-        FZF_DEFAULT_OPTS_FILE "/home/tistath/.config/fzf/fzfrc" // fzf配置路径
+        // fzf配置路径
+        FZF_DEFAULT_OPTS_FILE "/home/tistath/.config/fzf/fzfrc"
 }

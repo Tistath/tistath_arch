@@ -1,7 +1,10 @@
 cursor {
-        xcursor-theme          "Future-black-cursors" // 主题
+        // 主题
+        xcursor-theme          "Future-black-cursors"
 
-        xcursor-size           32                     // 大小
+        // 大小
+        xcursor-size           32
 
-        hide-after-inactive-ms 4500                   // 待机隐藏时间
+        // 待机隐藏时间
+        hide-after-inactive-ms 4500
 }

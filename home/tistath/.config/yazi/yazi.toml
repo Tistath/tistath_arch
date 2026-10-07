@@ -1,53 +1,88 @@
 [mgr]
-ratio          = [2, 3, 4] # 三栏占比
-sort_by        = "natural" # 自然排序，不会出现1.md>10.md>2.md
-sort_sensitive = true      # 排序时区分大小写
-sort_reverse   = false     # 正向排序
-sort_dir_first = true      # 目录优先
-sort_translit  = true      # 转写非英文字符
-linemode       = "size"    # 显示文件大小
-show_hidden    = true      # 显示隐藏文件
-show_symlink   = true      # 显示符号链接所指
-scrolloff      = 4         # 到头时光标上下的文件个数
+# 三栏占比
+ratio          = [2, 3, 4] 
+
+# 自然排序，不会出现1.md>10.md>2.md
+sort_by        = "natural" 
+# 排序时区分大小写
+sort_sensitive = true      
+# 正向排序
+sort_reverse   = false     
+# 目录优先
+sort_dir_first = true      
+# 转写非英文字符
+sort_translit  = true      
+
+# 显示文件大小
+linemode       = "size"    
+# 显示隐藏文件
+show_hidden    = true      
+# 显示符号链接所指
+show_symlink   = true      
+
+# 到头时光标上下的文件个数
+scrolloff      = 4         
 
 [preview]
-wrap       = "no" # 代码预览不换行
-tab_size   = 8    # 缩进大小
-max_width  = 853  # 图片宽度
-max_height = 1080 # 图片高度
+# 代码预览不换行
+wrap       = "no" 
+
+# 缩进大小
+tab_size   = 8    
+
+# 图片宽度
+max_width  = 853  
+# 图片高度
+max_height = 1080 
 
 [opener]
-edit    = [
+edit     = [
         { run = 'kitty nvim %s',        desc = "nvim",        orphan = true },
 ]
-browser = [
+browser  = [
         { run = 'zen-browser %s',       desc = "zen-browser", orphan = true },
 ]
-view    = [
+view     = [
         { run = 'imv %s',               desc = "imv",         orphan = true },
 ]
-zathura = [
+zathura  = [
         { run = 'zathura %s',           desc = "zathura",     orphan = true },
 ]
-play    = [
-        { run = 'mpv %s',               desc = "mpv",      orphan = true },
+play     = [
+        { run = 'mpv %s',               desc = "mpv",         orphan = true },
 ]
-swaybg  = [
+swaybg   = [
         { run = 'swaybg -i %s -m fill', desc = "swaybg",      orphan = true },
+]
+sudoedit = [
+        { run = 'kitty sudoedit %s',    desc = "sudoedit",    orphan = true }
 ]
 
 [open]
 rules = [
-        { mime = "text/*",          use = [ "edit",     "browser",                          ] }, # 文本
-        { mime = "image/*",         use = [ "view",     "edit",        "browser", "swaybg", ] }, # 图片
-        { mime = "application/pdf", use = [ "zathura",  "edit",        "browser",           ] }, # PDF
-        { mime = "video/*",         use = [ "play",     "edit",        "browser",           ] }, # 视频
-        { mime = "audio/*",         use = [ "play",     "edit",        "browser",           ] }, # 音频
-        { mime = "*",               use = [ "edit",     "browser",                          ] }, # fallback
+        # 文本
+        { mime = "text/*",          use = [ "edit",     "browser",     "sudoedit",           ] }, 
+
+        # 图片
+        { mime = "image/*",         use = [ "view",     "edit",        "browser",  "swaybg", ] }, 
+
+        # PDF
+        { mime = "application/pdf", use = [ "zathura",  "edit",        "browser",            ] }, 
+
+        # 视频
+        { mime = "video/*",         use = [ "play",     "edit",        "browser",            ] }, 
+        # 音频
+        { mime = "audio/*",         use = [ "play",     "edit",        "browser",            ] }, 
+
+        # 缺省
+        { mime = "*",               use = [ "edit",     "browser",     "sudoedit",           ] }, 
+
 ]
 
 [input]
-cursor_blink = true # 光标闪烁
+# 光标闪烁
+cursor_blink = true 
 
 [which]
-sort_by = "key" # 按按键顺序排序快捷键提示
+# 按按键顺序排序快捷键提示
+sort_by = "key" 

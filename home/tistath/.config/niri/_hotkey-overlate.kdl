@@ -1,3 +1,4 @@
 hotkey-overlay {
-        skip-at-startup // 跳过自启动
+        // 启动时跳过
+        skip-at-startup
 }

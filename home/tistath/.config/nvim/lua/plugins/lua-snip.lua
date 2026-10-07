@@ -11,6 +11,7 @@ return {
 
         dependencies = {
                 "rafamadriz/friendly-snippets",
+                "L3MON4D3/jsregexp",
         },
 
         config       = function()

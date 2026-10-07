@@ -3,11 +3,14 @@ corner_radius   = 12
 frame_color     = "#89b4fa"
 separator_color = frame
 highlight       = "#89b4fa"
+
 font            = JetBrainsMono Nerd Font 11
+
 width           = 400
 height          = (0, 300)
-origin          = top-right
 offset          = (10, 50)
+
+origin          = top-right
 
 [urgency_low]
 background = "#1e1e2e"
@@ -21,4 +24,5 @@ foreground = "#cdd6f4"
 background  = "#1e1e2e"
 foreground  = "#cdd6f4"
 frame_color = "#fab387"
+
 timeout     = 3000

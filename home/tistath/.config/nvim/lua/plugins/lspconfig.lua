@@ -9,7 +9,7 @@ return {
 
                 vim.diagnostic.config({
                         virtual_text     = {
-                                prefix  = '●',
+                                prefix  = '!',
                                 spacing = 4,
                         },
                         signs            = true,

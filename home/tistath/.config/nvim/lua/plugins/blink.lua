@@ -10,21 +10,24 @@ return {
         build        = function()
                 local blink = require("blink.cmp")
 
+                -- 构建组件
                 blink.build():pwait()
         end,
 
         dependencies = {
                 {
                         "xzbdmw/colorful-menu.nvim",
-                        opts = {},
+                        opts = {
+                        },
                 },
                 "saghen/blink.lib",
                 "L3MON4D3/LuaSnip",
         },
-        
+
         opts         = {
                 sources = {
-                        default = { -- 补全来源顺序
+                        -- 补全来源顺序
+                        default = {
                                 "snippets",
                                 "buffer",
                                 "lsp",
@@ -33,30 +36,39 @@ return {
                 },
                 completion = {
                         documentation = {
+                                -- 显示选中项文档
                                 auto_show = true,
+                                -- 延迟
                                 auto_show_delay_ms = 190,
                         },
                         menu          = {
                                 draw = {
-                                        columns    = { -- 菜单内容
+                                        -- 菜单内容
+                                        columns    = {
                                                 {
+                                                        -- 图标
                                                         "kind_icon",
                                                 },
                                                 {
+                                                        -- 补全项文字
                                                         "label",
+                                                        -- 间隔
                                                         gap = 1,
                                                 },
                                         },
-                                        components = { -- 补全菜单上色
+                                        -- 补全菜单上色
+                                        components = {
                                                 label = {
                                                         text      = function(ctx)
                                                                 local menu = require("colorful-menu")
 
+                                                                -- 文字
                                                                 return menu.blink_components_text(ctx)
                                                         end,
                                                         highlight = function(ctx)
                                                                 local menu = require("colorful-menu")
 
+                                                                -- 高亮组
                                                                 return menu.blink_components_highlight(ctx)
                                                         end,
                                                 },
@@ -91,10 +103,12 @@ return {
                                 "fallback",
                         },
                 },
-                snippets   = { -- 代码片段引擎
+                -- 代码片段引擎
+                snippets   = {
                         preset = "luasnip",
                 },
-                signature  = { -- 显示函数参数列表
+                -- 显示函数参数列表
+                signature  = {
                         enabled = true,
                 },
                 cmdline    = {
@@ -123,6 +137,5 @@ return {
                                 },
                         },
                 },
-
         },
 }

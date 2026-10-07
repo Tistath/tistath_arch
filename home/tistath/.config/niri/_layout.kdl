@@ -1,6 +1,8 @@
 layout {
-        gaps 12                // 窗口间距
-                               // 调整窗口大小时的可选值
+        // 窗口间距
+        gaps 12
+
+        // 调整窗口大小时的可选值
         preset-column-widths {
                 proportion 0.25
                 proportion 0.5
@@ -15,14 +17,19 @@ layout {
                 proportion 1.0
         }
 
-        default-column-width { // 新窗口默认宽度
+        // 新窗口默认宽度
+        default-column-width {
                 proportion 0.5;
         }
 
-        focus-ring {                   // 聚焦窗口的边框
-                width 3.00             // 宽度
-                active-color "#b4befe" // 颜色（mocha-Pink）
+        // 聚焦窗口的边框
+        focus-ring {
+                // 宽度
+                width 3.00
+                // 颜色
+                active-color "#b4befe" // (catppuccin-mocha-Pink)
         }
 
-        background-color "transparent" // 不绘制底色
+        // 不绘制底色
+        background-color "transparent"
 }

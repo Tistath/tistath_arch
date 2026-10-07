@@ -1,12 +1,23 @@
 overview {
-        zoom             0.33      // 缩放
-        backdrop-color   "#181825" // 背景颜色
+        // 缩放
+        zoom             0.335
 
-        workspace-shadow {           // 窗口阴影
-                softness 30          // 模糊程度
-                spread   5           // 扩散范围
-                offset   x=0 y=0     // 阴影偏移
-                color    "#11111bcb" // 阴影颜色（最后两位透明度）（mocha-Crust）
+        // 背景颜色
+        backdrop-color   "#181825" // (catppuccin-mocha-Mantle)
+
+        // 窗口阴影
+        workspace-shadow {
+                // 模糊程度
+                softness 30
+
+                // 扩散范围
+                spread   5
+
+                // 阴影偏移
+                offset   x=0 y=0
+
+                // 阴影颜色
+                color    "#11111bcb" // (catppuccin-mocha-Crust)
         }
 
 }

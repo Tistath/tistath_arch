@@ -10,6 +10,9 @@ include         "_binds.kdl"
 //布局
 include         "_layout.kdl"
 
+// 全局居中聚焦切换
+include         "_center-focused-column.kdl"
+
 // 自启动项
 include         "_spawn-at-startup.kdl"
 
@@ -17,7 +20,7 @@ include         "_spawn-at-startup.kdl"
 prefer-no-csd
 
 // 截屏路径
-screenshot-path "/home/tistath/Pictures/Screenshots/Screenshot-%y-%m-%d-%H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot-%y-%m-%d-%H-%M-%S.png"
 
 // 环境变量
 include         "_environment.kdl"
@@ -42,5 +45,3 @@ include         "_animations.kdl"
 
 // 手势规则
 include         "_gestures.kdl"
-
-include         "_center-focused-column.kdl"
