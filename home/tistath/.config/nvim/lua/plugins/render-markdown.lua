@@ -8,6 +8,7 @@ return {
         },
 
         dependencies = {
+                -- 语法树
                 "nvim-treesitter/nvim-treesitter",
         },
 

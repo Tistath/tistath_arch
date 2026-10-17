@@ -15,13 +15,17 @@ return {
         end,
 
         dependencies = {
+                -- 模糊匹配库
+                "saghen/blink.lib",
+                -- 代码片段引擎
+                "L3MON4D3/LuaSnip",
+                -- 补全菜单着色
                 {
                         "xzbdmw/colorful-menu.nvim",
+                        -- 默认参数
                         opts = {
                         },
                 },
-                "saghen/blink.lib",
-                "L3MON4D3/LuaSnip",
         },
 
         opts         = {

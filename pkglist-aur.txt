@@ -2,6 +2,7 @@ baidunetdisk-bin
 libtexprintf
 linuxqq
 qqmusic-bin
+swaylock-effects
 watt-toolkit-bin
 wechat-universal-bwrap
 zen-browser-bin

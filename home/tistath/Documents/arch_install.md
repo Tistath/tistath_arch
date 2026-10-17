@@ -451,20 +451,6 @@ git config --global user.email "eta_gamma_omega@qq.com"
 git config --global init.defaultBranch main
 ```
 
-### 大写锁定映射为Ctrl
-
-- 编辑/etc/udev/hwdb.d/99-caps-ctrl.hwdb，添加：
-```hwdb
-evdev:atkbd:dmi:bvn*:bvr*:bd*:svn*:pn*:pvr*
-  KEYBOARD_KEY_3a=leftctrl
-```
-
-- 生效：
-```bash
-sudo systemd-hwdb update
-sudo udevadm trigger
-```
-
 ### Zen浏览器配置
 
 - 点击左上角三点，在`Settings`中：
@@ -545,7 +531,7 @@ sudo udevadm trigger
 
             - 添加`Chinese [zh]`、`Chinese (China) [zh-cn]`
 
-    - Themes：右键左侧或上方，选择编辑主题，选择第三页第一个，明度拉到0.92
+    - Themes：右键左侧或上方，选择编辑主题，选择第三页第一个，明度拉到0.8
 
     - [Config](about:config)：
 
@@ -622,7 +608,7 @@ sudo udevadm trigger
 
 - 安装`treesitter`解析器：
 ```Vimscript
-TSInstall c cpp css python lua html xml bash make cmake latex markdown markdown_inline zsh json ini kdl toml yaml regex vim vimdoc query gitcommit gitignore
+TSInstall c cpp python lua html xml css make cmake latex markdown markdown_inline bash zsh json ini kdl toml yaml regex vim vimdoc gitcommit gitignore
 ```
 
 - 构建`blink.cmp`：
@@ -763,6 +749,13 @@ grub-mkconfig -o /efi/grub/grub.cfg
     ```bash
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
     ```
+
+### fzf配置
+
+- 添加预览脚本可执行权限：
+```bash
+chmod +x ~/.config/fzf/fzf-preview.sh
+```
 
 ### 非自创配置的记录（以防上游更新）
 

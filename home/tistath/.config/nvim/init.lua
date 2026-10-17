@@ -53,7 +53,7 @@ vim.opt.wrapscan       = true
 -- 真彩色
 vim.opt.termguicolors  = true
 
--- dark/light
+-- 背景
 vim.opt.background     = "dark"
 
 -- 编辑行为
@@ -124,9 +124,7 @@ vim.g.have_nerd_font   = true
 vim.g.editorconfig     = true
 
 -- 光标样式
-vim.opt.guicursor      = "n-v-c-ve:block,"
-                      .. "i-ci:block-blinkwait0-blinkon1-blinkoff1,"
-                      .. "r-cr-o:hor1"
+vim.opt.guicursor      = "n-v-c-ve:block,i-ci:block-blinkwait0-blinkon1-blinkoff1,r-cr-o:hor1"
 
 -- 加载lazy.nvim
 require("config.lazy")
@@ -134,12 +132,9 @@ require("config.lazy")
 -- 关闭浮窗背景
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 
--- 修复::的缩进和高亮问题
-vim.api.nvim_create_autocmd("FileType",{
-        pattern = "cpp",
+-- 删除行尾空格
+vim.api.nvim_create_autocmd("BufWritePre", {
         callback = function()
-                vim.bo.cinkeys = "0{,0},0),:,0#,!^F,o,O,e"
-                vim.bo.cinwords = "if,else,while,do,for,switch"
+                vim.cmd([[%s/\s\+$//e]])
         end,
 })
-

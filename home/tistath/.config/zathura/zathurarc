@@ -1,4 +1,4 @@
-include _catppuccin-mocha
+include themes/catppuccin-mocha
 
 # 翻页
 map <C-j> navigate next

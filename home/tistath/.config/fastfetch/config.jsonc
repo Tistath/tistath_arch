@@ -27,7 +27,7 @@
         "logo": {
                 "type": "kitty-direct",
                 "source": "~/.config/fastfetch/unreal_life_1792.png",
-                "width": 45
+                "width": 41
         },
         "display": {
                 "separator": ""
@@ -107,13 +107,8 @@
                         "keyColor": "#cdd6f4"
                 },
                 {
-                        "type": "terminalfont",
+                        "type": "font",
                         "key": "│   ├── {##b4befe}terminalfont: ",
-                        "keyColor": "#cdd6f4"
-                },
-                {
-                        "type": "lm",
-                        "key": "│   ├── {##b4befe}lm: ",
                         "keyColor": "#cdd6f4"
                 },
                 {
@@ -145,7 +140,7 @@
 
                 {
                         "type": "custom",
-                        "key": "\n\r ~晒晒月亮哇{##89b4fa}:D\n",
+                        "key": "\n\r ~晒晒月亮哇{##89b4fa}:D",
                         "keyColor": "#b4befe"
                 }
   ]

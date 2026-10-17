@@ -8,7 +8,9 @@ return {
         },
 
         dependencies = {
+                -- 调试本体
                 "mfussenegger/nvim-dap",
+                -- 异步I/O库
                 "nvim-neotest/nvim-nio",
         },
 

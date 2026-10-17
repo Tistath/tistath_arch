@@ -8,6 +8,7 @@ return {
         },
 
         dependencies = {
+                -- 调试本体
                 "mfussenegger/nvim-dap",
         },
 
@@ -15,18 +16,21 @@ return {
                 local daptext = require("nvim-dap-virtual-text")
 
                 daptext.setup({
+                        -- 启用变量悬浮面板
                         enabled                     = true,
-                        enable_commands             = true,
+
+                        -- 高亮发生变化的变量
                         highlight_changed_variables = true,
-                        highlight_new_as_changed    = false,
+                        -- 高亮新变量
+                        highlight_new_as_changed    = true,
+
+                        -- 显示停止原因
                         show_stop_reason            = true,
-                        commented                   = false,
-                        only_first_definition       = true,
-                        all_references              = false,
-                        filter_references_pattern   = "<module",
+
+                        -- 显示在行尾
                         virt_text_pos               = "eol",
-                        all_frames                  = false,
                         virt_lines                  = false,
+                        -- 自动调整列位置
                         virt_text_win_col           = nil,
                 })
         end,

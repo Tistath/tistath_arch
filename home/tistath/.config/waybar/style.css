@@ -33,5 +33,4 @@ window#waybar {
 #custom-right_separator {
         background-color: transparent;
         color: @surface0;
-        font-size: 1.11em
 }
