@@ -22,14 +22,6 @@ layout {
                 proportion 0.5;
         }
 
-        // 聚焦窗口的边框
-        focus-ring {
-                // 宽度
-                width 3.00
-                // 颜色
-                active-color "#b4befe" // (catppuccin-mocha-Pink)
-        }
-
         // 不绘制底色
         background-color "transparent"
 }

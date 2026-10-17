@@ -5,15 +5,11 @@ binds {
         // 终端
         Mod+Return allow-inhibiting=false repeat=false cooldown-ms=190 { spawn "kitty"; }
 
-        // htop
-        Mod+T repeat=false cooldown-ms=190 { spawn-sh "kitty htop; exec zsh"; }
-
         // yazi文件管理器
-        Mod+Y       repeat=false cooldown-ms=190 { spawn "kitty" "-e" "zsh" "-c" "source ~/.config/zsh/yazi-cd.zsh; yazi-cd; exec zsh"; }
-        Mod+Shift+Y repeat=false cooldown-ms=190 { spawn "kitty" "-e" "sh" "-c" "sudo yazi /; exec zsh";                                }
-        
+        Mod+Y       repeat=false cooldown-ms=190 { spawn "kitty" "yazi"; }
+
         // 火狐浏览器
-        Mod+B repeat=false cooldown-ms=190 { spawn "zen-browser"; }
+        Mod+B       repeat=false cooldown-ms=190 { spawn "zen-browser"; }
 
         // 微信
         Mod+W       repeat=false cooldown-ms=190 { spawn "wechat-universal"; }
@@ -38,26 +34,26 @@ binds {
 
         // Fn+
         // 增大音量
-        XF86AudioRaiseVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+        XF86AudioRaiseVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@"   "0.1+" "-l" "1.0"; }
         // 减小音量
-        XF86AudioLowerVolume   allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";        }
+        XF86AudioLowerVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@"   "0.1-";            }
         // 开关静音
-        XF86AudioMute          allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";        }
+        XF86AudioMute          allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SINK@"   "toggle";          }
         // 开关麦克风静音
-        XF86AudioMicMute       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";      }
+        XF86AudioMicMute       allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle";          }
         // 播放/暂停
-        XF86AudioPlay          allow-when-locked=true { spawn-sh "playerctl play-pause";                              }
+        XF86AudioPlay          allow-when-locked=true { spawn "playerctl" "play-pause";                                        }
         // 停止
-        XF86AudioStop          allow-when-locked=true { spawn-sh "playerctl stop";                                    }
+        XF86AudioStop          allow-when-locked=true { spawn "playerctl" "stop";                                              }
         // 上一首
-        XF86AudioPrev          allow-when-locked=true { spawn-sh "playerctl previous";                                }
+        XF86AudioPrev          allow-when-locked=true { spawn "playerctl" "previous";                                          }
         // 下一首
-        XF86AudioNext          allow-when-locked=true { spawn-sh "playerctl next";                                    }
+        XF86AudioNext          allow-when-locked=true { spawn "playerctl" "next";                                              }
         // 增大亮度
-        XF86MonBrightnessUp    allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "+10%";    }
+        XF86MonBrightnessUp    allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%";                }
         // 减小亮度
-        XF86MonBrightnessDown  allow-when-locked=true { spawn    "brightnessctl" "--class=backlight" "set" "10%-";    }
-    
+        XF86MonBrightnessDown  allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-";                }
+
         // 切换聚焦窗口
         Mod+Left                                { focus-column-left;  }
         Mod+Right                               { focus-column-right; }
@@ -142,7 +138,7 @@ binds {
         Mod+I                               { focus-workspace-down; }
         Mod+WheelScrollUp   cooldown-ms=140 { focus-workspace-up;   }
         Mod+WheelScrollDown cooldown-ms=140 { focus-workspace-down; }
- 
+
         Mod+Shift+1 { focus-workspace 1;  }
         Mod+Shift+2 { focus-workspace 2;  }
         Mod+Shift+3 { focus-workspace 3;  }
@@ -170,7 +166,7 @@ binds {
         Mod+Comma  { consume-window-into-column; }
         // 弹出当前窗口
         Mod+Period { expel-window-from-column;   }
-        
+
         // 调整窗口至预设大小
         Mod+R       repeat=false { switch-preset-column-width;  }
         Mod+Shift+R repeat=false { switch-preset-window-height; }
@@ -184,7 +180,7 @@ binds {
         // 居中当前/所有可见/所有窗口
         Mod+C       { center-column;          }
         Mod+Shift+C { center-visible-columns; }
-        Mod+Ctrl+C  { spawn-sh "niri msg action center-column; sed -i '1{s|^/-||;t;s|^|/-|}' ~/.config/niri/_center-focused-column.kdl"; }
+        Mod+Ctrl+C  { spawn "sed" "-i" "1{s|^/-||;t;s|^|/-|}" ".config/niri/config/center-focused-column.kdl"; }
 
         // 调整窗口大小
         Mod+Minus       { set-column-width  "-12.5%"; }
