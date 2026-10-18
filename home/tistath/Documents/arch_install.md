@@ -11,7 +11,7 @@
 cd ~/Downloads
 pacman-key -v archlinux-version-x86_64.iso.sig
 ```
-    
+
 ### 制作启动U盘
 
 - 确认U盘名（以/dev/sda为例），并确保其未被挂载
@@ -126,7 +126,7 @@ mount --mkdir -t btrfs -o subvol=/@home,compress=zstd:15 /dev/nvme0n1p2 /mnt/hom
 mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd:15 /dev/nvme0n1p2 /mnt/swap
 mount --mkdir /dev/nvme0n1p1 /mnt/efi
 df -h # 检查挂载情况
-``` 
+```
 
 ## 安装基本系统
 
@@ -482,7 +482,7 @@ git config --global init.defaultBranch main
             - `Zen徽标`设为`false`
 
     - [搜索](about:preferences#search)：
-        
+
         - `默认搜索引擎`选择`Bing`
 
     - [隐私与安全](about:preferences#privacy)：
@@ -627,7 +627,7 @@ mkdir -p ~/wechat-shared
 ```bash
 ls /usr/bin/wechat*
 ```
-    
+
 - 编辑脚本（以/usr/bin/wechat-universal为例），在exec bwrap与/opt/wechat/wechat "$@"之间插入一行
 ```text
 --bind /home/tistath/wechat-shared /home/tistath/wechat-shared
@@ -666,7 +666,23 @@ sudo systemctl enable --now ufw # 开机自启
 
 ### Yazi配置
 
-将`~/.config/yazi/yazi.toml`中的`max_width`和`max_height`改为`显示器宽度 * 4 / 9`和`显示器高度`
+- 将`~/.config/yazi/yazi.toml`中的`max_width`和`max_height`改为`显示器宽度 * 4 / 9`和`显示器高度`
+
+- 将`catppuccin-mocha-blue`主题的`which`字段修改为
+```toml
+[which]
+mask            = { bg = "reset" }
+cand            = { fg = "#94e2d5" }
+rest            = { fg = "#9399b2" }
+desc            = { fg = "#f5c2e7" }
+separator       = "  "
+separator_style = { fg = "#585b70" }
+```
+
+- 安装插件
+```bash
+ya pkg add yazi-rs/plugins:git
+```
 
 ### 7.17 Zsh配置
 
@@ -744,7 +760,7 @@ grub-mkconfig -o /efi/grub/grub.cfg
 ### 桌面门户配置
 
 - `xdg-desktop-portal-gnome`：
-    
+
     - 设置深色主题：
     ```bash
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"

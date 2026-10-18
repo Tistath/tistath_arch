@@ -1,39 +1,39 @@
 [mgr]
 # 三栏占比
-ratio          = [2, 3, 4] 
+ratio          = [2, 3, 4]
 
 # 自然排序，不会出现1.md>10.md>2.md
-sort_by        = "natural" 
+sort_by        = "natural"
 # 排序时区分大小写
-sort_sensitive = true      
+sort_sensitive = true
 # 正向排序
-sort_reverse   = false     
+sort_reverse   = false
 # 目录优先
-sort_dir_first = true      
+sort_dir_first = true
 # 转写非英文字符
-sort_translit  = true      
+sort_translit  = true
 
 # 显示文件大小
-linemode       = "size"    
+linemode       = "size"
 # 显示隐藏文件
-show_hidden    = true      
+show_hidden    = true
 # 显示符号链接所指
-show_symlink   = true      
+show_symlink   = true
 
 # 到头时光标上下的文件个数
-scrolloff      = 4         
+scrolloff      = 4
 
 [preview]
 # 代码预览不换行
-wrap       = "no" 
+wrap       = "no"
 
 # 缩进大小
-tab_size   = 8    
+tab_size   = 8
 
 # 图片宽度
-max_width  = 853  
+max_width  = 853
 # 图片高度
-max_height = 1080 
+max_height = 1080
 
 [opener]
 edit     = [
@@ -61,28 +61,40 @@ sudoedit = [
 [open]
 rules = [
         # 文本
-        { mime = "text/*",          use = [ "edit",     "browser",     "sudoedit",           ] }, 
+        { mime = "text/*",          use = [ "edit",     "browser",     "sudoedit",           ] },
 
         # 图片
-        { mime = "image/*",         use = [ "view",     "edit",        "browser",  "swaybg", ] }, 
+        { mime = "image/*",         use = [ "view",     "edit",        "browser",  "swaybg", ] },
 
         # PDF
-        { mime = "application/pdf", use = [ "zathura",  "edit",        "browser",            ] }, 
+        { mime = "application/pdf", use = [ "zathura",  "edit",        "browser",            ] },
 
         # 视频
-        { mime = "video/*",         use = [ "play",     "edit",        "browser",            ] }, 
+        { mime = "video/*",         use = [ "play",     "edit",        "browser",            ] },
         # 音频
-        { mime = "audio/*",         use = [ "play",     "edit",        "browser",            ] }, 
+        { mime = "audio/*",         use = [ "play",     "edit",        "browser",            ] },
 
         # 缺省
-        { mime = "*",               use = [ "edit",     "browser",     "sudoedit",           ] }, 
+        { mime = "*",               use = [ "edit",     "browser",     "sudoedit",           ] },
 
 ]
 
 [input]
 # 光标闪烁
-cursor_blink = true 
+cursor_blink = true
 
 [which]
 # 按按键顺序排序快捷键提示
-sort_by = "key" 
+sort_by = "key"
+
+[[plugin.prepend_fetchers]]
+# 显示文件的git状态
+url   = "*"
+run   = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+# 显示目录的git状态
+url   = "*/"
+run   = "git"
+group = "git"

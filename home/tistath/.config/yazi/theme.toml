@@ -82,6 +82,7 @@ title   = {}
 hovered = { fg = "#f5c2e7", bold = true }
 
 [which]
+# 透明背景
 mask            = { bg = "reset" }
 cand            = { fg = "#94e2d5" }
 rest            = { fg = "#9399b2" }
