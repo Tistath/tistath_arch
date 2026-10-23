@@ -134,7 +134,7 @@ df -h # 检查挂载情况
 
 - 配置镜像源
 ```bash
-reflector -a 12 -c cn -f 10 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+reflector -a 12 -c cn -f 16 --sort rate --verbose --save /etc/pacman.d/mirrorlist
 ```
 
 - 安装镜像
@@ -376,9 +376,9 @@ sudo pacman -S libnotify mako
 
 ## AUR
 
-- 添加archlinuxcn源并安装yay
+- 添加archlinuxcn源并安装`paru`
 
-    - 编辑/etc/pacman.conf，添加
+    - 编辑`/etc/pacman.conf`，添加
     ```conf
     [archlinuxcn]
     Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
@@ -391,12 +391,11 @@ sudo pacman -S libnotify mako
     的注释
     ```
 
-    - 安装yay并配置AUR镜像
+    - 安装`paru`并配置AUR镜像
     ```bash
     sudo pacman -Sy archlinuxcn-keyring
-    sudo pacman -S yay
-    yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save # 清华源
-    # 若失效，恢复官方源yay --aururl "https://aur.archlinux.org" --save
+    sudo pacman -S paru
+    sudo reflector -a 12 -c cn -f 16 --sort rate --save /etc/pacman.d/mirrorlist
     ```
 
 ## 应用配置
@@ -757,6 +756,18 @@ snapper -c home create-config /home
 grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
+- 删除
+```bash
+# root或home等指定目录 指定编号范围
+sudo snapper -c root delete 736-800
+```
+
+- 回滚
+```bash
+# 将指定编号快照与当前互换
+sudo snapper -c root undochange 811..0
+```
+
 ### 桌面门户配置
 
 - `xdg-desktop-portal-gnome`：
@@ -962,7 +973,8 @@ chmod +x ~/.config/fzf/fzf-preview.sh
 | AUR | 说明 |
 | :------------------------------------------- | :------------------------------------------- |
 | archlinuxcn-keyring | 仓库密钥 |
-| yay | AUR助手 |
+| paru | AUR助手 |
+| reflector | 镜像源选取 |
 
 | 开发工具 | 说明 |
 | :------------------------------------------- | :------------------------------------------- |
@@ -1032,5 +1044,5 @@ chmod +x ~/.config/fzf/fzf-preview.sh
 - 清理孤儿包
 ```bash
 sudo pacman -Rns $(pacman -Qdtq)
-yay -Sc
+paru -Sc
 ```

@@ -36,7 +36,7 @@ files=(
 )
 
 for file in "${files[@]}"; do
-    rsync -av --delete "$file" "$HOME/tistath_arch/$file"
+    rsync -av --delete "$file" "$HOME/tistath_arch$file"
 done
 
 pacman -Qqen > ~/tistath_arch/pkglist-official.txt

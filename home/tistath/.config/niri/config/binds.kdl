@@ -218,3 +218,15 @@ binds {
         // 退出niri
         Mod+Ctrl+Q                                                { quit;               }
 }
+
+// 同app窗口切换
+recent-windows {
+        binds {
+                Super+grave       { next-window     filter="app-id"; }
+                Super+Shift+grave { previous-window filter="app-id"; }
+        }
+        highlight {
+                corner-radius 12
+                active-color "#b6c7e7"
+        }
+}

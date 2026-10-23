@@ -22,6 +22,11 @@ layout {
                 proportion 0.5;
         }
 
+        // 鼠标拖动窗口提示框
+        insert-hint {
+                color "#b6c7e780"
+        }
+
         // 不绘制底色
         background-color "transparent"
 }

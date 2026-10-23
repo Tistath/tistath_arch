@@ -82,27 +82,35 @@ return {
                 },
                 keymap     = {
                         preset     = "none",
-                        ["<C-j>"]  = {
+                        ["<C-j>"]    = {
                                 "select_next",
                                 "fallback",
                         },
-                        ["<C-k>"]  = {
+                        ["<C-k>"]    = {
                                 "select_prev",
                                 "fallback",
                         },
-                        ["<C-CR>"] = {
+                        ["<C-Down>"] = {
+                                "select_next",
+                                "fallback",
+                        },
+                        ["<C-Up>"]   = {
+                                "select_prev",
+                                "fallback",
+                        },
+                        ["<C-CR>"]   = {
                                 "accept",
                                 "fallback",
                         },
-                        ["<C-q>"]  = {
+                        ["<C-q>"]    = {
                                 "hide",
                                 "fallback",
                         },
-                        ["<C-u>"]  = {
+                        ["<C-u>"]    = {
                                 "scroll_documentation_up",
                                 "fallback",
                         },
-                        ["<C-d>"]  = {
+                        ["<C-d>"]    = {
                                 "scroll_documentation_down",
                                 "fallback",
                         },

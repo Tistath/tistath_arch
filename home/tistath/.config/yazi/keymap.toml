@@ -1,4 +1,3 @@
-#~/.config/yazi/keymap.toml
 [[mgr.prepend_keymap]]
 on   = ["R", "b"]
 run  = "plugin recycle-bin"

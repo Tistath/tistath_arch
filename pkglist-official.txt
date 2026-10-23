@@ -49,6 +49,7 @@ pipewire-pulse
 polkit-gnome
 poppler
 python-pylatexenc
+reflector
 resvg
 rime-ice-pinyin-git
 ripgrep
