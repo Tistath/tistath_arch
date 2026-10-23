@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 # 一步成功才会接着执行
 set -e
@@ -16,6 +16,7 @@ files=(
 "$HOME/.config/fcitx5/"
 "$HOME/.config/fontconfig/"
 "$HOME/.config/fzf/"
+"$HOME/.config/paru/"
 "$HOME/.config/htop/"
 "$HOME/.config/imv/"
 "$HOME/.config/kitty/"
@@ -34,8 +35,8 @@ files=(
 "$HOME/Documents/arch_install.md"
 )
 
-for f in "${files[@]}"; do
-    rsync -av --delete "$f" "$HOME/tistath_arch/$f"
+for file in "${files[@]}"; do
+    rsync -av --delete "$file" "$HOME/tistath_arch/$file"
 done
 
 pacman -Qqen > ~/tistath_arch/pkglist-official.txt

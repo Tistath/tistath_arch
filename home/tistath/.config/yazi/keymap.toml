@@ -1,4 +1,5 @@
+#~/.config/yazi/keymap.toml
 [[mgr.prepend_keymap]]
-on   = [ "g", "t" ]
-run  = "cd ~/.local/share/Trash"
-desc = "Go to trash bin"
+on   = ["R", "b"]
+run  = "plugin recycle-bin"
+desc = "Recycle-bin"

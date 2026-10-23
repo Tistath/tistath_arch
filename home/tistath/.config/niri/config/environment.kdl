@@ -1,6 +1,6 @@
 environment {
         // 编码
-        LC_MESSAGES           "zh_CN.UTF-8"                     
+        LC_MESSAGES           "zh_CN.UTF-8"
 
         // 桌面
         XDG_CURRENT_DESKTOP   "niri"
@@ -23,5 +23,5 @@ environment {
         MOZ_ENABLE_WAYLAND    "1"
 
         // fzf配置路径
-        FZF_DEFAULT_OPTS_FILE "/home/tistath/.config/fzf/fzfrc"
+        FZF_DEFAULT_OPTS_FILE "/home/tistath/.config/fzf/config"
 }

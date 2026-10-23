@@ -42,6 +42,7 @@ niri
 noctalia
 noto-fonts-emoji
 pacman-contrib
+paru
 pastel
 pipewire-alsa
 pipewire-pulse
@@ -72,7 +73,6 @@ wireless-regdb
 wl-clipboard
 xdg-desktop-portal-gnome
 xwayland-satellite
-yay
 yazi
 zathura
 zathura-pdf-mupdf

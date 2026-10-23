@@ -588,7 +588,7 @@ git config --global init.defaultBranch main
     | Column 1 | Column 2 |
     | :-- | :-- |
     | Memory | CPUs (1/1) |
-    | Swap |   |
+    | Swap(Zram) |   |
     | GPU usage |   |
     | Network IO |   |
     | Load average |   |

@@ -5,3 +5,4 @@
 --color=border:#6C7086,label:#CDD6F4
 --preview='~/.config/fzf/fzf-preview.sh {}'
 --preview-window=right:60%:wrap
+--prompt=' '

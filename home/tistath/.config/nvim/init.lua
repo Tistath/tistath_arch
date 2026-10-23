@@ -31,6 +31,8 @@ vim.opt.smartindent    = true
 vim.opt.shiftround     = true
 -- 行首shiftwidth，其他tabstop
 vim.opt.smarttab       = true
+-- 根据语法树缩进
+vim.opt.indentexpr = "v:lua.vim.treesitter.indentexpr()"
 
 -- 搜索
 
@@ -131,10 +133,3 @@ require("config.lazy")
 
 -- 关闭浮窗背景
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-
--- 删除行尾空格
-vim.api.nvim_create_autocmd("BufWritePre", {
-        callback = function()
-                vim.cmd([[%s/\s\+$//e]])
-        end,
-})
