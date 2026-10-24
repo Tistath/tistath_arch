@@ -2,5 +2,6 @@
 pacman-S() {
         local pkgs
         pkgs=$(pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window 'right:60%:wrap')
-        [[ -n "$pkgs" ]] && echo "$pkgs" | xargs -r sudo pacman -S
+        [[ -n "$pkgs" ]] || return
+        sudo pacman -S ${(f)pkgs}
 }

@@ -1,5 +1,4 @@
 baidunetdisk-bin
-cloudmusicplayer-bin
 libtexprintf
 linuxqq
 qqmusic-bin

@@ -33,11 +33,11 @@ files=(
 )
 
 for file in "${files[@]}"; do
-    rsync -av --delete "$file" "$HOME/tistath_arch$file"
+    rsync -av --delete "$file" "$HOME/tistath_arch/dotfiles$file"
 done
 
-pacman -Qqen > ~/tistath_arch/pkglist-official.txt
-pacman -Qqem > ~/tistath_arch/pkglist-aur.txt
+pacman -Qqen > ~/tistath_arch/pkglists/pkglist-official.txt
+pacman -Qqem > ~/tistath_arch/pkglists/pkglist-aur.txt
 
 cd ~/tistath_arch
 git add .
