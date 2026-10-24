@@ -18,6 +18,7 @@ prompts=(
         "=== 更新 lazy.nvim 插件 ==="
         "=== 编译 blink.cmp Rust 库 ==="
         "=== 更新 Treesitter parser ==="
+        "=== 更新 LuaSnip 正则库 ==="
 )
 
 cmds=(
@@ -29,7 +30,8 @@ cmds=(
         "ya pkg upgrade"
         "nvim --headless '+Lazy! sync' +qa"
         "nvim --headless '+Lazy build blink.cmp' +qa"
-        "nvim --headless '+TSUpdate' +qa"
+        "nvim --headless '+Lazy build nvim-treesitter' +qa"
+        "nvim --headless '+Lazy build LuaSnip' +qa"
 )
 
 for i in "${!prompts[@]}"; do

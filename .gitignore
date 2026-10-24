@@ -1,6 +1,3 @@
-# 剪贴板历史（可能包含密码、令牌）
-.config/copyq/
-
 # 浏览器数据（包含浏览历史、书签、Cookie）
 .config/mozilla/
 .config/google-chrome/
