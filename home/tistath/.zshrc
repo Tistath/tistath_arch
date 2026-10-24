@@ -55,8 +55,8 @@ PROMPT=$'\n %~'$'\n %F{blue} %f'
 # 右侧提示符
 RPROMPT='$(git-prompt-branch)'
 
-# 三省吾身
-alias tistath-zen='cat ~/Documents/tistath_zen.txt'
+# 别名
+source ~/.config/zsh/alias.zsh
 
 # vim模式
 bindkey -v
