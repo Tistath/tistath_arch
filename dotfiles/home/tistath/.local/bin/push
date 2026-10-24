@@ -4,6 +4,7 @@ set -e
 
 files=(
 "/etc/environment"
+"$HOME/.local/bin/"
 "$HOME/.zshrc"
 "$HOME/.config/bat/"
 "$HOME/.config/copyq/themes/"

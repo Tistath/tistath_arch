@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+ask() {
+        local prompt="$1"
+        local ans
+        read -r -p "$prompt [Y/n] " ans
+        ans="${ans:-y}"
+        [[ "$ans" =~ ^[Yy]$ ]]
+}
+
+prompts=(
+        "=== 清理 pacman旧包 ==="
+        "=== 清理 pacman缓存 ==="
+        "=== 清理 孤儿包 ==="
+        "=== 清理 未安装包 ==="
+        "=== 清理 AUR构建缓存 ==="
+        "=== 清理 AUR全部缓存 ==="
+        "=== 清理 AUR旧包列表 ==="
+        "=== 清理 journal日志 ==="
+        "=== 清理 coredump日志 ==="
+        "=== 清理 旧日志 ==="
+        "=== 清理 临时目录 ==="
+        "=== 清理 回收站 ==="
+        "=== 清理 cargo缓存 ==="
+        "=== 清理 nvim插件 ==="
+        "=== 清理 Steam shader缓存 ==="
+        "=== 清理 omz git历史 ==="
+)
+
+cmds=(
+        "paccache -r -k 2"
+        "sudo pacman -Scc --noconfirm"
+        "sudo pacman -Rns $(pacman -Qdtq) --noconfirm"
+        "paccache -ruk 0"
+        "paru -Sc --noconfirm"
+        "rm -rf ~/.cache/paru/clone"
+        "rm -rf ~/.cache/paru/aur"
+        "sudo journalctl --vacuum-time=3d --vacuum-size=100M"
+        "sudo rm -rf /var/lib/systemd/coredump/*"
+        "sudo find /var/log -name '*.log.*' -mtime +30 -delete"
+        "sudo find /var/tmp -mtime +7 -delete"
+        "trash-empty -f"
+        "rm -rf ~/.cargo/registry/cache"
+        "nvim --headless '+Lazy! clean' +qa"
+        "rm -rf ~/.local/share/Steam/steamapps/shadercache"
+        "cd ~/.oh-my-zsh && git gc --aggressive --prune=now"
+)
+
+for i in "${!prompts[@]}"; do
+        if ask "${prompts[$i]}"; then
+                eval "${cmds[$i]}"
+        fi
+done

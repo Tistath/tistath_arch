@@ -4,5 +4,5 @@
 --color=selected-bg:#45475A
 --color=border:#6C7086,label:#CDD6F4
 --preview='~/.config/fzf/fzf-preview.sh {}'
---preview-window=right:60%:wrap
+--preview-window=right:50%:wrap
 --prompt=' '

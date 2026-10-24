@@ -364,11 +364,6 @@ niri-session
 
 - 编辑~/.config/niri/config.kdl
 
-- 为锁屏脚本添加执行权限
-```bash
-chmod +x ~/.config/niri/scripts/swayidle.sh
-```
-
 ### 安装通知服务
 ```bash
 sudo pacman -S libnotify mako
@@ -757,6 +752,17 @@ snapper -c home create-config /home
 grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
+- 编辑`/etc/snapper/configs/root`：
+```
+NUMBER_LIMIT="16"
+NUMBER_LIMIT_IMPORTANT="16"
+```
+
+- 自动删除：
+```bash
+sudo systemctl enable --now snapper-cleanup.timer
+```
+
 - 删除
 ```bash
 # root或home等指定目录 指定编号范围
@@ -892,6 +898,11 @@ chmod +x ~/.config/fzf/fzf-preview.sh
 ## 配置文件
 
 - [我的仓库](https://github.com/Tistath/tistath_arch)
+
+- 为`~/tistath_arch/tools/*`添加可执行权限：
+```bash
+chmod +x ~/.local/bin/*
+```
 
 ## 包
 
