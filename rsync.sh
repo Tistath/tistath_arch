@@ -1,10 +1,6 @@
 #!/usr/bin/bash
 
-# 一步成功才会接着执行
 set -e
-
-read -rp "commit message(默认'update'): " msg
-msg="${msg:-update}"
 
 files=(
 "/etc/environment"
@@ -45,5 +41,10 @@ pacman -Qqem > ~/tistath_arch/pkglist-aur.txt
 
 cd ~/tistath_arch
 git add .
+git diff --staged
+
+read -rp "commit message(默认'update'): " msg
+msg="${msg:-update}"
+
 git commit -m "$msg"
 git push -u origin main

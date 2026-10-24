@@ -33,6 +33,9 @@ source $ZSH/oh-my-zsh.sh
 # fzf集成
 source <(fzf --zsh)
 
+# zoxide集成
+eval "$(zoxide init zsh)"
+
 # man手册搜索路径
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -42,6 +45,10 @@ export ARCHFLAGS="-arch $(uname -m)"
 # 函数
 source ~/.config/zsh/git-prompt-branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
+source ~/.config/zsh/pacman-S.zsh
+source ~/.config/zsh/pacman-R.zsh
+source ~/.config/zsh/paru-S.zsh
+source ~/.config/zsh/paru-R.zsh
 
 # 左侧提示符
 PROMPT=$'\n %~'$'\n %F{blue} %f'
@@ -54,5 +61,3 @@ alias tistath-zen='cat ~/Documents/tistath_zen.txt'
 # vim模式
 bindkey -v
 
-# zoxide集成
-eval "$(zoxide init zsh)"

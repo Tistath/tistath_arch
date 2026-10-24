@@ -681,6 +681,7 @@ separator_style = { fg = "#585b70" }
 - 安装插件
 ```bash
 ya pkg add yazi-rs/plugins:git
+ya pkg add uhs-robert/recycle-bin
 ```
 
 ### 7.17 Zsh配置

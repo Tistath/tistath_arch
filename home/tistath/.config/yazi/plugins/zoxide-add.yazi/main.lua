@@ -1,3 +1,4 @@
+-- 切换目录时添加进zoxide
 local zoxide_add = {}
 
 function zoxide_add:setup()
