@@ -26,6 +26,7 @@ files=(
 "$HOME/.config/swaylock/"
 "$HOME/.config/waybar/"
 "$HOME/.config/yazi/"
+"$HOME/.config/yazi/plugins/zoxide-add.yazi/"
 "$HOME/.config/zathura/"
 "$HOME/.config/zsh/"
 "$HOME/.local/share/fcitx5/rime/default.custom.yaml"

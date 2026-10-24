@@ -44,7 +44,7 @@ source ~/.config/zsh/git-prompt-branch.zsh
 source ~/.config/zsh/yazi-cd.zsh
 
 # 左侧提示符
-PROMPT=' %~'$'\n %F{blue} %f'
+PROMPT=$'\n %~'$'\n %F{blue} %f'
 # 右侧提示符
 RPROMPT='$(git-prompt-branch)'
 
@@ -53,3 +53,6 @@ alias tistath-zen='cat ~/Documents/tistath_zen.txt'
 
 # vim模式
 bindkey -v
+
+# zoxide集成
+eval "$(zoxide init zsh)"

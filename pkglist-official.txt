@@ -11,10 +11,10 @@ brightnessctl
 btrfs-progs
 chafa
 clang
-clash-verge-rev
 copyq
 dunst
 efibootmgr
+eza
 fastfetch
 fcitx5
 fcitx5-gtk
@@ -53,6 +53,7 @@ reflector
 resvg
 rime-ice-pinyin-git
 ripgrep
+ripgrep-all
 rsync
 rust
 snap-pac

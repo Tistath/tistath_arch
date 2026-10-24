@@ -969,6 +969,9 @@ chmod +x ~/.config/fzf/fzf-preview.sh
 | resvg | yazi的SVG（矢量图）预览后端 |
 | ripgrep | yazi的内容搜索后端 |
 | trash-cli | yazi的回收站控制工具 |
+| zoxide | 智能目录跳转 |
+| eza | 美化列出子项目 |
+| ripgrep-all | 更多格式文件的内容搜索 |
 
 | AUR | 说明 |
 | :------------------------------------------- | :------------------------------------------- |
