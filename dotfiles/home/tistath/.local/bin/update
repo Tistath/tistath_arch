@@ -21,7 +21,7 @@ prompts=(
 )
 
 cmds=(
-        "watt-toolkit"
+        "watt-toolkit > /dev/null 2>&1 & disown"
         "sudo pacman -Sy --noconfirm archlinux-keyring"
         "sudo pacman -Syu --noconfirm"
         "paru -Sua --noconfirm"

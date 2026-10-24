@@ -44,7 +44,9 @@ export ARCHFLAGS="-arch $(uname -m)"
 
 # 函数
 source ~/.config/zsh/git-prompt-branch.zsh
+
 source ~/.config/zsh/yazi-cd.zsh
+
 source ~/.config/zsh/pacman-S.zsh
 source ~/.config/zsh/pacman-R.zsh
 source ~/.config/zsh/paru-S.zsh
@@ -57,7 +59,3 @@ RPROMPT='$(git-prompt-branch)'
 
 # 别名
 source ~/.config/zsh/alias.zsh
-
-# vim模式
-bindkey -v
-
