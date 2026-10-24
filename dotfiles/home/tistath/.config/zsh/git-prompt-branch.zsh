@@ -18,5 +18,5 @@ git-prompt-branch() {
         fi
 
         # 输出
-        echo "%F{blue}${status_symbol}%f [%F{blue}${branch}%f]"
+        echo "%F{#b4befe}${status_symbol}%f [%F{#b4befe}${branch}%f]"
 }

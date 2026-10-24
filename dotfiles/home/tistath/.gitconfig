@@ -1,0 +1,91 @@
+[user]
+	# 提交作者名
+	name  = Tistath
+	# 提交作者邮箱
+	email = eta_gamma_omega@qq.com
+
+[init]
+	# 默认分支
+	defaultBranch = main
+
+[core]
+	# 默认编辑器
+	editor    = nvim
+	# 分页器
+	pager     = delta
+	# 提交转LF，检出不转（Linux）
+	autocrlf  = input
+	# 不转义中文文件名
+	quotepath = false
+
+[interactive]
+	# diff用delta
+	diffFilter = delta --color-only
+
+[delta]
+	# 显示行号
+	line-numbers                 = true
+	# 单列
+	side-by-side                 = false
+	# 语法高亮主题
+	syntax-theme                 = Catppuccin Mocha
+	# 启用行号和装饰
+	features                     = line-numbers
+
+[merge]
+	# 冲突显示（base/ours/theirs）
+	conflictstyle = diff3
+
+[diff]
+	# 移动的代码用不同色
+	colorMoved = default
+	# 比默认myers好
+	algorithm  = histogram
+
+[alias]
+	# 简短状态
+	st      = status -sb
+	# 切换分支
+	co      = checkout
+	# 分支列表
+	br      = branch
+	# 提交
+	ci      = commit
+	# 图形化log
+	lg      = log --oneline --graph --decorate --all
+	# 最后一次提交
+	last    = log -1 HEAD
+	# 取消暂存
+	unstage = reset HEAD --
+	# 撤销上次提交，保留改动
+	undo    = reset --soft HEAD~1
+	# 修改上次提交，不改消息
+	amend   = commit --amend --no-edit
+	# 安全强推
+	pushf   = push --force-with-lease
+	# diff
+	df      = diff
+	# 暂存区diff
+	dfs     = diff --staged
+	# diff统计
+	ds      = diff --stat
+	# 删已合并到main/master的分支
+	cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master' | xargs -r git branch -d"
+
+[color]
+	# 自动颜色
+	ui = auto
+
+[pull]
+	# pull用merge
+	rebase = false
+
+[push]
+	# 只推当前分支
+	default         = simple
+	# push自动-u
+	autoSetupRemote = true
+
+[fetch]
+	# 自动删远程已删分支
+	prune = true

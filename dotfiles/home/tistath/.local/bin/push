@@ -5,6 +5,7 @@ set -e
 files=(
 "/etc/environment"
 "$HOME/.local/bin/"
+"$HOME/.gitconfig"
 "$HOME/.zshrc"
 "$HOME/.config/bat/"
 "$HOME/.config/copyq/themes/"
@@ -43,6 +44,10 @@ pacman -Qqem > ~/tistath_arch/pkglists/pkglist-aur.txt
 cd ~/tistath_arch
 git add .
 git diff --staged
+
+read -rp "确认提交？[Y/n] " ans
+ans="${ans:-y}"
+[[ "$ans" =~ ^[Yy]$ ]] || { echo "取消"; exit 1; }
 
 read -rp "commit message(默认'update'): " msg
 msg="${msg:-update}"

@@ -23,6 +23,7 @@ fcitx5-rime
 fd
 fzf
 git
+git-delta
 gnome-keyring
 htop
 imagemagick

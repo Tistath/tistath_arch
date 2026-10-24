@@ -51,7 +51,7 @@ source ~/.config/zsh/paru-S.zsh
 source ~/.config/zsh/paru-R.zsh
 
 # 左侧提示符
-PROMPT=$'\n %~'$'\n %F{blue} %f'
+PROMPT=$'\n %F{#b4befe}%~%f'$'\n %F{#b4befe}❯ %f' # (catppuccin-mocha-Lavender)
 # 右侧提示符
 RPROMPT='$(git-prompt-branch)'
 
